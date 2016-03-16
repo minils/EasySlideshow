@@ -21,6 +21,7 @@ git clone https://github.com/minils/EasySlideshow.git
 cd EasySlideshow
 mkdir build
 cd build
+export CONFIG=release
 qmake ../
 make
 ```
