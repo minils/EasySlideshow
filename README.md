@@ -1,2 +1,2 @@
 # EasySlideshow
-An easy slideshow based ob Qt.
+An easy slideshow based on Qt.
