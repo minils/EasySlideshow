@@ -29,7 +29,4 @@ HEADERS  += mainwindow.h \
 FORMS    += mainwindow.ui \
     settingsdialog.ui
 
-## By Nils:
-CONFIG += console
-
 RESOURCES += resources.qrc
