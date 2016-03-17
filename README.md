@@ -1,10 +1,10 @@
 # EasySlideshow
-This is a very easy slideshow baed on Qt.
+This is a very easy slideshow based on Qt.
 
 It uses the provided folder to display random images.
 
 ### Version
-0.0.1
+0.1
 
 ### Installation
 
