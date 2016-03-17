@@ -2,4 +2,16 @@
     <qresource prefix="/">
         <file>icon.svg</file>
     </qresource>
+    <qresource prefix="/btn">
+        <file alias="info">svg/ic_info_white_24px.svg</file>
+        <file alias="pause">svg/ic_pause_white_24px.svg</file>
+        <file alias="play">svg/ic_play_arrow_white_24px.svg</file>
+        <file alias="settings">svg/ic_settings_white_24px.svg</file>
+        <file alias="next">svg/ic_skip_next_white_24px.svg</file>
+        <file alias="previous">svg/ic_skip_previous_white_24px.svg</file>
+        <file alias="info2">svg/ic_info_outline_white_24px.svg</file>
+    </qresource>
+    <qresource prefix="/radiobtn">
+        <file alias="checked">svg/ic_check_white_24px.svg</file>
+    </qresource>
 </RCC>

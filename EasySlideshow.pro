@@ -17,16 +17,19 @@ SOURCES += main.cpp \
     slideshow.cpp \
     displaylabel.cpp \
     settingsmanager.cpp \
-    settingsdialog.cpp
+    settingsdialog.cpp \
+    helpdialog.cpp
 
 HEADERS  += mainwindow.h \
     slideshow.h \
     displaylabel.h \
     globals.h \
     settingsmanager.h \
-    settingsdialog.h
+    settingsdialog.h \
+    helpdialog.h
 
 FORMS    += mainwindow.ui \
-    settingsdialog.ui
+    settingsdialog.ui \
+    helpdialog.ui
 
 RESOURCES += resources.qrc

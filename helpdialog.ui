@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>HelpDialog</class>
+ <widget class="QDialog" name="HelpDialog">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>513</width>
+    <height>355</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Help</string>
+  </property>
+  <layout class="QGridLayout" name="gridLayout">
+   <item row="0" column="0">
+    <widget class="QWidget" name="widget" native="true">
+     <layout class="QGridLayout" name="gridLayout_2">
+      <property name="leftMargin">
+       <number>0</number>
+      </property>
+      <property name="topMargin">
+       <number>0</number>
+      </property>
+      <property name="rightMargin">
+       <number>0</number>
+      </property>
+      <property name="bottomMargin">
+       <number>0</number>
+      </property>
+      <item row="0" column="0">
+       <widget class="QScrollArea" name="scrollArea">
+        <property name="widgetResizable">
+         <bool>true</bool>
+        </property>
+        <widget class="QWidget" name="scrollAreaWidgetContents">
+         <property name="geometry">
+          <rect>
+           <x>0</x>
+           <y>-216</y>
+           <width>479</width>
+           <height>553</height>
+          </rect>
+         </property>
+         <layout class="QGridLayout" name="gridLayout_3">
+          <item row="0" column="0">
+           <widget class="QLabel" name="infoLabel">
+            <property name="text">
+             <string>&lt;h1&gt;EasySlideshow v%version&lt;/h1&gt;
+&lt;p&gt;
+This is the first version of EasySlideshow.
+&lt;/p&gt;
+&lt;h2&gt;Help&lt;/h2&gt;
+&lt;p&gt;
+EasySlideshow takes a folder and shows the images inside of it in a randomized order. A &lt;b&gt;click&lt;/b&gt; on the image takes you to the subfolder where the image is located. Previous images can be accessed via the &lt;b&gt;[&amp;lt;]&lt;/b&gt; button.
+The next image is shown in the set speed or by pressing the &lt;b&gt;[&amp;gt;]&lt;/b&gt; button.
+Image location and display speed can be set in the settings dialog.
+To pause the slideshow just press the &lt;b&gt;[II]&lt;/b&gt; button.
+&lt;/p&gt;
+&lt;h2&gt;Source Code&lt;/h2&gt;
+&lt;p&gt;This software is open source which can be found &lt;a href=&quot;https://github.com/minils/EasySlideshow&quot;&gt;here&lt;/a&gt; on GitHub.&lt;/p&gt;
+&lt;h2&gt;License&lt;/h2&gt;
+&lt;p&gt;This software is released under the &lt;b&gt;GNU General Public License 3.0&lt;/b&gt; which can be found &lt;a href=&quot;http://www.gnu.org/licenses/gpl-3.0.txt&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
+&lt;h2&gt;Author&lt;/h2&gt;
+&lt;p&gt;Nils Schwabe &lt;a href=&quot;https://minils.de&quot;&gt;www.minils.de&lt;/a&gt;&lt;/p&gt;
+&lt;h2&gt;Icons&lt;/h2&gt;
+&lt;p&gt;
+Taken from &lt;b&gt;Material Icons&lt;/b&gt; which were released under the &lt;a href=&quot;https://creativecommons.org/licenses/by/4.0/&quot;&gt;CC BY 4.0&lt;/a&gt; and can be found &lt;a href=&quot;https://design.google.com/icons/&quot;&gt;here&lt;/&gt;.
+&lt;/p&gt;</string>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
+            </property>
+            <property name="wordWrap">
+             <bool>true</bool>
+            </property>
+            <property name="openExternalLinks">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

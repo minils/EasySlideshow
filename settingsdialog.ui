@@ -111,6 +111,13 @@
              </widget>
             </item>
             <item>
+             <widget class="QRadioButton" name="radioButton_3">
+              <property name="text">
+               <string>pause</string>
+              </property>
+             </widget>
+            </item>
+            <item>
              <widget class="QRadioButton" name="radioButton">
               <property name="text">
                <string>nothing</string>

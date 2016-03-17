@@ -21,6 +21,7 @@ public:
     explicit SlideShow(QDir *dir, unsigned int time, QObject *parent = 0);
     void setDirectory(QDir *dir);
     void setSpeed(unsigned int speed);
+    bool paused(void);
 
 private:
     QDir *_dir;

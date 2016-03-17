@@ -6,8 +6,6 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-    _play = "I>";
-    _pause = "II";
 
     _settingsManager = new SettingsManager();
 
@@ -16,12 +14,24 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->statusLabel->setMinimumWidth(40);
     ui->statusLabel->setAlignment(Qt::AlignRight);
     ui->photoLabel->setMinimumHeight(36);
-    ui->centralWidget->setStyleSheet("QWidget { background-color: #" + QString(BACKGROUND_COLOR) + "; }");
-    ui->pauseButton->setStyleSheet("QPushButton { color: #" + QString(FONT_COLOR) + "; }");
-    ui->helpButton->setStyleSheet("QPushButton { color: #" + QString(FONT_COLOR) + "; }");
-    ui->previousButton->setStyleSheet("QPushButton { color: #" + QString(FONT_COLOR) + "; }");
-    ui->nextButton->setStyleSheet("QPushButton { color: #" + QString(FONT_COLOR) + "; }");
-    ui->settingsButton->setStyleSheet("QPushButton { color: #" + QString(FONT_COLOR) + "; }");
+    ui->centralWidget->setStyleSheet("QWidget { background-color: #" + QString(BACKGROUND_COLOR) + "; } "
+                                     + " QPushButton { color: #" + QString(FONT_COLOR) + "; }"
+                                     + " QPushButton:focus { outline: none; }"
+                                     );
+
+    ui->previousButton->setText("");
+    ui->previousButton->setIcon(QIcon(":/btn/previous"));
+    ui->pauseButton->setText("");
+    ui->pauseButton->setIcon(QIcon(":/btn/pause"));
+    ui->nextButton->setText("");
+    ui->nextButton->setIcon(QIcon(":/btn/next"));
+    ui->helpButton->setText("");
+    ui->helpButton->setIcon(QIcon(":/btn/info"));
+    ui->settingsButton->setText("");
+    ui->settingsButton->setIcon(QIcon(":/btn/settings"));
+
+
+
 
     // setup slideshow
     qDebug() << "[MainWindow] Setting up slideshow";
@@ -43,6 +53,12 @@ MainWindow::MainWindow(QWidget *parent) :
     _settingsDialog = new SettingsDialog(this);
     _settingsShown = false;
     connect(_settingsDialog, SIGNAL(settingsClosed()), this, SLOT(settingsClosed()));
+
+    // generate help dialog
+    _helpDialog = new HelpDialog(this);
+    _helpShown = false;
+    connect(_helpDialog, SIGNAL(rejected()), this, SLOT(helpClosed()));
+
 
     QTimer::singleShot(100, _slideshow, SLOT(init()));
 }
@@ -74,10 +90,10 @@ void MainWindow::displayPath(QString path)
 
 void MainWindow::on_pauseButton_clicked()
 {
-    if (ui->pauseButton->text() == _pause){
-        ui->pauseButton->setText(_play);
+    if (_slideshow->paused()) {
+        ui->pauseButton->setIcon(QIcon(":/btn/pause"));
     } else {
-        ui->pauseButton->setText(_pause);
+        ui->pauseButton->setIcon(QIcon(":/btn/play"));
     }
     emit pausePressed();
 }
@@ -119,4 +135,22 @@ void MainWindow::settingsClosed(void)
     int duration = _settingsManager->readSetting(SETTING_SPEED, QVariant(6)).toInt();
     _slideshow->setSpeed(duration);
     _slideshow->setDirectory(dir);
+}
+
+void MainWindow::on_helpButton_clicked()
+{
+    if (!_helpShown) {
+        _helpDialog->show();
+        _helpDialog->activateWindow();
+        _helpDialog->raise();
+        _helpShown = true;
+    } else {
+        _helpDialog->activateWindow();
+        _helpDialog->raise();
+    }
+}
+
+void MainWindow::helpClosed()
+{
+    _helpShown = false;
 }

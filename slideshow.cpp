@@ -155,3 +155,8 @@ void SlideShow::loadImage(QString path)
   emit showImage(&pix);
   emit showPath(path);
 }
+
+bool SlideShow::paused(void)
+{
+    return _pause;
+}
