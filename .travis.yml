@@ -5,5 +5,5 @@ before_install:
  - sudo apt-get install -qq qt5-default qttools5-dev-tools
 
 script:
- - qmake Ultron.pro
+ - qmake EasySlideshow.pro
  - make
