@@ -16,7 +16,7 @@ SettingsDialog::SettingsDialog(QWidget *parent) :
                                      + "QSpinBox::down-button { border-image: none; color: #" + QString(FONT_COLOR) + "; } "
                                      + "QPushButton:focus, QRadioButton:focus { outline: none; } "
                                      + "QRadioButton::indicator { image: none; border-style: solid; border-color: #222 #555 #555 #222; border-width: 2px 1px 1px 2px; } "
-                                     + "QRadioButton::indicator::checked { background-color: #FFF; }" // TODO: fix this
+                                     + "QRadioButton::indicator::checked { image: url(:/radiobtn/checked);  }" // TODO: fix this
                                      );
 }
 

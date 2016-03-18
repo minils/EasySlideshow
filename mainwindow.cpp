@@ -21,15 +21,23 @@ MainWindow::MainWindow(QWidget *parent) :
 
     ui->previousButton->setText("");
     ui->previousButton->setIcon(QIcon(":/btn/previous"));
+    ui->previousButton->setIconSize(QSize(20, 20));
+
     ui->pauseButton->setText("");
     ui->pauseButton->setIcon(QIcon(":/btn/pause"));
+    ui->pauseButton->setIconSize(QSize(20, 20));
+
     ui->nextButton->setText("");
     ui->nextButton->setIcon(QIcon(":/btn/next"));
+    ui->nextButton->setIconSize(QSize(20, 20));
+
     ui->helpButton->setText("");
     ui->helpButton->setIcon(QIcon(":/btn/info"));
+    ui->helpButton->setIconSize(QSize(20, 20));
+
     ui->settingsButton->setText("");
     ui->settingsButton->setIcon(QIcon(":/btn/settings"));
-
+    ui->settingsButton->setIconSize(QSize(20, 20));
 
 
 
