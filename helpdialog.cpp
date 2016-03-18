@@ -16,7 +16,7 @@ HelpDialog::~HelpDialog()
     delete ui;
 }
 
-void HelpDialog::showEvent(QShowEvent * event)
+void HelpDialog::showEvent(QShowEvent*)
 {
     // do sth
 }

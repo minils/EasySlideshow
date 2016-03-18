@@ -13,7 +13,7 @@ void DisplayLabel::setImage(const QPixmap *image)
     resizeEvent(NULL);
 }
 
-void DisplayLabel::resizeEvent(QResizeEvent *event)
+void DisplayLabel::resizeEvent(QResizeEvent*)
 {
     if (_image.isNull())
         return;
@@ -26,7 +26,7 @@ void DisplayLabel::resizeEvent(QResizeEvent *event)
  * @brief DisplayLabel::mouseReleaseEvent Opens the directory of the current image.
  * @param event
  */
-void DisplayLabel::mouseReleaseEvent(QMouseEvent *event)
+void DisplayLabel::mouseReleaseEvent(QMouseEvent*)
 {
     // TODO: test for left click and add right click menu
     emit openCurrentDirectory();

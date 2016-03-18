@@ -107,7 +107,7 @@ void MainWindow::on_pauseButton_clicked()
 }
 
 
-void MainWindow::resizeEvent(QResizeEvent *event)
+void MainWindow::resizeEvent(QResizeEvent*)
 {
     int width = ui->centralWidget->width();
     ui->statusLabel->setMaximumWidth(width-80); // 80 is the size of the 4 buttons

@@ -18,7 +18,7 @@ public:
     explicit HelpDialog(QWidget *parent = 0);
     ~HelpDialog();
 
-    void showEvent(QShowEvent * event);
+    void showEvent(QShowEvent *);
 
 private:
     Ui::HelpDialog *ui;

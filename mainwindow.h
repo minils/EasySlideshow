@@ -24,7 +24,7 @@ class MainWindow : public QMainWindow
 public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
-    void resizeEvent(QResizeEvent *event);
+    void resizeEvent(QResizeEvent *);
 
     SettingsManager *_settingsManager;
 

@@ -14,8 +14,8 @@ public:
     explicit DisplayLabel(QWidget *parent = 0);
     void setImage(const QPixmap *image);
 
-    void resizeEvent(QResizeEvent *event);
-    void mouseReleaseEvent(QMouseEvent *event);
+    void resizeEvent(QResizeEvent *);
+    void mouseReleaseEvent(QMouseEvent *);
 
 signals:
     void openCurrentDirectory(void);

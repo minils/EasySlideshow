@@ -52,7 +52,7 @@ void SettingsDialog::on_buttonBox_accepted()
     emit settingsClosed();
 }
 
-void SettingsDialog::showEvent(QShowEvent * event)
+void SettingsDialog::showEvent(QShowEvent*)
 {
     ui->imagePathEdit->setText(_settingsmanager->readSetting(SETTING_PATH, QVariant("")).toString());
     ui->durationSpinBox->setValue(_settingsmanager->readSetting(SETTING_SPEED, QVariant(1)).toInt());

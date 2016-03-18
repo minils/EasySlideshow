@@ -79,7 +79,7 @@ void SlideShow::nextImage(void)
         return;
     }
     // we are going back in the list and want to show the next image in the list
-    if (_previous_images.size() != 0 && _current < _previous_images.size()-1) {
+    if (_previous_images.size() != 0 && _current < (unsigned int) _previous_images.size()-1) {
         ++_current;
         _current_path = _previous_images.at(_current);
     // we are at the end of the list and want to pick a random image
@@ -98,21 +98,18 @@ void SlideShow::nextImage(void)
 
 void SlideShow::nextImageClicked(void)
 {
-    qDebug() << "[SlideShow] Next image clicked";
     // TODO: why pause? config?
     if (!_pause) {
         emit communicatePause();
     }
     nextImage();
-    // TODO: either pause or start timer???
-//    timer->start(); // restart the timer
 }
 
 void SlideShow::previousImageClicked(void)
 {
   if (_previous_images.size() < 2 || _current < 1)
       return;
-  if (_current == _previous_images.size()) {
+  if (_current == (unsigned int) _previous_images.size()) {
     if (!_pause) {
         emit communicatePause();
     }
