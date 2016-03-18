@@ -32,7 +32,7 @@ make
 
 ### Todos
 
- - Fix bugs
+ - Fix bugs ...
  - Fav button
  - Increase probability for images with older access time
  - Read EXIF data and rotate if necessary
