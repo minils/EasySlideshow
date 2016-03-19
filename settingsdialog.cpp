@@ -7,17 +7,6 @@ SettingsDialog::SettingsDialog(QWidget *parent) :
 {
     ui->setupUi(this);
     _settingsmanager = new SettingsManager();
-
-    ui->centralWidget->setStyleSheet("QWidget { background-color: #" + QString(BACKGROUND_COLOR)+ "; } "
-                                     + "QLabel,QPushButton,QRadioButton,QSpinBox,QLineEdit { background-color: #"
-                                     + QString(BACKGROUND_COLOR) + "; color: #" + QString(FONT_COLOR) + "; } "
-                                     + "QSpinBox, QLineEdit { border-image: none; border-style: solid; border-color: #222 #555 #555 #222; border-width: 2px 1px 1px 2px; } "
-                                     + "QSpinBox::up-button { border-image: none; color: #" + QString(FONT_COLOR) + "; } "
-                                     + "QSpinBox::down-button { border-image: none; color: #" + QString(FONT_COLOR) + "; } "
-                                     + "QPushButton:focus, QRadioButton:focus { outline: none; } "
-                                     + "QRadioButton::indicator { image: none; border-style: solid; border-color: #222 #555 #555 #222; border-width: 2px 1px 1px 2px; } "
-                                     + "QRadioButton::indicator::checked { image: url(:/radiobtn/checked);  }" // TODO: fix this
-                                     );
 }
 
 SettingsDialog::~SettingsDialog()

@@ -15,4 +15,7 @@
     <qresource prefix="/radiobtn">
         <file alias="checked">svg/radiobutton_tick.svg</file>
     </qresource>
+    <qresource prefix="/style">
+        <file alias="dark">dark.qss</file>
+    </qresource>
 </RCC>

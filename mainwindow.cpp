@@ -10,14 +10,9 @@ MainWindow::MainWindow(QWidget *parent) :
     _settingsManager = new SettingsManager();
 
     // set style
-    ui->statusLabel->setStyleSheet("QLabel { background-color: #" + QString(BACKGROUND_COLOR) + "; color: #" + QString(FONT_COLOR) + "; }");
     ui->statusLabel->setMinimumWidth(40);
     ui->statusLabel->setAlignment(Qt::AlignRight);
     ui->photoLabel->setMinimumHeight(36);
-    ui->centralWidget->setStyleSheet("QWidget { background-color: #" + QString(BACKGROUND_COLOR) + "; } "
-                                     + " QPushButton { color: #" + QString(FONT_COLOR) + "; }"
-                                     + " QPushButton:focus { outline: none; }"
-                                     );
 
     ui->previousButton->setText("");
     ui->previousButton->setIcon(QIcon(":/btn/previous"));

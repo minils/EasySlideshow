@@ -25,15 +25,18 @@ public:
 
 private:
     QDir *_dir;
-    QList<QString> _images;
-    unsigned int _speed;
-    unsigned int _last;
-    unsigned int _current;
-    bool _pause;
     bool _dir_valid;
-    QString _current_path;
+    unsigned int _speed;
+
+    unsigned int _last;                     // index of the last image in _images
+    QList<QString> _images;
+
+    bool _pause;
     QTimer *timer;
-    QList<QString> _previous_images; // TODO: only save index of _images[]
+
+    QString _current_path;                  // path of the currently displayed image
+    unsigned int _current;                  // index of the current image in _previous_images
+    QList<unsigned int> _previous_images;   // last shown images
 
     void loadImage(QString path);
 

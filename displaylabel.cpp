@@ -3,7 +3,6 @@
 DisplayLabel::DisplayLabel(QWidget *parent) : QLabel(parent)
 {
     this->setMinimumSize(1, 1);
-    this->setStyleSheet("QLabel { background-color: #" + QString(BACKGROUND_COLOR) + "; }");
     this->setAlignment(Qt::AlignCenter);
 }
 

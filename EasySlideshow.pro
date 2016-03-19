@@ -33,3 +33,5 @@ FORMS    += mainwindow.ui \
     helpdialog.ui
 
 RESOURCES += resources.qrc
+
+DISTFILES +=

@@ -1,0 +1,39 @@
+QWidget {
+    background-color: #404244;
+    color: #cccccc;
+}
+
+QLabel,QPushButton,QRadioButton,QSpinBox,QLineEdit {
+    background-color: #404244;
+    color: #cccccc;
+}
+
+QSpinBox, QLineEdit {
+    border-image: none;
+    border-style: solid;
+    border-color: #222 #555 #555 #222;
+    border-width: 2px 1px 1px 2px;
+}
+
+QSpinBox::up-button {
+    border-image: none; color: #cccccc;
+}
+
+QSpinBox::down-button {
+    border-image: none; color: #cccccc;
+}
+
+QPushButton:focus, QRadioButton:focus {
+    outline: none;
+}
+
+QRadioButton::indicator {
+    image: none;
+    border-style: solid;
+    border-color: #222 #555 #555 #222;
+    border-width: 2px 1px 1px 2px;
+}
+
+QRadioButton::indicator::checked {
+    image: url(:/radiobtn/checked);
+}

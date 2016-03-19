@@ -38,14 +38,17 @@
          <property name="geometry">
           <rect>
            <x>0</x>
-           <y>-216</y>
-           <width>479</width>
-           <height>553</height>
+           <y>0</y>
+           <width>480</width>
+           <height>612</height>
           </rect>
          </property>
          <layout class="QGridLayout" name="gridLayout_3">
           <item row="0" column="0">
            <widget class="QLabel" name="infoLabel">
+            <property name="cursor">
+             <cursorShape>IBeamCursor</cursorShape>
+            </property>
             <property name="text">
              <string>&lt;h1&gt;EasySlideshow v%version&lt;/h1&gt;
 &lt;p&gt;
@@ -59,14 +62,14 @@ Image location and display speed can be set in the settings dialog.
 To pause the slideshow just press the &lt;b&gt;[II]&lt;/b&gt; button.
 &lt;/p&gt;
 &lt;h2&gt;Source Code&lt;/h2&gt;
-&lt;p&gt;This software is open source which can be found &lt;a href=&quot;https://github.com/minils/EasySlideshow&quot;&gt;here&lt;/a&gt; on GitHub.&lt;/p&gt;
+&lt;p&gt;This software is open source which can be found &lt;a href=&quot;https://github.com/minils/EasySlideshow&quot; style=&quot;color: #cccccc;&quot;&gt;here&lt;/a&gt; on GitHub.&lt;/p&gt;
 &lt;h2&gt;License&lt;/h2&gt;
-&lt;p&gt;This software is released under the &lt;b&gt;GNU General Public License 3.0&lt;/b&gt; which can be found &lt;a href=&quot;http://www.gnu.org/licenses/gpl-3.0.txt&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;This software is released under the &lt;b&gt;GNU General Public License 3.0&lt;/b&gt; which can be found &lt;a href=&quot;http://www.gnu.org/licenses/gpl-3.0.txt&quot; style=&quot;color: #cccccc;&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
 &lt;h2&gt;Author&lt;/h2&gt;
-&lt;p&gt;Nils Schwabe &lt;a href=&quot;https://minils.de&quot;&gt;www.minils.de&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Nils Schwabe &lt;a href=&quot;https://minils.de&quot; style=&quot;color: #cccccc;&quot;&gt;www.minils.de&lt;/a&gt;&lt;/p&gt;
 &lt;h2&gt;Icons&lt;/h2&gt;
 &lt;p&gt;
-Taken from &lt;b&gt;Material Icons&lt;/b&gt; which were released under the &lt;a href=&quot;https://creativecommons.org/licenses/by/4.0/&quot;&gt;CC BY 4.0&lt;/a&gt; and can be found &lt;a href=&quot;https://design.google.com/icons/&quot;&gt;here&lt;/&gt;.
+Taken from &lt;b&gt;Material Icons&lt;/b&gt; which were released under the &lt;a href=&quot;https://creativecommons.org/licenses/by/4.0/&quot; style=&quot;color: #cccccc;&quot;&gt;CC BY 4.0&lt;/a&gt; and can be found &lt;a href=&quot;https://design.google.com/icons/&quot; style=&quot;color: #cccccc;&quot;&gt;here&lt;/&gt;.
 &lt;/p&gt;</string>
             </property>
             <property name="alignment">
@@ -77,6 +80,9 @@ Taken from &lt;b&gt;Material Icons&lt;/b&gt; which were released under the &lt;a
             </property>
             <property name="openExternalLinks">
              <bool>true</bool>
+            </property>
+            <property name="textInteractionFlags">
+             <set>Qt::LinksAccessibleByMouse|Qt::TextSelectableByMouse</set>
             </property>
            </widget>
           </item>

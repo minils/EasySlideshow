@@ -75,13 +75,12 @@ void SlideShow::init(void)
 void SlideShow::nextImage(void)
 {
     if (!_dir_valid || _images.size() == 0) {
-        qDebug() << "[SlideShow] Called nextImage() but _pause =" << _pause << ", _dir_valid =" << _dir_valid;
         return;
     }
     // we are going back in the list and want to show the next image in the list
-    if (_previous_images.size() != 0 && _current < (unsigned int) _previous_images.size()-1) {
+    if (_previous_images.size() != 0 && _current < (unsigned int) _previous_images.size()) {
         ++_current;
-        _current_path = _previous_images.at(_current);
+        _current_path = _images.at(_previous_images.at(_current - 1));
     // we are at the end of the list and want to pick a random image
     } else {
       unsigned int random = _last;
@@ -90,7 +89,7 @@ void SlideShow::nextImage(void)
       }
       _last = random;
       _current_path = _images.at(random);
-      _previous_images.append(_current_path);
+      _previous_images.append(random);
       ++_current;
     }
     loadImage(_current_path);
@@ -107,18 +106,16 @@ void SlideShow::nextImageClicked(void)
 
 void SlideShow::previousImageClicked(void)
 {
-  if (_previous_images.size() < 2 || _current < 1)
-      return;
-  if (_current == (unsigned int) _previous_images.size()) {
+    if (_previous_images.size() < 2 || _current < 2)
+        return;
+
     if (!_pause) {
         emit communicatePause();
     }
-    _current = _previous_images.size() - 2; // go one back
-  } else {
     --_current;
-  }
-  QString path = _previous_images.at(_current);
-  loadImage(path);
+
+    _current_path = _images.at(_previous_images.at(_current-1));
+    loadImage(_current_path);
 }
 
 void SlideShow::pause(void)
