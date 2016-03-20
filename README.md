@@ -1,5 +1,5 @@
 # EasySlideshow
-![](https://travis-ci.org/minils/EasySlideshow.svg?branch=master)
+![https://travis-ci.org/minils/EasySlideshow/builds](https://travis-ci.org/minils/EasySlideshow.svg?branch=master)
 
 This is a very easy slideshow based on Qt.
 
