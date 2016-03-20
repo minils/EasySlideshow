@@ -99,6 +99,9 @@
           <height>20</height>
          </size>
         </property>
+        <property name="locale">
+         <locale language="English" country="UnitedStates"/>
+        </property>
         <property name="text">
          <string>Loading...</string>
         </property>

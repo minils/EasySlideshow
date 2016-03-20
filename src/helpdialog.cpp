@@ -6,9 +6,8 @@ HelpDialog::HelpDialog(QWidget *parent) :
     ui(new Ui::HelpDialog)
 {
     ui->setupUi(this);
-    QString info = ui->infoLabel->text();
-    info = info.replace(QString("%version"), QString(VERSION));
-    ui->infoLabel->setText(info);
+
+    ui->infoLabel->setText(ui->infoLabel->text().arg(VERSION));
 }
 
 HelpDialog::~HelpDialog()

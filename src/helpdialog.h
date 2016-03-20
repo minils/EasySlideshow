@@ -3,6 +3,7 @@
 
 #include <QDialog>
 #include <QDebug>
+#include <QFile>
 
 #include "globals.h"
 
