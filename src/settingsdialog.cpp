@@ -37,14 +37,29 @@ void SettingsDialog::on_buttonBox_accepted()
 
     _settingsmanager->writeSetting(SETTING_PATH, QVariant(dir.absolutePath()));
     _settingsmanager->writeSetting(SETTING_SPEED, QVariant(duration));
+
+    QVariant settingClick;
+    if (ui->radioNothing->isChecked()) {
+        settingClick = QVariant(SETTING_ON_CLICK_ACTION_NOTHING);
+    } else if (ui->radioOpenFolder->isChecked()) {
+        settingClick = QVariant(SETTING_ON_CLICK_ACTION_OPEN_FOLDER);
+    } else if (ui->radioPause->isChecked()) {
+        settingClick = QVariant(SETTING_ON_CLICK_ACTION_PAUSE);
+    }
+    _settingsmanager->writeSetting(SETTING_ON_CLICK_ACTION, settingClick);
+
     this->setVisible(false);
     emit settingsClosed();
 }
 
 void SettingsDialog::showEvent(QShowEvent*)
 {
-    ui->imagePathEdit->setText(_settingsmanager->readSetting(SETTING_PATH, QVariant("")).toString());
-    ui->durationSpinBox->setValue(_settingsmanager->readSetting(SETTING_SPEED, QVariant(1)).toInt());
+    ui->imagePathEdit->setText(_settingsmanager->readSetting(SETTING_PATH).toString());
+    ui->durationSpinBox->setValue(_settingsmanager->readSetting(SETTING_SPEED).toInt());
+    QString settingClick = _settingsmanager->readSetting(SETTING_ON_CLICK_ACTION).toString();
+        ui->radioNothing->setChecked(settingClick == SETTING_ON_CLICK_ACTION_NOTHING);
+        ui->radioOpenFolder->setChecked(settingClick == SETTING_ON_CLICK_ACTION_OPEN_FOLDER);
+        ui->radioPause->setChecked(settingClick == SETTING_ON_CLICK_ACTION_PAUSE);
     hideError();
     ui->buttonBox->setFocus();
 }
@@ -63,10 +78,6 @@ void SettingsDialog::hideError(void)
 
 void SettingsDialog::on_imagePathButton_clicked()
 {
-//    QFileDialog *dialog = new QFileDialog();
-//    dialog->setFileMode(QFileDialog::Directory);
-//    dialog->setOption(QFileDialog::ShowDirsOnly);
-//    dialog->show();
     QString previous_dir = ui->imagePathEdit->text();
     if (!QDir(previous_dir).exists()) {
         previous_dir = QDir::homePath();

@@ -14,6 +14,8 @@
 #include <QDesktopServices>
 #include <QUrl>
 
+#include "settingsmanager.h"
+
 class SlideShow : public QObject
 {
     Q_OBJECT
@@ -38,6 +40,8 @@ private:
     unsigned int _current;                  // index of the current image in _previous_images
     QList<unsigned int> _previous_images;   // last shown images
 
+    SettingsManager *_settingsManager;
+
     void loadImage(QString path);
 
 signals:
@@ -51,7 +55,7 @@ signals:
 public slots:
     void nextImage(void);
     void pause(void);
-    void openCurrentDirectory(void);
+    void imageClicked(void);
     void init(void);
     void nextImageClicked(void);
     void previousImageClicked(void);

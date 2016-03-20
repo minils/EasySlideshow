@@ -12,7 +12,9 @@ MainWindow::MainWindow(QWidget *parent) :
     // set style
     ui->statusLabel->setMinimumWidth(40);
     ui->statusLabel->setAlignment(Qt::AlignRight);
+
     ui->photoLabel->setMinimumHeight(36);
+    updateImageCursor();
 
     ui->previousButton->setText("");
     ui->previousButton->setIcon(QIcon(":/btn/previous"));
@@ -38,8 +40,8 @@ MainWindow::MainWindow(QWidget *parent) :
 
     // setup slideshow
     qDebug() << "[MainWindow] Setting up slideshow";
-    QDir* dir = new QDir(_settingsManager->readSetting(SETTING_PATH, QVariant("")).toString());
-    _slideshow = new SlideShow(dir, _settingsManager->readSetting(SETTING_SPEED, QVariant(6)).toInt(), this);
+    QDir* dir = new QDir(_settingsManager->readSetting(SETTING_PATH).toString());
+    _slideshow = new SlideShow(dir, _settingsManager->readSetting(SETTING_SPEED).toInt(), this);
 
     connect(_slideshow, SIGNAL(dirChecked(bool, bool)), this, SLOT(folderStatusChanged(bool, bool)));
     connect(_slideshow, SIGNAL(showImage(const QPixmap*)), this, SLOT(loadImage(const QPixmap*)));
@@ -50,7 +52,7 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(this, SIGNAL(previousImageClicked()), _slideshow, SLOT(previousImageClicked()));
     connect(this, SIGNAL(pausePressed()), _slideshow, SLOT(pause()));
 
-    connect(ui->photoLabel, SIGNAL(openCurrentDirectory()), _slideshow, SLOT(openCurrentDirectory()));
+    connect(ui->photoLabel, SIGNAL(imageClicked()), _slideshow, SLOT(imageClicked()));
 
     // generate settings dialog
     _settingsDialog = new SettingsDialog(this);
@@ -134,10 +136,11 @@ void MainWindow::on_settingsButton_clicked()
 void MainWindow::settingsClosed(void)
 {
     _settingsShown = false;
-    QDir* dir = new QDir(_settingsManager->readSetting(SETTING_PATH, QVariant("")).toString());
-    int duration = _settingsManager->readSetting(SETTING_SPEED, QVariant(6)).toInt();
+    QDir* dir = new QDir(_settingsManager->readSetting(SETTING_PATH).toString());
+    int duration = _settingsManager->readSetting(SETTING_SPEED).toInt();
     _slideshow->setSpeed(duration);
     _slideshow->setDirectory(dir);
+    updateImageCursor();
 }
 
 void MainWindow::on_helpButton_clicked()
@@ -156,4 +159,14 @@ void MainWindow::on_helpButton_clicked()
 void MainWindow::helpClosed()
 {
     _helpShown = false;
+}
+
+void MainWindow::updateImageCursor(void)
+{
+    if (_settingsManager->readSetting(SETTING_ON_CLICK_ACTION).toString()
+            == SETTING_ON_CLICK_ACTION_NOTHING) {
+        ui->photoLabel->setCursor(Qt::ArrowCursor);
+    } else {
+         ui->photoLabel->setCursor(Qt::PointingHandCursor);
+    }
 }

@@ -16,7 +16,7 @@ public:
     explicit SettingsManager(QObject *parent = 0);
 
     void writeSetting(const QString &key, const QVariant &variant);
-    QVariant readSetting(const QString &key, const QVariant &defaultValue);
+    QVariant readSetting(const QString &key);
     bool empty(void);
 
 private:

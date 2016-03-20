@@ -8,6 +8,7 @@
 #include <QSettings>
 #include <QVariant>
 
+#include "globals.h"
 #include "settingsmanager.h"
 #include "slideshow.h"
 #include "settingsdialog.h"
@@ -26,8 +27,6 @@ public:
     ~MainWindow();
     void resizeEvent(QResizeEvent *);
 
-    SettingsManager *_settingsManager;
-
 private:
     Ui::MainWindow *ui;
 
@@ -37,7 +36,8 @@ private:
     QDialog *_helpDialog;
     bool _helpShown;
 
-    SlideShow* _slideshow;
+    SlideShow *_slideshow;
+    SettingsManager *_settingsManager;
 
     void loadSettings(void);
     void saveSettings(void);
@@ -47,6 +47,7 @@ public slots:
     void loadImage(const QPixmap *image);
     void displayPath(QString path);
     void on_pauseButton_clicked(void);
+    void updateImageCursor(void);
 
     void settingsClosed(void);
     void helpClosed(void);

@@ -4,6 +4,7 @@
 #include <QLabel>
 #include <QPixmap>
 #include <QDebug>
+#include <QMouseEvent>
 
 #include "globals.h"
 
@@ -15,10 +16,10 @@ public:
     void setImage(const QPixmap *image);
 
     void resizeEvent(QResizeEvent *);
-    void mouseReleaseEvent(QMouseEvent *);
+    void mouseReleaseEvent(QMouseEvent *event);
 
 signals:
-    void openCurrentDirectory(void);
+    void imageClicked(void);
 public slots:
 
 private:

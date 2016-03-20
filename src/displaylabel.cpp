@@ -25,8 +25,9 @@ void DisplayLabel::resizeEvent(QResizeEvent*)
  * @brief DisplayLabel::mouseReleaseEvent Opens the directory of the current image.
  * @param event
  */
-void DisplayLabel::mouseReleaseEvent(QMouseEvent*)
+void DisplayLabel::mouseReleaseEvent(QMouseEvent *event)
 {
-    // TODO: test for left click and add right click menu
-    emit openCurrentDirectory();
+    if (event->button() == Qt::LeftButton) {
+        emit imageClicked();
+    }
 }

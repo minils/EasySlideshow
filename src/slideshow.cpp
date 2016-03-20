@@ -129,17 +129,24 @@ void SlideShow::pause(void)
     }
 }
 
-void SlideShow::openCurrentDirectory(void) {
+void SlideShow::imageClicked(void) {
+    QString clickSetting = _settingsManager->readSetting(SETTING_ON_CLICK_ACTION).toString();
+    if (clickSetting == SETTING_ON_CLICK_ACTION_NOTHING) {
+        return;
+    }
     if (!_dir_valid || _images.size() == 0) {
         return;
     }
+    if (clickSetting == SETTING_ON_CLICK_ACTION_PAUSE) {
+        emit communicatePause();
+        return;
+    }
+    // else SETTING_ON_CLICK_OPEN_FOLDER
     if (!_pause) {
-        // TODO: make configurable
         emit communicatePause();
     }
     QString path = QDir::toNativeSeparators(QFileInfo(_current_path).absolutePath());
     QDesktopServices::openUrl(QUrl::fromLocalFile(path));
-//    FileUtils::showInGraphicalShell(path);
 }
 
 void SlideShow::loadImage(QString path)

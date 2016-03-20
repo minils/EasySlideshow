@@ -2,11 +2,7 @@
 
 SettingsManager::SettingsManager(QObject *parent) : QObject(parent)
 {
-    if (empty()) {
-        // write initial config
-        writeSetting(SETTING_PATH, QVariant(QDir::homePath()));
-        writeSetting(SETTING_SPEED, QVariant(2));
-    }
+
 }
 
 bool SettingsManager::empty(void)
@@ -18,13 +14,25 @@ bool SettingsManager::empty(void)
 void SettingsManager::writeSetting(const QString &key, const QVariant &variant)
 {
     QSettings settings(ORGANIZATION, APPLICATION);
-
     settings.setValue(key, variant);
 }
 
-QVariant SettingsManager::readSetting(const QString &key, const QVariant &defaultValue)
+QVariant SettingsManager::readSetting(const QString &key)
 {
     QSettings settings(ORGANIZATION, APPLICATION);
+    QVariant value = settings.value(key);
 
-    return settings.value(key, defaultValue);
+    if (value.isNull()) {
+        // default values
+        if (key == SETTING_PATH) {
+            value = QVariant(QDir::homePath());
+        } else if (key == SETTING_SPEED) {
+            value = QVariant(2);
+        } else if (key == SETTING_ON_CLICK_ACTION) {
+            value = QVariant(SETTING_ON_CLICK_ACTION_OPEN_FOLDER);
+        }
+    }
+
+    writeSetting(key, value);
+    return value;
 }
