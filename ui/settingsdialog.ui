@@ -26,7 +26,7 @@
    <string>Settings</string>
   </property>
   <property name="windowIcon">
-   <iconset resource="resources.qrc">
+   <iconset resource="../resources.qrc">
     <normaloff>:/btn/settings_window</normaloff>:/btn/settings_window</iconset>
   </property>
   <layout class="QGridLayout" name="gridLayout">
@@ -207,7 +207,7 @@
   </layout>
  </widget>
  <resources>
-  <include location="resources.qrc"/>
+  <include location="../resources.qrc"/>
  </resources>
  <connections/>
 </ui>
