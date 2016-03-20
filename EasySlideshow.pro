@@ -11,6 +11,7 @@ greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 TARGET = EasySlideshow
 TEMPLATE = app
 
+VPATH += . ./src ./ui
 
 SOURCES += main.cpp \
         mainwindow.cpp \
@@ -35,3 +36,4 @@ FORMS    += mainwindow.ui \
 RESOURCES += resources.qrc
 
 DISTFILES +=
+

@@ -7,7 +7,7 @@
 #include <QDebug>
 #include <QDir>
 
-#include <globals.h>
+#include "globals.h"
 
 class SettingsManager : public QObject
 {

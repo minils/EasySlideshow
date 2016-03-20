@@ -1,7 +1,5 @@
 <RCC>
-    <qresource prefix="/">
-        <file>icon.svg</file>
-    </qresource>
+    <qresource prefix="/"/>
     <qresource prefix="/btn">
         <file alias="info">svg/ic_info_white_24px.svg</file>
         <file alias="pause">svg/ic_pause_white_24px.svg</file>
@@ -16,6 +14,9 @@
         <file alias="checked">svg/radiobutton_tick.svg</file>
     </qresource>
     <qresource prefix="/style">
-        <file alias="dark">dark.qss</file>
+        <file alias="dark">style/dark.qss</file>
+    </qresource>
+    <qresource prefix="/icon">
+        <file alias="app">svg/icon.svg</file>
     </qresource>
 </RCC>

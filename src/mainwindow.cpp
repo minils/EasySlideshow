@@ -28,11 +28,11 @@ MainWindow::MainWindow(QWidget *parent) :
 
     ui->helpButton->setText("");
     ui->helpButton->setIcon(QIcon(":/btn/info"));
-    ui->helpButton->setIconSize(QSize(20, 20));
+    ui->helpButton->setIconSize(QSize(18, 18));
 
     ui->settingsButton->setText("");
     ui->settingsButton->setIcon(QIcon(":/btn/settings"));
-    ui->settingsButton->setIconSize(QSize(20, 20));
+    ui->settingsButton->setIconSize(QSize(18, 18));
 
 
 

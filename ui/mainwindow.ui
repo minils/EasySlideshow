@@ -15,7 +15,7 @@
   </property>
   <property name="windowIcon">
    <iconset resource="resources.qrc">
-    <normaloff>:/icon.svg</normaloff>:/icon.svg</iconset>
+    <normaloff>:/icon/app</normaloff>:/icon/app</iconset>
   </property>
   <widget class="QWidget" name="centralWidget">
    <layout class="QVBoxLayout" name="verticalLayout">
@@ -195,7 +195,7 @@
   <customwidget>
    <class>DisplayLabel</class>
    <extends>QLabel</extends>
-   <header>displaylabel.h</header>
+   <header>src/displaylabel.h</header>
   </customwidget>
  </customwidgets>
  <resources>
