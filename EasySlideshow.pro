@@ -37,6 +37,6 @@ RESOURCES += resources.qrc
 
 DISTFILES +=
 
-TRANSLATIONS = l10n/EasySlideshow_en.ts \
+TRANSLATIONS += l10n/EasySlideshow_en.ts \
     l10n/EasySlideShow_de.ts
 
