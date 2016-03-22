@@ -3,6 +3,7 @@
 
 #include <QDialog>
 #include <QFileDialog>
+#include <QLocale>
 
 #include "settingsmanager.h"
 #include "globals.h"
@@ -36,6 +37,7 @@ private slots:
 private:
     void showError(QString msg);
     void hideError(void);
+    void createLanguageMenu(void);
 
     Ui::SettingsDialog *ui;
     SettingsManager *_settingsmanager;

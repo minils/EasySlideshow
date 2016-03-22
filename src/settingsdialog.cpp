@@ -7,6 +7,7 @@ SettingsDialog::SettingsDialog(QWidget *parent) :
 {
     ui->setupUi(this);
     _settingsmanager = new SettingsManager();
+    createLanguageMenu();
 }
 
 SettingsDialog::~SettingsDialog()
@@ -74,6 +75,30 @@ void SettingsDialog::showError(QString msg)
 void SettingsDialog::hideError(void)
 {
     ui->errorLabel->setVisible(false);
+}
+
+void SettingsDialog::createLanguageMenu()
+{
+    qDebug() << "createlanguageMenu()";
+    QString defaultLocale = QLocale::system().name();       // e.g. de_DE
+    defaultLocale.truncate(defaultLocale.lastIndexOf("_")); // e.g. de
+
+    QString langPath = QApplication::applicationDirPath().append("/l10n");
+    QDir dir(langPath);
+    QStringList fileNames = dir.entryList(QStringList("EasySlideshow_*.qm"));
+    for (int i = 0; i < fileNames.size(); ++i) {
+        qDebug() << fileNames[i];
+        QString locale;
+        locale = fileNames[i];
+        locale.truncate(locale.lastIndexOf("."));       // e.g. EasySlideshow_de
+        locale.remove(0, locale.lastIndexOf("_") + 1);  // e.g. de
+        QString lang = QLocale::languageToString(QLocale(locale).language());
+        ui->languageSelector->addItem(lang, QVariant(locale));
+        if (defaultLocale == locale) {
+            ui->languageSelector->setCurrentIndex(i);
+        }
+    }
+
 }
 
 void SettingsDialog::on_imagePathButton_clicked()
