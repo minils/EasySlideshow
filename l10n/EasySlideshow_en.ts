@@ -6,7 +6,7 @@
     <message>
         <location filename="../ui/helpdialog.ui" line="14"/>
         <source>Help</source>
-        <translation type="unfinished">Help</translation>
+        <translation>Help</translation>
     </message>
     <message>
         <location filename="../ui/helpdialog.ui" line="62"/>
@@ -31,7 +31,7 @@ To pause the slideshow just press the &lt;b&gt;[II]&lt;/b&gt; button.
 &lt;p&gt;
 Taken from &lt;b&gt;Material Icons&lt;/b&gt; which were released under the &lt;a href=&quot;https://creativecommons.org/licenses/by/4.0/&quot; style=&quot;color: #cccccc;&quot;&gt;CC BY 4.0&lt;/a&gt; and can be found &lt;a href=&quot;https://design.google.com/icons/&quot; style=&quot;color: #cccccc;&quot;&gt;here&lt;/&gt;.
 &lt;/p&gt;</source>
-        <translation type="unfinished">&lt;h1&gt;EasySlideshow v%1&lt;/h1&gt;
+        <translation>&lt;h1&gt;EasySlideshow v%1&lt;/h1&gt;
 &lt;p&gt;
 This is the first version of EasySlideshow.
 &lt;/p&gt;
@@ -59,37 +59,37 @@ Taken from &lt;b&gt;Material Icons&lt;/b&gt; which were released under the &lt;a
     <message>
         <location filename="../ui/mainwindow.ui" line="14"/>
         <source>EasySlideshow</source>
-        <translation type="unfinished">EasySlideshow</translation>
+        <translation>EasySlideshow</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="106"/>
         <source>Loading...</source>
-        <translation type="unfinished">Loading...</translation>
+        <translation>Loading...</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="135"/>
         <source>&lt;&lt;</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="148"/>
         <source>II</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="161"/>
         <source>&gt;&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="174"/>
         <source>?</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="187"/>
         <source>s</source>
-        <translation type="unfinished">s</translation>
+        <translation>s</translation>
     </message>
 </context>
 <context>
@@ -97,57 +97,57 @@ Taken from &lt;b&gt;Material Icons&lt;/b&gt; which were released under the &lt;a
     <message>
         <location filename="../ui/settingsdialog.ui" line="26"/>
         <source>Settings</source>
-        <translation type="unfinished">Settings</translation>
+        <translation>Settings</translation>
     </message>
     <message>
         <location filename="../ui/settingsdialog.ui" line="82"/>
         <source>Image path:</source>
-        <translation type="unfinished">Image path:</translation>
+        <translation>Image path:</translation>
     </message>
     <message>
         <location filename="../ui/settingsdialog.ui" line="101"/>
         <source>Browse...</source>
-        <translation type="unfinished">Browse...</translation>
+        <translation>Browse...</translation>
     </message>
     <message>
         <location filename="../ui/settingsdialog.ui" line="113"/>
         <source>Duration:</source>
-        <translation type="unfinished">Duration:</translation>
+        <translation>Duration:</translation>
     </message>
     <message>
         <location filename="../ui/settingsdialog.ui" line="123"/>
         <source>Click on Image:</source>
-        <translation type="unfinished">Click on Image:</translation>
+        <translation>Click on Image:</translation>
     </message>
     <message>
         <location filename="../ui/settingsdialog.ui" line="135"/>
         <source>open fo&amp;lder</source>
-        <translation type="unfinished">open fo&amp;lder</translation>
+        <translation>open fo&amp;lder</translation>
     </message>
     <message>
         <location filename="../ui/settingsdialog.ui" line="145"/>
         <source>pause</source>
-        <translation type="unfinished">pause</translation>
+        <translation>pause</translation>
     </message>
     <message>
         <location filename="../ui/settingsdialog.ui" line="155"/>
         <source>nothing</source>
-        <translation type="unfinished">nothing</translation>
+        <translation>nothing</translation>
     </message>
     <message>
         <location filename="../ui/settingsdialog.ui" line="188"/>
         <source>s</source>
-        <translation type="unfinished">s</translation>
+        <translation>s</translation>
     </message>
     <message>
         <location filename="../ui/settingsdialog.ui" line="200"/>
         <source>Language</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../ui/settingsdialog.ui" line="221"/>
         <source>ERROR</source>
-        <translation type="unfinished">ERROR</translation>
+        <translation>ERROR</translation>
     </message>
 </context>
 </TS>

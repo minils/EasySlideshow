@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.0" language="de_DE">
+<TS version="2.1" language="de_DE">
 <context>
     <name>HelpDialog</name>
     <message>
         <location filename="../ui/helpdialog.ui" line="14"/>
         <source>Help</source>
-        <translation type="unfinished">Hilfe</translation>
+        <translation>Hilfe</translation>
     </message>
     <message>
         <location filename="../ui/helpdialog.ui" line="62"/>
@@ -59,37 +59,37 @@ Taken from &lt;b&gt;Material Icons&lt;/b&gt; which were released under the &lt;a
     <message>
         <location filename="../ui/mainwindow.ui" line="14"/>
         <source>EasySlideshow</source>
-        <translation type="unfinished">EasySlideshow</translation>
+        <translation>EasySlideshow</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="106"/>
         <source>Loading...</source>
-        <translation type="unfinished">Laden...</translation>
+        <translation>Laden...</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="135"/>
         <source>&lt;&lt;</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="148"/>
         <source>II</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="161"/>
         <source>&gt;&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="174"/>
         <source>?</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="187"/>
         <source>s</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
 </context>
 <context>
@@ -97,52 +97,57 @@ Taken from &lt;b&gt;Material Icons&lt;/b&gt; which were released under the &lt;a
     <message>
         <location filename="../ui/settingsdialog.ui" line="26"/>
         <source>Settings</source>
-        <translation type="unfinished">Einstellungen</translation>
+        <translation>Einstellungen</translation>
     </message>
     <message>
         <location filename="../ui/settingsdialog.ui" line="82"/>
         <source>Image path:</source>
-        <translation type="unfinished">Bilder Pfad:</translation>
+        <translation>Pfad für Bilder:</translation>
     </message>
     <message>
         <location filename="../ui/settingsdialog.ui" line="101"/>
         <source>Browse...</source>
-        <translation type="unfinished">Auswählen...</translation>
+        <translation>Auswählen...</translation>
     </message>
     <message>
         <location filename="../ui/settingsdialog.ui" line="113"/>
         <source>Duration:</source>
-        <translation type="unfinished">Dauer:</translation>
+        <translation>Dauer:</translation>
     </message>
     <message>
         <location filename="../ui/settingsdialog.ui" line="123"/>
         <source>Click on Image:</source>
-        <translation type="unfinished">Bei Klick auf Bild:</translation>
+        <translation>Klick auf Bild:</translation>
     </message>
     <message>
         <location filename="../ui/settingsdialog.ui" line="135"/>
         <source>open fo&amp;lder</source>
-        <translation type="unfinished">Ordner ö&amp;ffnen</translation>
+        <translation>Ordner ö&amp;ffnen</translation>
     </message>
     <message>
         <location filename="../ui/settingsdialog.ui" line="145"/>
         <source>pause</source>
-        <translation type="unfinished">Pause</translation>
+        <translation>Pause</translation>
     </message>
     <message>
         <location filename="../ui/settingsdialog.ui" line="155"/>
         <source>nothing</source>
-        <translation type="unfinished">Nichts</translation>
+        <translation>Nichts</translation>
     </message>
     <message>
         <location filename="../ui/settingsdialog.ui" line="188"/>
         <source>s</source>
-        <translation type="unfinished">s</translation>
+        <translation>s</translation>
     </message>
     <message>
-        <location filename="../ui/settingsdialog.ui" line="218"/>
+        <location filename="../ui/settingsdialog.ui" line="200"/>
+        <source>Language</source>
+        <translation>Sprache</translation>
+    </message>
+    <message>
+        <location filename="../ui/settingsdialog.ui" line="221"/>
         <source>ERROR</source>
-        <translation type="unfinished">FEHLER</translation>
+        <translation>FEHLER</translation>
     </message>
 </context>
 </TS>
