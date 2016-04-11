@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.0" language="en_US">
+<TS version="2.1" language="en_US">
 <context>
     <name>HelpDialog</name>
     <message>
@@ -89,7 +89,7 @@ Taken from &lt;b&gt;Material Icons&lt;/b&gt; which were released under the &lt;a
     <message>
         <location filename="../ui/mainwindow.ui" line="187"/>
         <source>s</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">s</translation>
     </message>
 </context>
 <context>
@@ -140,7 +140,12 @@ Taken from &lt;b&gt;Material Icons&lt;/b&gt; which were released under the &lt;a
         <translation type="unfinished">s</translation>
     </message>
     <message>
-        <location filename="../ui/settingsdialog.ui" line="218"/>
+        <location filename="../ui/settingsdialog.ui" line="200"/>
+        <source>Language</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../ui/settingsdialog.ui" line="221"/>
         <source>ERROR</source>
         <translation type="unfinished">ERROR</translation>
     </message>
