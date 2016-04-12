@@ -30,6 +30,10 @@ QVariant SettingsManager::readSetting(const QString &key)
             value = QVariant(2);
         } else if (key == SETTING_ON_CLICK_ACTION) {
             value = QVariant(SETTING_ON_CLICK_ACTION_OPEN_FOLDER);
+        } else if (key == SETTING_LANGUAGE) {
+            QString defaultLocale = QLocale::system().name();       // e.g. de_DE
+            defaultLocale.truncate(defaultLocale.lastIndexOf("_")); // e.g. de
+            value = QVariant(defaultLocale);
         }
     }
 

@@ -4,10 +4,14 @@
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
-{
+{    
     ui->setupUi(this);
 
     _settingsManager = new SettingsManager();
+
+    // set language
+    _currentTranslator = NULL;
+    changeLanguage(_settingsManager->readSetting(SETTING_LANGUAGE).toString());
 
     // set style
     ui->statusLabel->setMinimumWidth(40);
@@ -58,6 +62,7 @@ MainWindow::MainWindow(QWidget *parent) :
     _settingsDialog = new SettingsDialog(this);
     _settingsShown = false;
     connect(_settingsDialog, SIGNAL(settingsClosed()), this, SLOT(settingsClosed()));
+    connect(_settingsDialog, SIGNAL(languageChanged(QString)), this, SLOT(changeLanguage(QString)));
 
     // generate help dialog
     _helpDialog = new HelpDialog(this);
@@ -168,5 +173,21 @@ void MainWindow::updateImageCursor(void)
         ui->photoLabel->setCursor(Qt::ArrowCursor);
     } else {
          ui->photoLabel->setCursor(Qt::PointingHandCursor);
+    }
+}
+
+void MainWindow::changeLanguage(QString lang)
+{
+    qDebug() << "Language changed: " + lang;
+    if (_currentTranslator != NULL) {
+        qApp->removeTranslator(_currentTranslator);
+    } else {
+        _currentTranslator = new QTranslator();
+    }
+    if (_currentTranslator->load(QString(":/l10n/%1.qm").arg(lang))) {
+        qApp->installTranslator(_currentTranslator);
+        ui->retranslateUi(this);
+    } else {
+        qDebug() << "[Main] Error loading translation";
     }
 }

@@ -49,6 +49,10 @@ void SettingsDialog::on_buttonBox_accepted()
     }
     _settingsmanager->writeSetting(SETTING_ON_CLICK_ACTION, settingClick);
 
+    QVariant lang = ui->languageSelector->currentData();
+    _settingsmanager->writeSetting(SETTING_LANGUAGE, lang);
+    emit languageChanged(lang.toString());
+
     this->setVisible(false);
     emit settingsClosed();
 }
@@ -61,8 +65,20 @@ void SettingsDialog::showEvent(QShowEvent*)
         ui->radioNothing->setChecked(settingClick == SETTING_ON_CLICK_ACTION_NOTHING);
         ui->radioOpenFolder->setChecked(settingClick == SETTING_ON_CLICK_ACTION_OPEN_FOLDER);
         ui->radioPause->setChecked(settingClick == SETTING_ON_CLICK_ACTION_PAUSE);
+    createLanguageMenu();
+
     hideError();
     ui->buttonBox->setFocus();
+}
+
+void SettingsDialog::changeEvent(QEvent *event)
+{
+    if (event != 0) {
+        if (event->type() == QEvent::LanguageChange) {
+            ui->retranslateUi(this);
+        }
+    }
+    QDialog::changeEvent(event);
 }
 
 void SettingsDialog::showError(QString msg)
@@ -79,26 +95,24 @@ void SettingsDialog::hideError(void)
 
 void SettingsDialog::createLanguageMenu()
 {
-    qDebug() << "createlanguageMenu()";
-    QString defaultLocale = QLocale::system().name();       // e.g. de_DE
-    defaultLocale.truncate(defaultLocale.lastIndexOf("_")); // e.g. de
+    ui->languageSelector->clear();
 
-    QString langPath = QApplication::applicationDirPath().append("/l10n");
-    QDir dir(langPath);
-    QStringList fileNames = dir.entryList(QStringList("EasySlideshow_*.qm"));
+    QString currentLocale = _settingsmanager->readSetting(SETTING_LANGUAGE).toString();
+
+    QDir dir(":/l10n");
+    QStringList fileNames = dir.entryList(QStringList("*.qm"));
     for (int i = 0; i < fileNames.size(); ++i) {
-        qDebug() << fileNames[i];
         QString locale;
         locale = fileNames[i];
         locale.truncate(locale.lastIndexOf("."));       // e.g. EasySlideshow_de
         locale.remove(0, locale.lastIndexOf("_") + 1);  // e.g. de
         QString lang = QLocale::languageToString(QLocale(locale).language());
+        // TODO: Display language name in own language
         ui->languageSelector->addItem(lang, QVariant(locale));
-        if (defaultLocale == locale) {
+        if (currentLocale == locale) {
             ui->languageSelector->setCurrentIndex(i);
         }
     }
-
 }
 
 void SettingsDialog::on_imagePathButton_clicked()

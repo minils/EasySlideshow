@@ -38,6 +38,7 @@ private:
 
     SlideShow *_slideshow;
     SettingsManager *_settingsManager;
+    QTranslator *_currentTranslator;
 
     void loadSettings(void);
     void saveSettings(void);
@@ -51,6 +52,7 @@ public slots:
 
     void settingsClosed(void);
     void helpClosed(void);
+    void changeLanguage(QString lang);
 
 private slots:
     void on_nextButton_clicked(void);

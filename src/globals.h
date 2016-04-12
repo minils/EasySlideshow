@@ -10,6 +10,7 @@
     #define SETTING_ON_CLICK_ACTION_OPEN_FOLDER "open_folder"
     #define SETTING_ON_CLICK_ACTION_PAUSE "pause"
     #define SETTING_ON_CLICK_ACTION_NOTHING "nothing"
+#define SETTING_LANGUAGE "language"
 
 #define VERSION "0.1"
 

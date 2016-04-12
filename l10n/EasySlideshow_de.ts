@@ -64,7 +64,7 @@ Taken from &lt;b&gt;Material Icons&lt;/b&gt; which were released under the &lt;a
     <message>
         <location filename="../ui/mainwindow.ui" line="106"/>
         <source>Loading...</source>
-        <translation>Laden...</translation>
+        <translation>Lädt...</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="135"/>

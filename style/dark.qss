@@ -3,7 +3,7 @@ QWidget {
     color: #cccccc;
 }
 
-QLabel,QPushButton,QRadioButton,QSpinBox,QLineEdit {
+QLabel,QPushButton,QRadioButton,QSpinBox,QLineEdit,QComboBox {
     background-color: #404244;
     color: #cccccc;
 }

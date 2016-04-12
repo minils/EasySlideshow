@@ -4,6 +4,7 @@
 #include <QDialog>
 #include <QFileDialog>
 #include <QLocale>
+#include <QTranslator>
 
 #include "settingsmanager.h"
 #include "globals.h"
@@ -21,6 +22,7 @@ public:
     ~SettingsDialog();
 
     void showEvent(QShowEvent *);
+    void changeEvent(QEvent *event);
 
 private slots:
 
@@ -44,6 +46,7 @@ private:
 
 signals:
     void settingsClosed(void);
+    void languageChanged(QString lang);
 };
 
 #endif // SETTINGSDIALOG_H

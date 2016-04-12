@@ -19,4 +19,8 @@
     <qresource prefix="/icon">
         <file alias="app">svg/icon.svg</file>
     </qresource>
+    <qresource prefix="/l10n">
+        <file alias="de.qm">l10n/EasySlideshow_de.qm</file>
+        <file alias="en.qm">l10n/EasySlideshow_en.qm</file>
+    </qresource>
 </RCC>
