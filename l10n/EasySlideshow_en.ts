@@ -91,6 +91,11 @@ Taken from &lt;b&gt;Material Icons&lt;/b&gt; which were released under the &lt;a
         <source>s</source>
         <translation>s</translation>
     </message>
+    <message>
+        <location filename="../src/mainwindow.cpp" line="191"/>
+        <source>Changed language to &lt;b&gt;%1&lt;/b&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>SettingsDialog</name>
