@@ -49,7 +49,7 @@ void SettingsDialog::on_buttonBox_accepted()
     }
     _settingsmanager->writeSetting(SETTING_ON_CLICK_ACTION, settingClick);
 
-    QVariant lang = ui->languageSelector->currentData();
+    QVariant lang = ui->languageSelector->itemData(ui->languageSelector->currentIndex());
     _settingsmanager->writeSetting(SETTING_LANGUAGE, lang);
     emit languageChanged(lang.toString());
 
