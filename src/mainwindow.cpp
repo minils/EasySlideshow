@@ -178,15 +178,30 @@ void MainWindow::updateImageCursor(void)
 
 void MainWindow::changeLanguage(QString lang)
 {
-    qDebug() << "Language changed: " + lang;
+    if (lang == _currentLanguage)
+        return;
+    _currentLanguage = lang;
+    bool first = false;
     if (_currentTranslator != NULL) {
         qApp->removeTranslator(_currentTranslator);
     } else {
         _currentTranslator = new QTranslator();
+        first = true;
     }
     if (_currentTranslator->load(QString(":/l10n/%1.qm").arg(lang))) {
         qApp->installTranslator(_currentTranslator);
+        // update mainwindow
         ui->retranslateUi(this);
+        QString language = QLocale::languageToString(QLocale(lang).language());
+        if (!first) {
+            ui->statusLabel->setText(tr("Changed language to <b>%1</b>").arg(language));
+        }
+        ui->previousButton->setText("");
+        ui->pauseButton->setText("");
+        ui->nextButton->setText("");
+        ui->helpButton->setText("");
+        ui->settingsButton->setText("");
+
     } else {
         qDebug() << "[Main] Error loading translation";
     }

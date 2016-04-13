@@ -39,6 +39,7 @@ private:
     SlideShow *_slideshow;
     SettingsManager *_settingsManager;
     QTranslator *_currentTranslator;
+    QString _currentLanguage;
 
     void loadSettings(void);
     void saveSettings(void);
