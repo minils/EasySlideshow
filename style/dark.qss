@@ -3,9 +3,16 @@ QWidget {
     color: #cccccc;
 }
 
-QLabel,QPushButton,QRadioButton,QSpinBox,QLineEdit,QComboBox {
+QLabel,QPushButton,QRadioButton,QSpinBox,QLineEdit,QComboBox,QComboBox:selected {
     background-color: #404244;
     color: #cccccc;
+}
+
+QComboBox
+{
+    background-color: #404244;
+    color: #cccccc;
+    padding: 1px 0px 1px 3px; /* Needed to enable the previously defined colors! */
 }
 
 QSpinBox, QLineEdit {
@@ -16,11 +23,13 @@ QSpinBox, QLineEdit {
 }
 
 QSpinBox::up-button {
-    border-image: none; color: #cccccc;
+    border-image: none;
+    color: #cccccc;
 }
 
 QSpinBox::down-button {
-    border-image: none; color: #cccccc;
+    border-image: none;
+    color: #cccccc;
 }
 
 QPushButton:focus, QRadioButton:focus {
