@@ -5,6 +5,7 @@
 #include <QFileDialog>
 #include <QLocale>
 #include <QTranslator>
+#include <QMessageBox>
 
 #include "settingsmanager.h"
 #include "globals.h"
@@ -21,7 +22,7 @@ public:
     explicit SettingsDialog(QWidget *parent = 0);
     ~SettingsDialog();
 
-    void showEvent(QShowEvent *);
+    void showEvent(QShowEvent *event);
     void changeEvent(QEvent *event);
 
 private slots:

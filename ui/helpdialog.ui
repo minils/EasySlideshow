@@ -44,7 +44,7 @@
          <property name="geometry">
           <rect>
            <x>0</x>
-           <y>0</y>
+           <y>-277</y>
            <width>480</width>
            <height>612</height>
           </rect>
@@ -78,7 +78,11 @@ To pause the slideshow just press the &lt;b&gt;[II]&lt;/b&gt; button.
 &lt;p&gt;Nils Schwabe &lt;a href=&quot;https://minils.de&quot; style=&quot;color: #cccccc;&quot;&gt;www.minils.de&lt;/a&gt;&lt;/p&gt;
 &lt;h2&gt;Icons&lt;/h2&gt;
 &lt;p&gt;
-Taken from &lt;b&gt;Material Icons&lt;/b&gt; which were released under the &lt;a href=&quot;https://creativecommons.org/licenses/by/4.0/&quot; style=&quot;color: #cccccc;&quot;&gt;CC BY 4.0&lt;/a&gt; and can be found &lt;a href=&quot;https://design.google.com/icons/&quot; style=&quot;color: #cccccc;&quot;&gt;here&lt;/&gt;.
+Taken from &lt;b&gt;Material Icons&lt;/b&gt; which were released under the &lt;a href=&quot;https://creativecommons.org/licenses/by/4.0/&quot; style=&quot;color: #cccccc;&quot;&gt;CC BY 4.0&lt;/a&gt; and can be found &lt;a href=&quot;https://design.google.com/icons/&quot; style=&quot;color: #cccccc;&quot;&gt;here&lt;/a&gt;.
+&lt;/p&gt;
+&lt;h2&gt;Language Icons&lt;/h2&gt;
+&lt;p&gt;
+Taken from &lt;a href=&quot;http://www.famfamfam.com/lab/icons/flags/&quot; style=&quot;color: #cccccc;&quot;&gt;FAMFAMFAM&lt;/a&gt;. &lt;i&gt;These flag icons are available for free use for any purpose with no requirement for attribution.&lt;/i&gt;
 &lt;/p&gt;</string>
             </property>
             <property name="alignment">

@@ -57,7 +57,7 @@ void SettingsDialog::on_buttonBox_accepted()
     emit settingsClosed();
 }
 
-void SettingsDialog::showEvent(QShowEvent*)
+void SettingsDialog::showEvent(QShowEvent *event)
 {
     ui->imagePathEdit->setText(_settingsmanager->readSetting(SETTING_PATH).toString());
     ui->durationSpinBox->setValue(_settingsmanager->readSetting(SETTING_SPEED).toInt());
@@ -69,6 +69,8 @@ void SettingsDialog::showEvent(QShowEvent*)
 
     hideError();
     ui->buttonBox->setFocus();
+
+    QDialog::showEvent(event);
 }
 
 void SettingsDialog::changeEvent(QEvent *event)
@@ -108,7 +110,14 @@ void SettingsDialog::createLanguageMenu()
         locale.remove(0, locale.lastIndexOf("_") + 1);  // e.g. de
         QString lang = QLocale::languageToString(QLocale(locale).language());
         // TODO: Display language name in own language
-        ui->languageSelector->addItem(lang, QVariant(locale));
+        ui->languageSelector->addItem(lang, QVariant(tr(locale)));
+
+        QString flag = QLocale(locale).name();
+        flag.remove(0, flag.lastIndexOf("_") + 1);
+        flag = ":/icon/flags/" + flag.toLower() + ".png";
+        ui->languageSelector->setItemIcon(i, QIcon(flag));
+
+
         if (currentLocale == locale) {
             ui->languageSelector->setCurrentIndex(i);
         }

@@ -23,4 +23,8 @@
         <file alias="de.qm">l10n/EasySlideshow_de.qm</file>
         <file alias="en.qm">l10n/EasySlideshow_en.qm</file>
     </qresource>
+    <qresource prefix="/icon/flags">
+        <file alias="de.png">png/de.png</file>
+        <file alias="us.png">png/us.png</file>
+    </qresource>
 </RCC>
