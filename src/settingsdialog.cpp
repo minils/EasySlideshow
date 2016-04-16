@@ -110,7 +110,7 @@ void SettingsDialog::createLanguageMenu()
         locale.remove(0, locale.lastIndexOf("_") + 1);  // e.g. de
         QString lang = QLocale::languageToString(QLocale(locale).language());
         // TODO: Display language name in own language
-        ui->languageSelector->addItem(lang, QVariant(tr(locale)));
+        ui->languageSelector->addItem(lang, QVariant(locale));
 
         QString flag = QLocale(locale).name();
         flag.remove(0, flag.lastIndexOf("_") + 1);
