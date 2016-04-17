@@ -40,3 +40,4 @@ DISTFILES +=
 TRANSLATIONS += l10n/EasySlideshow_en.ts \
     l10n/EasySlideshow_de.ts
 
+ICON = svg/icon.svg
