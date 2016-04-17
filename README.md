@@ -1,7 +1,8 @@
 # ![logo](https://cdn.rawgit.com/minils/EasySlideshow/master/svg/icon.svg "Logo Title Text 1") EasySlideshow
 [![build status](https://travis-ci.org/minils/EasySlideshow.svg?branch=master "build status")](https://travis-ci.org/minils/EasySlideshow/builds)
-[![Github All Releases](https://img.shields.io/github/downloads/minils/EasySlideshow/total.svg?maxAge=3600)]() [![Github All Releases](https://img.shields.io/github/release/minils/EasySlideshow.svg?maxAge=3600)]()
-[![license](https://img.shields.io/github/license/minils/EasySlideshow.svg?maxAge=3600)]()
+[![Github All Releases](https://img.shields.io/github/downloads/minils/EasySlideshow/total.svg?maxAge=3600)](https://github.com/minils/EasySlideshow/releases)
+[![Github All Releases](https://img.shields.io/github/release/minils/EasySlideshow.svg?maxAge=3600)](https://github.com/minils/EasySlideshow/releases)
+[![license](https://img.shields.io/github/license/minils/EasySlideshow.svg?maxAge=3600)](https://github.com/minils/EasySlideshow/blob/master/LICENSE)
 
 This is a very easy slideshow based on Qt.
 
