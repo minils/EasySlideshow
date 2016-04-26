@@ -69,6 +69,8 @@ void SettingsDialog::showEvent(QShowEvent *event)
 
     hideError();
     ui->buttonBox->setFocus();
+    ui->addButton->setVisible(false);
+    ui->removeButton->setVisible(false);
 
     QDialog::showEvent(event);
 }
