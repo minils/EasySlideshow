@@ -44,8 +44,13 @@ MainWindow::MainWindow(QWidget *parent) :
 
     // setup slideshow
     qDebug() << "[MainWindow] Setting up slideshow";
-    QDir* dir = new QDir(_settingsManager->readSetting(SETTING_PATH).toString());
-    _slideshow = new SlideShow(dir, _settingsManager->readSetting(SETTING_SPEED).toInt(), this);
+    QStringList dir_list = _settingsManager->readSetting(SETTING_PATHS).toStringList();
+    QList<QDir> *dirs = new QList<QDir>();
+    foreach (QString dir, dir_list) {
+        dirs->append(QDir(dir));
+    }
+
+    _slideshow = new SlideShow(dirs, _settingsManager->readSetting(SETTING_SPEED).toInt(), this);
 
     connect(_slideshow, SIGNAL(dirChecked(bool, bool)), this, SLOT(folderStatusChanged(bool, bool)));
     connect(_slideshow, SIGNAL(showImage(const QPixmap*)), this, SLOT(loadImage(const QPixmap*)));
@@ -141,10 +146,16 @@ void MainWindow::on_settingsButton_clicked()
 void MainWindow::settingsClosed(void)
 {
     _settingsShown = false;
-    QDir* dir = new QDir(_settingsManager->readSetting(SETTING_PATH).toString());
+
+    QStringList dir_list = _settingsManager->readSetting(SETTING_PATHS).toStringList();
+    QList<QDir> *dirs = new QList<QDir>();
+    foreach (QString dir, dir_list) {
+        dirs->append(QDir(dir));
+    }
+
     int duration = _settingsManager->readSetting(SETTING_SPEED).toInt();
     _slideshow->setSpeed(duration);
-    _slideshow->setDirectory(dir);
+    _slideshow->setDirs(dirs);
     updateImageCursor();
 }
 

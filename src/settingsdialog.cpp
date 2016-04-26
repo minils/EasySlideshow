@@ -36,7 +36,9 @@ void SettingsDialog::on_buttonBox_accepted()
         return;
     }
 
-    _settingsmanager->writeSetting(SETTING_PATH, QVariant(dir.absolutePath()));
+    QStringList dirs;
+    dirs.append(dir.absolutePath());
+    _settingsmanager->writeSetting(SETTING_PATHS, QVariant(dirs));
     _settingsmanager->writeSetting(SETTING_SPEED, QVariant(duration));
 
     QVariant settingClick;
@@ -59,7 +61,8 @@ void SettingsDialog::on_buttonBox_accepted()
 
 void SettingsDialog::showEvent(QShowEvent *event)
 {
-    ui->imagePathEdit->setText(_settingsmanager->readSetting(SETTING_PATH).toString());
+    QStringList dirs = _settingsmanager->readSetting(SETTING_PATHS).toStringList();
+    ui->imagePathEdit->setText(dirs[0]);
     ui->durationSpinBox->setValue(_settingsmanager->readSetting(SETTING_SPEED).toInt());
     QString settingClick = _settingsmanager->readSetting(SETTING_ON_CLICK_ACTION).toString();
         ui->radioNothing->setChecked(settingClick == SETTING_ON_CLICK_ACTION_NOTHING);

@@ -13,6 +13,8 @@
 #include <QTimer>
 #include <QDesktopServices>
 #include <QUrl>
+#include <QDir>
+#include <QList>
 
 #include "settingsmanager.h"
 
@@ -20,14 +22,14 @@ class SlideShow : public QObject
 {
     Q_OBJECT
 public:
-    explicit SlideShow(QDir *dir, unsigned int time, QObject *parent = 0);
-    void setDirectory(QDir *dir);
+    explicit SlideShow(QList<QDir> *dirs, unsigned int time, QObject *parent = 0);
+    void setDirs(QList<QDir> *dirs);
     void setSpeed(unsigned int speed);
     bool paused(void);
 
 private:
-    QDir *_dir;
-    bool _dir_valid;
+    QList<QDir> *_dirs;
+    bool _dirs_valid;
     unsigned int _speed;
 
     unsigned int _last;                     // index of the last image in _images

@@ -6,6 +6,7 @@
 #include <QVariant>
 #include <QDebug>
 #include <QDir>
+#include <QStringList>
 
 #include "globals.h"
 

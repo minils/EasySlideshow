@@ -4,7 +4,7 @@
 #define ORGANIZATION "de.minils"
 #define APPLICATION "easyslideshow"
 
-#define SETTING_PATH "image_path"
+#define SETTING_PATHS "image_paths"
 #define SETTING_SPEED "slideshow_speed"
 #define SETTING_ON_CLICK_ACTION "on_click_action"
     #define SETTING_ON_CLICK_ACTION_OPEN_FOLDER "open_folder"

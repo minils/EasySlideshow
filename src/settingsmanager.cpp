@@ -24,8 +24,10 @@ QVariant SettingsManager::readSetting(const QString &key)
 
     if (value.isNull()) {
         // default values
-        if (key == SETTING_PATH) {
-            value = QVariant(QDir::homePath());
+        if (key == SETTING_PATHS) {
+            QStringList dirs;
+            dirs.append(QDir::homePath());
+            value = QVariant(dirs);
         } else if (key == SETTING_SPEED) {
             value = QVariant(2);
         } else if (key == SETTING_ON_CLICK_ACTION) {

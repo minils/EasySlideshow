@@ -6,24 +6,25 @@
  * @param dir Directory with photos
  * @param speed How many seconds between photos
  */
-SlideShow::SlideShow(QDir *dir, unsigned int speed, QObject *parent) : QObject(parent)
+SlideShow::SlideShow(QList<QDir> *dirs, unsigned int speed, QObject *parent) : QObject(parent)
 {
-    _dir = dir;
+    _dirs = dirs;
     _speed = speed * 1000;
     _last = 0;
     _current = 0;
     _pause = false;
-    _dir_valid = false;
+    _dirs_valid = false;
     timer = new QTimer(this);
     connect(timer, SIGNAL(timeout()), this, SLOT(nextImage()));
     timer->setInterval(_speed);
     timer->setSingleShot(false); // timer fires continuously
 }
 
-void SlideShow::setDirectory(QDir *dir)
+void SlideShow::setDirs(QList<QDir> *dirs)
 {
-    if (dir->absolutePath() != _dir->absolutePath()) {
-        _dir = dir;
+    // TODO: check if contained dirs are the same
+    if (_dirs != dirs) {
+        _dirs = dirs;
         init();
     }
 }
@@ -38,15 +39,30 @@ void SlideShow::init(void)
 {
     qDebug() << "[SlideShow] Initializing";
     qsrand(QDateTime::currentDateTime().toTime_t ());
-    if (_dir == NULL) {
+    if (_dirs == NULL) {
         return;
     }
-    emit dirChecked(_dir->exists(), _dir->isReadable());
 
-    if (!_dir->exists() || !_dir->isReadable()) {
+    // check if all dirs exist:
+    bool dirs_exist = true;
+    bool dirs_readable = true;
+
+    QListIterator<QDir> i(*_dirs);
+    while (i.hasNext()) {
+        QDir dir = i.next();
+        if (! dir.exists()) {
+            dirs_exist = false;
+        }
+        if (! dir.isReadable()) {
+            dirs_readable = false;
+        }
+    }
+    emit dirChecked(dirs_exist, dirs_readable);
+
+    if (!dirs_exist || !dirs_readable) {
         return;
     } else {
-        _dir_valid = true;
+        _dirs_valid = true;
     }
 
     // clear images if needed
@@ -58,9 +74,12 @@ void SlideShow::init(void)
 
     // else find images
     const QStringList image_filter = (QStringList() << "*.jpg" << "*.jpeg" << "*.bmp" << "*.png" << "*.tif" << "*.tiff" << "*.gif"); // TODO: make global
-    QDirIterator iter(_dir->absolutePath(), image_filter, QDir::Files, QDirIterator::Subdirectories);
-    while (iter.hasNext()) {
-        _images.append(iter.next());
+    QListIterator<QDir> dirs(*_dirs);
+    while (dirs.hasNext()) {
+        QDirIterator iter(dirs.next().absolutePath(), image_filter, QDir::Files, QDirIterator::Subdirectories);
+        while (iter.hasNext()) {
+            _images.append(iter.next());
+        }
     }
     if (_images.size() == 0) {
         qDebug() << "[SlideShow] Did not find any images.";
@@ -74,7 +93,7 @@ void SlideShow::init(void)
 
 void SlideShow::nextImage(void)
 {
-    if (!_dir_valid || _images.size() == 0) {
+    if (!_dirs_valid || _images.size() == 0) {
         return;
     }
     // we are going back in the list and want to show the next image in the list
@@ -134,7 +153,7 @@ void SlideShow::imageClicked(void) {
     if (clickSetting == SETTING_ON_CLICK_ACTION_NOTHING) {
         return;
     }
-    if (!_dir_valid || _images.size() == 0) {
+    if (!_dirs_valid || _images.size() == 0) {
         return;
     }
     if (clickSetting == SETTING_ON_CLICK_ACTION_PAUSE) {
