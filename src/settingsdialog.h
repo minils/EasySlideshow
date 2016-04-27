@@ -6,6 +6,7 @@
 #include <QLocale>
 #include <QTranslator>
 #include <QMessageBox>
+#include <QPushButton>
 
 #include "settingsmanager.h"
 #include "globals.h"
@@ -26,15 +27,10 @@ public:
     void changeEvent(QEvent *event);
 
 private slots:
-
     void on_buttonBox_rejected();
-
     void on_buttonBox_accepted();
-
     void on_imagePathButton_clicked();
-
     void on_SettingsDialog_accepted();
-
     void on_SettingsDialog_rejected();
 
 private:
@@ -46,7 +42,7 @@ private:
     SettingsManager *_settingsmanager;
 
 signals:
-    void settingsClosed(void);
+    void settingsClosed(bool accepted);
     void languageChanged(QString lang);
 };
 

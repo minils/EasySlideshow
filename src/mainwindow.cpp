@@ -6,6 +6,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {    
     ui->setupUi(this);
+    qDebug() << "Starting...";
 
     _settingsManager = new SettingsManager();
 
@@ -66,7 +67,7 @@ MainWindow::MainWindow(QWidget *parent) :
     // generate settings dialog
     _settingsDialog = new SettingsDialog(this);
     _settingsShown = false;
-    connect(_settingsDialog, SIGNAL(settingsClosed()), this, SLOT(settingsClosed()));
+    connect(_settingsDialog, SIGNAL(settingsClosed(bool)), this, SLOT(settingsClosed(bool)));
     connect(_settingsDialog, SIGNAL(languageChanged(QString)), this, SLOT(changeLanguage(QString)));
 
     // generate help dialog
@@ -143,9 +144,12 @@ void MainWindow::on_settingsButton_clicked()
     }
 }
 
-void MainWindow::settingsClosed(void)
+void MainWindow::settingsClosed(bool accepted)
 {
     _settingsShown = false;
+
+    if (!accepted)
+        return;
 
     QStringList dir_list = _settingsManager->readSetting(SETTING_PATHS).toStringList();
     QList<QDir> *dirs = new QList<QDir>();

@@ -51,7 +51,7 @@ public slots:
     void on_pauseButton_clicked(void);
     void updateImageCursor(void);
 
-    void settingsClosed(void);
+    void settingsClosed(bool accepted);
     void helpClosed(void);
     void changeLanguage(QString lang);
 

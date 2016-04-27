@@ -7,6 +7,10 @@ SettingsDialog::SettingsDialog(QWidget *parent) :
 {
     ui->setupUi(this);
     _settingsmanager = new SettingsManager();
+
+    ui->buttonBox->button(QDialogButtonBox::Ok)->setText(tr("OK"));
+    ui->buttonBox->button(QDialogButtonBox::Cancel)->setText(tr("Cancel"));
+
     createLanguageMenu();
 }
 
@@ -18,7 +22,7 @@ SettingsDialog::~SettingsDialog()
 void SettingsDialog::on_buttonBox_rejected()
 {
     this->hide();
-    emit settingsClosed();
+    emit settingsClosed(false);
 }
 
 void SettingsDialog::on_buttonBox_accepted()
@@ -56,7 +60,7 @@ void SettingsDialog::on_buttonBox_accepted()
     emit languageChanged(lang.toString());
 
     this->setVisible(false);
-    emit settingsClosed();
+    emit settingsClosed(true);
 }
 
 void SettingsDialog::showEvent(QShowEvent *event)

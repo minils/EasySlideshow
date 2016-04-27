@@ -22,8 +22,24 @@ SlideShow::SlideShow(QList<QDir> *dirs, unsigned int speed, QObject *parent) : Q
 
 void SlideShow::setDirs(QList<QDir> *dirs)
 {
-    // TODO: check if contained dirs are the same
-    if (_dirs != dirs) {
+    // check if list changed:
+    bool equal = true;
+    if (_dirs->count() == dirs->count()) {
+        // size is the same -> could be equal
+        QListIterator<QDir> dirs1(*_dirs);
+        QListIterator<QDir> dirs2(*dirs);
+        while (dirs1.hasNext()) {
+            if (dirs1.next().absolutePath() != dirs2.next().absolutePath()) {
+                // not the same elemts -> unequal
+                equal = false;
+                break;
+            }
+        }
+    } else {
+        equal = false;
+    }
+
+    if (!equal) {
         _dirs = dirs;
         init();
     }
