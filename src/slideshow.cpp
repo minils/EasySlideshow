@@ -127,7 +127,7 @@ void SlideShow::nextImage(void)
       _previous_images.append(random);
       ++_current;
     }
-    loadImage(_current_path);
+    loadImage(_current_path, 0);
 }
 
 void SlideShow::nextImageClicked(void)
@@ -150,7 +150,7 @@ void SlideShow::previousImageClicked(void)
     --_current;
 
     _current_path = _images.at(_previous_images.at(_current-1));
-    loadImage(_current_path);
+    loadImage(_current_path, 0);
 }
 
 void SlideShow::pause(void)
@@ -184,10 +184,11 @@ void SlideShow::imageClicked(void) {
     QDesktopServices::openUrl(QUrl::fromLocalFile(path));
 }
 
-void SlideShow::loadImage(QString path)
+void SlideShow::loadImage(QString path, int direction)
 {
   // TODO: read EXIF data and rotate if necessary
   QPixmap pix(path);
+  pix = pix.transformed(QTransform().rotate(direction));
   emit showImage(&pix);
   emit showPath(path);
 }
@@ -195,4 +196,23 @@ void SlideShow::loadImage(QString path)
 bool SlideShow::paused(void)
 {
     return _pause;
+}
+
+/**
+ * @brief SlideShow::rotateCurrentImage Rotates the current image in the given direction.
+ * Direction > 0 means right, direction < 0 means left.
+ * @param direction > 0 means right, direction < 0 means left.
+ */
+void SlideShow::rotateCurrentImage(int direction)
+{
+    unsigned int new_orientation = _images_orientation[_current];
+    if (new_orientation == 0) {
+        // image was not yet rotated
+        new_orientation = 90 * direction / abs(direction);
+    } else {
+        new_orientation = (new_orientation + (90 * direction / abs(direction)) ) % 360;
+    }
+    _images_orientation.insert(_current, new_orientation);
+    loadImage(_images.at(_previous_images.at(_current)), new_orientation);
+    qDebug() << "new orientation: " << new_orientation;
 }

@@ -21,6 +21,14 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->photoLabel->setMinimumHeight(36);
     updateImageCursor();
 
+    ui->rotateLeftButton->setText("");
+    ui->rotateLeftButton->setIcon(QIcon(":/btn/rotate_left"));
+    ui->rotateLeftButton->setIconSize(QSize(20, 20));
+
+    ui->rotateRightButton->setText("");
+    ui->rotateRightButton->setIcon(QIcon(":/btn/rotate_right"));
+    ui->rotateRightButton->setIconSize(QSize(20, 20));
+
     ui->previousButton->setText("");
     ui->previousButton->setIcon(QIcon(":/btn/previous"));
     ui->previousButton->setIconSize(QSize(20, 20));

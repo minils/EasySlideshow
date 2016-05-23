@@ -15,6 +15,7 @@
 #include <QUrl>
 #include <QDir>
 #include <QList>
+#include <QHash>
 
 #include "settingsmanager.h"
 
@@ -41,10 +42,11 @@ private:
     QString _current_path;                  // path of the currently displayed image
     unsigned int _current;                  // index of the current image in _previous_images
     QList<unsigned int> _previous_images;   // last shown images
+    QHash<unsigned int, int> _images_orientation;
 
     SettingsManager *_settingsManager;
 
-    void loadImage(QString path);
+    void loadImage(QString path, int direction);
 
 signals:
     void dirChecked(bool exists, bool readable);
@@ -61,6 +63,7 @@ public slots:
     void init(void);
     void nextImageClicked(void);
     void previousImageClicked(void);
+    void rotateCurrentImage(int direction);
 };
 
 #endif // SLIDESHOW_H
