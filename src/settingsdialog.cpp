@@ -1,6 +1,8 @@
 #include "settingsdialog.h"
 #include "ui_settingsdialog.h"
 
+#include<limits>
+
 SettingsDialog::SettingsDialog(QWidget *parent) :
     QDialog(parent),
     ui(new Ui::SettingsDialog)
@@ -10,6 +12,8 @@ SettingsDialog::SettingsDialog(QWidget *parent) :
 
     ui->buttonBox->button(QDialogButtonBox::Ok)->setText(tr("OK"));
     ui->buttonBox->button(QDialogButtonBox::Cancel)->setText(tr("Cancel"));
+
+    connect(ui->addButton, SIGNAL(clicked()), this, SLOT(on_plus_button_clicked()));
 
     createLanguageMenu();
 }
@@ -27,23 +31,32 @@ void SettingsDialog::on_buttonBox_rejected()
 
 void SettingsDialog::on_buttonBox_accepted()
 {
-    QDir dir = QDir(ui->imagePathEdit->text());
     int duration = ui->durationSpinBox->value();
 
     if (duration <= 0) {
         showError("Duration must be above 0");
         return;
+    } else if ((unsigned int)duration >= std::numeric_limits<unsigned int>::max()) {
+        showError(QString("Duration must be below %1").arg(std::numeric_limits<unsigned int>::max()));
     }
 
-    if (!dir.exists()) {
-        showError("Directory does not exist.");
-        return;
-    }
+    _settingsmanager->writeSetting(SETTING_SPEED, QVariant(duration));
 
     QStringList dirs;
-    dirs.append(dir.absolutePath());
+    dirs.append(QDir(ui->imagePathEdit->text()).absolutePath());
+    QList<QLineEdit *> children = ui->centralWidget->findChildren<QLineEdit *>("path");
+    foreach (QLineEdit* child, children) {
+        dirs.append(child->text());
+    }
+    dirs.removeDuplicates();
+    foreach (QString dir, dirs) {
+        if (!QDir(dir).exists()) {
+            showError("Directory does not exist.");
+            return;
+        }
+    }
+
     _settingsmanager->writeSetting(SETTING_PATHS, QVariant(dirs));
-    _settingsmanager->writeSetting(SETTING_SPEED, QVariant(duration));
 
     QVariant settingClick;
     if (ui->radioNothing->isChecked()) {
@@ -66,7 +79,20 @@ void SettingsDialog::on_buttonBox_accepted()
 void SettingsDialog::showEvent(QShowEvent *event)
 {
     QStringList dirs = _settingsmanager->readSetting(SETTING_PATHS).toStringList();
+
+    // create lineEdits for every path
+    removeOldPaths();
+    amountPaths = 0;
+    if (dirs.size() > 0) {
+        ui->imagePathEdit->setText(dirs.at(0));
+    }
+    for (int i = 1; i < dirs.size(); i++) {
+        addPathEdit(dirs.at(i));
+    }
+    //this->adjustSize();
+
     ui->imagePathEdit->setText(dirs[0]);
+
     ui->durationSpinBox->setValue(_settingsmanager->readSetting(SETTING_SPEED).toInt());
     QString settingClick = _settingsmanager->readSetting(SETTING_ON_CLICK_ACTION).toString();
         ui->radioNothing->setChecked(settingClick == SETTING_ON_CLICK_ACTION_NOTHING);
@@ -76,8 +102,6 @@ void SettingsDialog::showEvent(QShowEvent *event)
 
     hideError();
     ui->buttonBox->setFocus();
-    ui->addButton->setVisible(false);
-    ui->removeButton->setVisible(false);
 
     QDialog::showEvent(event);
 }
@@ -154,4 +178,57 @@ void SettingsDialog::on_SettingsDialog_accepted()
 void SettingsDialog::on_SettingsDialog_rejected()
 {
     on_buttonBox_rejected();
+}
+
+void SettingsDialog::addPathEdit(QString dir)
+{
+    if (amountPaths > maxAmountPaths) {
+        showError(tr("Cannot add more than %1 paths").arg(maxAmountPaths));
+        return;
+    }
+    QHBoxLayout *hLayout = new QHBoxLayout((QWidget *) ui->pathHolderLayout);
+    hLayout->setObjectName("pathLine");
+
+    QLineEdit *lineEdit = new QLineEdit(dir, this);
+    lineEdit->setMinimumHeight(25);
+    lineEdit->setObjectName("path");
+    hLayout->addWidget(lineEdit);
+
+    QPushButton *browseButton = new QPushButton(tr("Browse..."), this);
+    browseButton->setMinimumHeight(25);
+    browseButton->setObjectName("browseButton");
+    hLayout->addWidget(browseButton);
+
+    QPushButton *removeButton = new QPushButton("-", this);
+    removeButton->setMinimumHeight(25);
+    removeButton->setMaximumSize(24, 16777215);
+    removeButton->setObjectName("removeButton");
+    connect(removeButton, SIGNAL(clicked()), this, SLOT(on_minus_button_clicked()));
+    hLayout->addWidget(removeButton);
+
+    ui->pathHolderLayout->addLayout(hLayout);
+    amountPaths++;
+}
+
+void SettingsDialog::on_minus_button_clicked()
+{
+    QPushButton *b = qobject_cast<QPushButton *>(sender());
+    qDebug() << b->text();
+}
+
+void SettingsDialog::on_plus_button_clicked()
+{
+    addPathEdit("");
+}
+
+void SettingsDialog::removeOldPaths()
+{
+    QStringList list;
+    list.append("path"); list.append("removeButton"); list.append("browseButton");
+    foreach (QString s, list) {
+        QList<QObject *> children = ui->centralWidget->findChildren<QObject *>(s);
+        foreach (QObject* child, children) {
+            delete child;
+        }
+    }
 }

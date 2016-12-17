@@ -30,7 +30,7 @@ void SlideShow::setDirs(QList<QDir> *dirs)
         QListIterator<QDir> dirs2(*dirs);
         while (dirs1.hasNext()) {
             if (dirs1.next().absolutePath() != dirs2.next().absolutePath()) {
-                // not the same elemts -> unequal
+                // not the same elements -> unequal
                 equal = false;
                 break;
             }
@@ -92,7 +92,9 @@ void SlideShow::init(void)
     const QStringList image_filter = (QStringList() << "*.jpg" << "*.jpeg" << "*.bmp" << "*.png" << "*.tif" << "*.tiff" << "*.gif"); // TODO: make global
     QListIterator<QDir> dirs(*_dirs);
     while (dirs.hasNext()) {
-        QDirIterator iter(dirs.next().absolutePath(), image_filter, QDir::Files, QDirIterator::Subdirectories);
+        QString absPath = dirs.next().absolutePath();
+        qDebug() << "[SlideShow] Scanning folder: " << absPath;
+        QDirIterator iter(absPath, image_filter, QDir::Files, QDirIterator::Subdirectories);
         while (iter.hasNext()) {
             _images.append(iter.next());
         }

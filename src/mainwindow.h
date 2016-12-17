@@ -40,6 +40,8 @@ private:
     SettingsManager *_settingsManager;
     QTranslator *_currentTranslator;
     QString _currentLanguage;
+    QPixmap *current_image;
+    QPixmap *current_image_scaled;
 
     void loadSettings(void);
     void saveSettings(void);
