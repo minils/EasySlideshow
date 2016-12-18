@@ -3,6 +3,8 @@
 
 #include<limits>
 
+const unsigned int maxAmountPaths = 10;
+
 SettingsDialog::SettingsDialog(QWidget *parent) :
     QDialog(parent),
     ui(new Ui::SettingsDialog)

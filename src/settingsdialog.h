@@ -49,7 +49,6 @@ private:
     SettingsManager *_settingsmanager;
     QList<QLineEdit> *pathEdits;
     unsigned int amountPaths;
-    const unsigned int maxAmountPaths = 10;
 
 signals:
     void settingsClosed(bool accepted);
