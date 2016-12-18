@@ -217,7 +217,6 @@ void SettingsDialog::on_browse_button_clicked()
 {
     // find corresponding lineEdit:
     QLineEdit *pathEdit;
-    int id = 0;
     QPushButton *b = qobject_cast<QPushButton *>(sender());
     QList<QPushButton *> children = ui->centralWidget->findChildren<QPushButton *>("browseButton");
     QList<QLineEdit *> lineEdits = ui->centralWidget->findChildren<QLineEdit *>("path");

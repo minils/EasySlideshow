@@ -199,7 +199,7 @@
                <locale language="English" country="UnitedStates"/>
               </property>
               <property name="text">
-               <string>pause</string>
+               <string>&amp;pause</string>
               </property>
              </widget>
             </item>
@@ -209,7 +209,7 @@
                <locale language="English" country="UnitedStates"/>
               </property>
               <property name="text">
-               <string>nothing</string>
+               <string>&amp;nothing</string>
               </property>
              </widget>
             </item>
@@ -257,7 +257,7 @@
                <locale language="English" country="UnitedStates"/>
               </property>
               <property name="text">
-               <string>Browse...</string>
+               <string>&amp;Browse...</string>
               </property>
              </widget>
             </item>
