@@ -48,7 +48,7 @@ private:
     Ui::SettingsDialog *ui;
     SettingsManager *_settingsmanager;
     QList<QLineEdit> *pathEdits;
-    unsigned int amountPaths = 0;
+    unsigned int amountPaths;
     const unsigned int maxAmountPaths = 10;
 
 signals:
