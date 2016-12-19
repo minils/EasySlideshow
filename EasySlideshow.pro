@@ -6,6 +6,10 @@
 
 QT       += core gui
 
+win32 {
+    QTPLUGIN += qsvg
+}
+
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
 TARGET = EasySlideshow
