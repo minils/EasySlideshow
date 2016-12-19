@@ -1,5 +1,7 @@
 <RCC>
-    <qresource prefix="/"/>
+    <qresource prefix="/font">
+        <file alias="roboto">fonts/Roboto-Regular.ttf</file>
+    </qresource>
     <qresource prefix="/btn">
         <file alias="info">svg/ic_info_white_24px.svg</file>
         <file alias="pause">svg/ic_pause_white_24px.svg</file>

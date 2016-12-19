@@ -8,6 +8,11 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->setupUi(this);
     qDebug() << "Starting...";
 
+    int id = QFontDatabase::addApplicationFont(":/font/roboto");
+    QString family = QFontDatabase::applicationFontFamilies(id).at(0);
+    QFont roboto12(family, 12);
+    ui->statusLabel->setFont(roboto12);
+
     _settingsManager = new SettingsManager();
 
     // set language
