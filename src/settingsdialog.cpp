@@ -14,9 +14,9 @@ SettingsDialog::SettingsDialog(QWidget *parent) :
 
     ui->buttonBox->button(QDialogButtonBox::Ok)->setText(tr("OK"));
     ui->buttonBox->button(QDialogButtonBox::Cancel)->setText(tr("Cancel"));
+    ui->imagePathButton->setText(tr("Browse..."));
 
     connect(ui->addButton, SIGNAL(clicked()), this, SLOT(on_plus_button_clicked()));
-    ui->pathHolderLayout->setSizeConstraint(QLayout::SetMinimumSize);
 
     createLanguageMenu();
 }
@@ -201,7 +201,7 @@ void SettingsDialog::addPathEdit(QString dir)
     hLayout->addWidget(lineEdit);
 
     QPushButton *browseButton = new QPushButton(tr("Browse..."));
-    browseButton->setMinimumHeight(25);
+    browseButton->setMinimumHeight(28);
     browseButton->setObjectName("browseButton");
     hLayout->addWidget(browseButton);
     connect(browseButton, SIGNAL(clicked()), this, SLOT(on_browse_button_clicked()));
