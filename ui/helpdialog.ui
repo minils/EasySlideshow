@@ -48,9 +48,9 @@
          <property name="geometry">
           <rect>
            <x>0</x>
-           <y>0</y>
-           <width>480</width>
-           <height>709</height>
+           <y>-394</y>
+           <width>479</width>
+           <height>729</height>
           </rect>
          </property>
          <layout class="QGridLayout" name="gridLayout_3">
@@ -87,6 +87,8 @@ Taken from &lt;b&gt;Material Icons&lt;/b&gt; which were released under the &lt;a
 &lt;h2&gt;Language Icons&lt;/h2&gt;
 &lt;p&gt;
 Taken from &lt;a href=&quot;http://www.famfamfam.com/lab/icons/flags/&quot; style=&quot;color: #cccccc;&quot;&gt;FAMFAMFAM&lt;/a&gt;. &lt;i&gt;These flag icons are available for free use for any purpose with no requirement for attribution.&lt;/i&gt;
+&lt;h2&gt;Roboto Font&lt;/h2&gt;
+Released under the &lt;a href=&quot;http://www.apache.org/licenses/LICENSE-2.0.txt&quot;  style=&quot;color: #cccccc;&quot;&gt;Apache License 2.0&lt;/a&gt;. Can be found &lt;a href=&quot;https://github.com/google/roboto/&quot; style=&quot;color: #cccccc;&quot;&gt;here&lt;/a&gt;.
 &lt;/p&gt;</string>
             </property>
             <property name="alignment">
