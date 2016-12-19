@@ -6,10 +6,10 @@
 
 This is a very easy slideshow based on Qt.
 
-It uses the provided folder to display random images.
+It uses the provided folder(s) to display random images.
 
 ### Version
-0.1
+0.2
 
 ### Installation
 
@@ -31,6 +31,24 @@ qmake ../
 make
 ```
 
+To compile for windows:
+- mxe
+- qt5
+- qtsvg
+```
+git clone https://github.com/mxe/mxe.git
+cd mxe
+make qt5 qtsvg
+# add mxe/usr/bin to your PATH variable
+cd ..
+git clone https://github.com/minils/EasySlideshow.git
+cd EasySlideshow
+mkdir build
+cd build
+i686-w64-mingw32.static-qmake-qt5 ../
+make
+```
+
 ### Known Issues
 
 * none
@@ -41,7 +59,8 @@ make
  - Fav button
  - Increase probability for images with older access time
  - Read EXIF data and rotate if necessary
-
+ - Add error message if no images were found
+ - show "Lading..." when the folder config was changed and the slideshow is reloading
 
 License
 ----
