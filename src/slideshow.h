@@ -16,8 +16,10 @@
 #include <QDir>
 #include <QList>
 #include <QHash>
+#include <QStringList>
 
 #include "settingsmanager.h"
+#include "pathscanner.h"
 
 class SlideShow : public QObject
 {
@@ -34,10 +36,11 @@ private:
     unsigned int _speed;
 
     unsigned int _last;                     // index of the last image in _images
-    QList<QString> _images;
+    QStringList _images;
 
     bool _pause;
     QTimer *timer;
+    PathScanner *pathScanner;
 
     QString _current_path;                  // path of the currently displayed image
     unsigned int _current;                  // index of the current image in _previous_images
@@ -64,6 +67,7 @@ public slots:
     void nextImageClicked(void);
     void previousImageClicked(void);
     void rotateCurrentImage(int direction);
+    void initDone(QStringList *images);
 };
 
 #endif // SLIDESHOW_H

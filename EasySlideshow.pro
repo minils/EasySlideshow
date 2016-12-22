@@ -23,7 +23,8 @@ SOURCES += main.cpp \
     displaylabel.cpp \
     settingsmanager.cpp \
     settingsdialog.cpp \
-    helpdialog.cpp
+    helpdialog.cpp \
+    pathscanner.cpp
 
 HEADERS  += mainwindow.h \
     slideshow.h \
@@ -31,7 +32,8 @@ HEADERS  += mainwindow.h \
     globals.h \
     settingsmanager.h \
     settingsdialog.h \
-    helpdialog.h
+    helpdialog.h \
+    pathscanner.h
 
 FORMS    += mainwindow.ui \
     settingsdialog.ui \

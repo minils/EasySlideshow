@@ -18,6 +18,8 @@ SlideShow::SlideShow(QList<QDir> *dirs, unsigned int speed, QObject *parent) : Q
     connect(timer, SIGNAL(timeout()), this, SLOT(nextImage()));
     timer->setInterval(_speed);
     timer->setSingleShot(false); // timer fires continuously
+    qsrand(QDateTime::currentDateTime().toTime_t ());
+    //connect(pathScanner, SIGNAL(finished(QStringList*)), this, SLOT(initDone(QStringList*)));
 }
 
 void SlideShow::setDirs(QList<QDir> *dirs)
@@ -53,60 +55,23 @@ void SlideShow::setSpeed(unsigned int speed)
 
 void SlideShow::init(void)
 {
-    qDebug() << "[SlideShow] Initializing";
-    qsrand(QDateTime::currentDateTime().toTime_t ());
-    if (_dirs == NULL) {
-        return;
-    }
+  emit showPath(tr("Loading..."));
+  qDebug() << "[SlideShow] Initializing";
 
-    // check if all dirs exist:
-    bool dirs_exist = true;
-    bool dirs_readable = true;
+  pathScanner->setPaths(_dirs);
+  pathScanner->run();
+}
 
-    QListIterator<QDir> i(*_dirs);
-    while (i.hasNext()) {
-        QDir dir = i.next();
-        if (! dir.exists()) {
-            dirs_exist = false;
-        }
-        if (! dir.isReadable()) {
-            dirs_readable = false;
-        }
-    }
-    emit dirChecked(dirs_exist, dirs_readable);
+void SlideShow::initDone(QStringList *images)
+{
+  _last = 0;
+  _pause = false;
+  timer->stop();
+  _previous_images.clear();
+  _images = *images;
 
-    if (!dirs_exist || !dirs_readable) {
-        return;
-    } else {
-        _dirs_valid = true;
-    }
-
-    // clear images if needed
-    _images.clear();
-    _last = 0;
-    _pause = false;
-    timer->stop();
-    _previous_images.clear();
-
-    // else find images
-    const QStringList image_filter = (QStringList() << "*.jpg" << "*.jpeg" << "*.bmp" << "*.png" << "*.tif" << "*.tiff" << "*.gif"); // TODO: make global
-    QListIterator<QDir> dirs(*_dirs);
-    while (dirs.hasNext()) {
-        QString absPath = dirs.next().absolutePath();
-        qDebug() << "[SlideShow] Scanning folder: " << absPath;
-        QDirIterator iter(absPath, image_filter, QDir::Files, QDirIterator::Subdirectories);
-        while (iter.hasNext()) {
-            _images.append(iter.next());
-        }
-    }
-    if (_images.size() == 0) {
-        qDebug() << "[SlideShow] Did not find any images.";
-        return;
-    }
-    qDebug() << "[SlideShow] Found" << _images.size() << "images.";
-
-    nextImage();
-    timer->start();
+  nextImage();
+  timer->start();
 }
 
 void SlideShow::nextImage(void)
