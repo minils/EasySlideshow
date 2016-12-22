@@ -47,3 +47,10 @@ TRANSLATIONS += l10n/EasySlideshow_en.ts \
     l10n/EasySlideshow_de.ts
 
 ICON = svg/icon.svg
+
+# extras for versioning
+versionTarget.target = ../version.h
+versionTarget.depends = FORCE
+versionTarget.commands = touch version.h; git log -n 1 --format=format:\'$${LITERAL_HASH}define GIT_COMMIT \"%h\"%n\' HEAD 2>/dev/null > version.h; true
+PRE_TARGETDEPS += ../version.h
+QMAKE_EXTRA_TARGETS += versionTarget

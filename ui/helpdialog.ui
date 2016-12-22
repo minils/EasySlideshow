@@ -48,9 +48,9 @@
          <property name="geometry">
           <rect>
            <x>0</x>
-           <y>-394</y>
+           <y>-79</y>
            <width>479</width>
-           <height>729</height>
+           <height>806</height>
           </rect>
          </property>
          <layout class="QGridLayout" name="gridLayout_3">
@@ -76,6 +76,7 @@ To pause the slideshow just press the &lt;b&gt;[II]&lt;/b&gt; button.
 &lt;/p&gt;
 &lt;h2&gt;Source Code&lt;/h2&gt;
 &lt;p&gt;This software is open source which can be found &lt;a href=&quot;https://github.com/minils/EasySlideshow&quot; style=&quot;color: #cccccc;&quot;&gt;here&lt;/a&gt; on GitHub.&lt;/p&gt;
+&lt;p&gt;Built from git commit &lt;b&gt;%2&lt;/b&gt;.&lt;p&gt;
 &lt;h2&gt;License&lt;/h2&gt;
 &lt;p&gt;This software is released under the &lt;b&gt;GNU General Public License 3.0&lt;/b&gt; which can be found &lt;a href=&quot;http://www.gnu.org/licenses/gpl-3.0.txt&quot; style=&quot;color: #cccccc;&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
 &lt;h2&gt;Author&lt;/h2&gt;

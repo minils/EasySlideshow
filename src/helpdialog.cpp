@@ -7,7 +7,11 @@ HelpDialog::HelpDialog(QWidget *parent) :
 {
     ui->setupUi(this);
 
-    ui->infoLabel->setText(ui->infoLabel->text().arg(VERSION));
+#ifdef GIT_COMMIT
+    ui->infoLabel->setText(ui->infoLabel->text().arg(VERSION, GIT_COMMIT));
+#else
+    ui->infoLabel->setText(ui->infoLabel->text().arg(VERSION, "0"));
+#endif
 }
 
 HelpDialog::~HelpDialog()
