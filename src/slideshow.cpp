@@ -146,7 +146,7 @@ void SlideShow::imageClicked(void) {
     if (clickSetting == SETTING_ON_CLICK_ACTION_NOTHING) {
         return;
     }
-    if (!_dirs_valid || _images->size() == 0) {
+    if (_images->size() == 0) {
         return;
     }
     if (clickSetting == SETTING_ON_CLICK_ACTION_PAUSE) {
