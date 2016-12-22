@@ -20,10 +20,10 @@ class PathScanner : public QThread
   void run();
 
  signals:
-  void finnishedScan(QStringList *images);
+  void finished(QStringList *images);
     
  private:
-  bool checkDirs(QList<QDir> *dirs);
+  bool checkDirs(void);
 
   QStringList *_images;
   QList<QDir> *_dirs;

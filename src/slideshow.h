@@ -36,7 +36,7 @@ private:
     unsigned int _speed;
 
     unsigned int _last;                     // index of the last image in _images
-    QStringList _images;
+    QStringList *_images;
 
     bool _pause;
     QTimer *timer;
@@ -50,6 +50,7 @@ private:
     SettingsManager *_settingsManager;
 
     void loadImage(QString path, int direction);
+    bool scanningActive;
 
 signals:
     void dirChecked(bool exists, bool readable);
@@ -58,6 +59,8 @@ signals:
     void showImage(const QPixmap *image);
     void timeout(void);
     void communicatePause(void);
+    void initStart(void);
+    void initStop(void);
 
 public slots:
     void nextImage(void);

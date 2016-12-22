@@ -6,7 +6,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {    
     ui->setupUi(this);
-    qDebug() << "Starting...";
+    qDebug() << "[MainWindow] Starting... " << QThread::currentThreadId();
 
     int id = QFontDatabase::addApplicationFont(":/font/roboto");
     QString family = QFontDatabase::applicationFontFamilies(id).at(0);
@@ -72,6 +72,8 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(_slideshow, SIGNAL(showImage(const QPixmap*)), this, SLOT(loadImage(const QPixmap*)));
     connect(_slideshow, SIGNAL(communicatePause()), this, SLOT(on_pauseButton_clicked()));
     connect(_slideshow, SIGNAL(showPath(QString)), this, SLOT(displayPath(QString)));
+    connect(_slideshow, SIGNAL(initStart()), this, SLOT(startedSlideshowInit()));
+    connect(_slideshow, SIGNAL(initStop()), this, SLOT(stoppedSlideshowInit()));
 
     connect(this, SIGNAL(nextImageClicked()), _slideshow, SLOT(nextImageClicked()));
     connect(this, SIGNAL(previousImageClicked()), _slideshow, SLOT(previousImageClicked()));
@@ -89,7 +91,6 @@ MainWindow::MainWindow(QWidget *parent) :
     _helpDialog = new HelpDialog(this);
     _helpShown = false;
     connect(_helpDialog, SIGNAL(rejected()), this, SLOT(helpClosed()));
-
 
     QTimer::singleShot(100, _slideshow, SLOT(init()));
 }
@@ -235,4 +236,24 @@ void MainWindow::changeLanguage(QString lang)
     } else {
         qDebug() << "[Main] Error loading translation";
     }
+}
+
+void MainWindow::startedSlideshowInit()
+{
+    controls(false);
+    ui->statusLabel->setText(tr("Scanning folders..."));
+    ui->photoLabel->setText(tr("Loading..."));
+}
+
+void MainWindow::stoppedSlideshowInit()
+{
+    ui->pauseButton->setIcon(QIcon(":/btn/pause"));
+    controls(true);
+}
+
+void MainWindow::controls(bool enable)
+{
+    ui->pauseButton->setEnabled(enable);
+    ui->previousButton->setEnabled(enable);
+    ui->nextButton->setEnabled(enable);
 }

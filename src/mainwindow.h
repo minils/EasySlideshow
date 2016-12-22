@@ -7,6 +7,7 @@
 #include <QFontDatabase>
 #include <QSettings>
 #include <QVariant>
+#include <QThread>
 
 #include "globals.h"
 #include "settingsmanager.h"
@@ -45,6 +46,7 @@ private:
 
     void loadSettings(void);
     void saveSettings(void);
+    void controls(bool enable);
 
 public slots:
     void folderStatusChanged(bool exists, bool readable);
@@ -56,6 +58,9 @@ public slots:
     void settingsClosed(bool accepted);
     void helpClosed(void);
     void changeLanguage(QString lang);
+
+    void startedSlideshowInit(void);
+    void stoppedSlideshowInit(void);
 
 private slots:
     void on_nextButton_clicked(void);

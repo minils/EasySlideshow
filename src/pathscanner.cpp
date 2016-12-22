@@ -3,7 +3,7 @@
 PathScanner::PathScanner(QObject *parent)
     : QThread(parent)
 {
-    
+    _images = new QStringList();
 }
 
 void PathScanner::setPaths(QList<QDir> *dirs)
@@ -12,10 +12,11 @@ void PathScanner::setPaths(QList<QDir> *dirs)
 }
 
 void PathScanner::run() {
-  if (_dirs == NULL) {
+    qDebug() << "[PathScanner] scan started " << currentThreadId();
+  if (_dirs == NULL || _dirs->empty()) {
     return;
   }
-  if (!checkDirs(_dirs)) {
+  if (!checkDirs()) {
     // some dir does not exist or is not readable
     // TODO: propagate this
   }
@@ -37,12 +38,12 @@ void PathScanner::run() {
     return;
   }
   qDebug() << "[PathScanner] Found" << _images->size() << "images.";
-  emit finnishedScan(_images); 
+  emit finished(_images);
 }
 
-bool PathScanner::checkDirs(QList<QDir> *dirs)
+bool PathScanner::checkDirs(void)
 {
-  QListIterator<QDir> i(*dirs);
+  QListIterator<QDir> i(*_dirs);
   while (i.hasNext()) {
     QDir dir = i.next();
     if (! dir.exists()) {

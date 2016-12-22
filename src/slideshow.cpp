@@ -19,7 +19,9 @@ SlideShow::SlideShow(QList<QDir> *dirs, unsigned int speed, QObject *parent) : Q
     timer->setInterval(_speed);
     timer->setSingleShot(false); // timer fires continuously
     qsrand(QDateTime::currentDateTime().toTime_t ());
-    //connect(pathScanner, SIGNAL(finished(QStringList*)), this, SLOT(initDone(QStringList*)));
+    pathScanner = new PathScanner();
+    connect(pathScanner, SIGNAL(finished(QStringList*)), this, SLOT(initDone(QStringList*)));
+    scanningActive = false;
 }
 
 void SlideShow::setDirs(QList<QDir> *dirs)
@@ -55,42 +57,45 @@ void SlideShow::setSpeed(unsigned int speed)
 
 void SlideShow::init(void)
 {
-  emit showPath(tr("Loading..."));
+  emit initStart();
+  scanningActive = true;
   qDebug() << "[SlideShow] Initializing";
 
-  pathScanner->setPaths(_dirs);
-  pathScanner->run();
-}
-
-void SlideShow::initDone(QStringList *images)
-{
   _last = 0;
   _pause = false;
   timer->stop();
   _previous_images.clear();
-  _images = *images;
 
+  pathScanner->setPaths(_dirs);
+  pathScanner->start();
+}
+
+void SlideShow::initDone(QStringList *images)
+{
+  _images = images;
   nextImage();
+  emit initStop();
+  scanningActive = false;
   timer->start();
 }
 
 void SlideShow::nextImage(void)
 {
-    if (!_dirs_valid || _images.size() == 0) {
+    if (_images->size() == 0) {
         return;
     }
     // we are going back in the list and want to show the next image in the list
     if (_previous_images.size() != 0 && _current < (unsigned int) _previous_images.size()) {
         ++_current;
-        _current_path = _images.at(_previous_images.at(_current - 1));
+        _current_path = _images->at(_previous_images.at(_current - 1));
     // we are at the end of the list and want to pick a random image
     } else {
       unsigned int random = _last;
       while (_last == random) {
-          random = qrand() % _images.size();
+          random = qrand() % _images->size();
       }
       _last = random;
-      _current_path = _images.at(random);
+      _current_path = _images->at(random);
       _previous_images.append(random);
       ++_current;
     }
@@ -116,7 +121,7 @@ void SlideShow::previousImageClicked(void)
     }
     --_current;
 
-    _current_path = _images.at(_previous_images.at(_current-1));
+    _current_path = _images->at(_previous_images.at(_current-1));
     loadImage(_current_path, 0);
 }
 
@@ -132,11 +137,13 @@ void SlideShow::pause(void)
 }
 
 void SlideShow::imageClicked(void) {
+    if (scanningActive)
+        return;
     QString clickSetting = _settingsManager->readSetting(SETTING_ON_CLICK_ACTION).toString();
     if (clickSetting == SETTING_ON_CLICK_ACTION_NOTHING) {
         return;
     }
-    if (!_dirs_valid || _images.size() == 0) {
+    if (!_dirs_valid || _images->size() == 0) {
         return;
     }
     if (clickSetting == SETTING_ON_CLICK_ACTION_PAUSE) {
@@ -180,6 +187,6 @@ void SlideShow::rotateCurrentImage(int direction)
         new_orientation = (new_orientation + (90 * direction / abs(direction)) ) % 360;
     }
     _images_orientation.insert(_current, new_orientation);
-    loadImage(_images.at(_previous_images.at(_current)), new_orientation);
+    loadImage(_images->at(_previous_images.at(_current)), new_orientation);
     qDebug() << "new orientation: " << new_orientation;
 }
