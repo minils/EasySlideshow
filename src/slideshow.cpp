@@ -62,6 +62,7 @@ void SlideShow::init(void)
   qDebug() << "[SlideShow] Initializing";
 
   _last = 0;
+  _current = 0;
   _pause = false;
   timer->stop();
   _previous_images.clear();
@@ -121,6 +122,8 @@ void SlideShow::previousImageClicked(void)
     }
     --_current;
 
+    qDebug() << "_previous_images.size()=" << _previous_images.size();
+    qDebug() << "_current=" << _current;
     _current_path = _images->at(_previous_images.at(_current-1));
     loadImage(_current_path, 0);
 }
