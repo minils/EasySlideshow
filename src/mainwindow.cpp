@@ -118,6 +118,8 @@ void MainWindow::loadImage(const QPixmap *image)
 void MainWindow::displayPath(QString path)
 {
     ui->statusLabel->setText(path);
+    // TODO: Add this as an option
+    //setWindowTitle("EasySlideshow: " + path);
 }
 
 void MainWindow::on_pauseButton_clicked()
