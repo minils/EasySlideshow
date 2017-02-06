@@ -2,5 +2,7 @@ before_install:
  - echo test
 
 script:
+ - mkdir build
+ - cd build
  - qmake EasySlideshow.pro
  - make
