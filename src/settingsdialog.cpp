@@ -14,7 +14,6 @@ SettingsDialog::SettingsDialog(QWidget *parent) :
 
     ui->buttonBox->button(QDialogButtonBox::Ok)->setText(tr("OK"));
     ui->buttonBox->button(QDialogButtonBox::Cancel)->setText(tr("Cancel"));
-    ui->imagePathButton->setText(tr("Browse..."));
 
     connect(ui->addButton, SIGNAL(clicked()), this, SLOT(on_plus_button_clicked()));
 
@@ -46,8 +45,6 @@ void SettingsDialog::on_buttonBox_accepted()
     _settingsmanager->writeSetting(SETTING_SPEED, QVariant(duration));
 
     QStringList dirs;
-    dirs.append(QDir(ui->imagePathEdit->text()).absolutePath());
-
     QLayoutItem *child;
     while((child = ui->pathHolderLayout->takeAt(0)) != 0) {
         QLayoutItem *grandchild;
@@ -94,15 +91,9 @@ void SettingsDialog::showEvent(QShowEvent *event)
     // create lineEdits for every path
     removeOldPaths();
     amountPaths = 0;
-    if (dirs.size() > 0) {
-        ui->imagePathEdit->setText(dirs.at(0));
-    }
-    for (int i = 1; i < dirs.size(); i++) {
+    for (int i = 0; i < dirs.size(); i++) {
         addPathEdit(dirs.at(i));
     }
-    //this->adjustSize();
-
-    ui->imagePathEdit->setText(dirs[0]);
 
     ui->durationSpinBox->setValue(_settingsmanager->readSetting(SETTING_SPEED).toInt());
     QString settingClick = _settingsmanager->readSetting(SETTING_ON_CLICK_ACTION).toString();
@@ -168,19 +159,6 @@ void SettingsDialog::createLanguageMenu()
     }
 }
 
-void SettingsDialog::on_imagePathButton_clicked()
-{
-    QString previous_dir = ui->imagePathEdit->text();
-    if (!QDir(previous_dir).exists()) {
-        previous_dir = QDir::homePath();
-    }
-    QString dir = QFileDialog::getExistingDirectory(this, "Pick folder", previous_dir);
-    if (!dir.isEmpty()) {
-        ui->imagePathEdit->setText(dir);
-        hideError();
-    }
-}
-
 void SettingsDialog::on_SettingsDialog_accepted()
 {
     qDebug() << "accepted";
@@ -191,11 +169,11 @@ void SettingsDialog::on_SettingsDialog_rejected()
     on_buttonBox_rejected();
 }
 
-void SettingsDialog::addPathEdit(QString dir)
+QPushButton* SettingsDialog::addPathEdit(QString dir)
 {
     if (amountPaths > maxAmountPaths) {
         showError(tr("Cannot add more than %1 paths").arg(maxAmountPaths));
-        return;
+        return NULL;
     }
     QHBoxLayout *hLayout = new QHBoxLayout();
     hLayout->setObjectName("pathLine");
@@ -204,6 +182,8 @@ void SettingsDialog::addPathEdit(QString dir)
     QLineEdit *lineEdit = new QLineEdit(dir);
     lineEdit->setMinimumHeight(25);
     lineEdit->setObjectName("path");
+    if (!dir.isEmpty())
+        lineEdit->setToolTip(dir);
     hLayout->addWidget(lineEdit);
 
     QPushButton *browseButton = new QPushButton(tr("Browse..."));
@@ -222,11 +202,15 @@ void SettingsDialog::addPathEdit(QString dir)
 
     ui->pathHolderLayout->addLayout(hLayout);
     amountPaths++;
+    return browseButton;
 }
 
 void SettingsDialog::on_plus_button_clicked()
 {
-    addPathEdit("");
+    QPushButton* browseButton = addPathEdit("");
+    if (browseButton != NULL) {
+        browseButton->click();
+    }
 }
 
 void SettingsDialog::on_browse_button_clicked(QLineEdit *lineEdit)
@@ -238,6 +222,7 @@ void SettingsDialog::on_browse_button_clicked(QLineEdit *lineEdit)
     QString dir = QFileDialog::getExistingDirectory(this, tr("Pick a folder"), previous_dir);
     if (!dir.isEmpty()) {
         lineEdit->setText(dir);
+        lineEdit->setToolTip(dir);
         hideError();
     }
 }
@@ -259,6 +244,10 @@ void SettingsDialog::removeOldPaths()
 
 void SettingsDialog::removeLine(QHBoxLayout *layout)
 {
+    if (amountPaths == 1) {
+        showError(tr("At least one path is needed"));
+        return;
+    }
     QLayoutItem *child;
     while((child = layout->takeAt(0)) != 0) {
         if (child->widget()) {
@@ -266,4 +255,5 @@ void SettingsDialog::removeLine(QHBoxLayout *layout)
             delete child;
         }
     }
+    amountPaths--;
 }

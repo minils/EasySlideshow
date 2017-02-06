@@ -98,55 +98,6 @@
             </property>
            </widget>
           </item>
-          <item row="0" column="1">
-           <layout class="QHBoxLayout" name="horizontalLayout">
-            <property name="spacing">
-             <number>12</number>
-            </property>
-            <item>
-             <widget class="QLineEdit" name="imagePathEdit">
-              <property name="minimumSize">
-               <size>
-                <width>300</width>
-                <height>25</height>
-               </size>
-              </property>
-              <property name="locale">
-               <locale language="English" country="UnitedStates"/>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <widget class="QPushButton" name="imagePathButton">
-              <property name="minimumSize">
-               <size>
-                <width>0</width>
-                <height>28</height>
-               </size>
-              </property>
-              <property name="locale">
-               <locale language="English" country="UnitedStates"/>
-              </property>
-              <property name="text">
-               <string>Browse...</string>
-              </property>
-             </widget>
-            </item>
-           </layout>
-          </item>
-          <item row="1" column="1">
-           <layout class="QVBoxLayout" name="pathHolderLayout">
-            <property name="spacing">
-             <number>12</number>
-            </property>
-            <property name="sizeConstraint">
-             <enum>QLayout::SetMinimumSize</enum>
-            </property>
-            <property name="topMargin">
-             <number>0</number>
-            </property>
-           </layout>
-          </item>
           <item row="2" column="1">
            <layout class="QHBoxLayout" name="horizontalLayout_2">
             <property name="sizeConstraint">
@@ -365,6 +316,19 @@
              <locale language="English" country="UnitedStates"/>
             </property>
            </widget>
+          </item>
+          <item row="0" column="1">
+           <layout class="QVBoxLayout" name="pathHolderLayout">
+            <property name="spacing">
+             <number>12</number>
+            </property>
+            <property name="sizeConstraint">
+             <enum>QLayout::SetMinimumSize</enum>
+            </property>
+            <property name="topMargin">
+             <number>0</number>
+            </property>
+           </layout>
           </item>
          </layout>
         </item>
