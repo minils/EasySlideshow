@@ -204,7 +204,8 @@ void SettingsDialog::addPathEdit(QString dir)
     browseButton->setMinimumHeight(28);
     browseButton->setObjectName("browseButton");
     hLayout->addWidget(browseButton);
-    connect(browseButton, SIGNAL(clicked()), this, SLOT(on_browse_button_clicked()));
+    connect(browseButton, &QPushButton::clicked,
+            lineEdit, [this, lineEdit]() {this->on_browse_button_clicked(lineEdit);});
 
     ui->pathHolderLayout->addLayout(hLayout);
     amountPaths++;
@@ -215,27 +216,15 @@ void SettingsDialog::on_plus_button_clicked()
     addPathEdit("");
 }
 
-void SettingsDialog::on_browse_button_clicked()
+void SettingsDialog::on_browse_button_clicked(QLineEdit *lineEdit)
 {
-    // find corresponding lineEdit:
-    QLineEdit *pathEdit;
-    QPushButton *b = qobject_cast<QPushButton *>(sender());
-    QList<QPushButton *> children = ui->centralWidget->findChildren<QPushButton *>("browseButton");
-    QList<QLineEdit *> lineEdits = ui->centralWidget->findChildren<QLineEdit *>("path");
-    Q_ASSERT(lineEdits.length() == children.length());
-    for (int i = 0; i < children.length(); i++) {
-        if (children[i] == b) {
-            pathEdit = lineEdits[i];
-            break;
-        }
-    }
-    QString previous_dir = pathEdit->text();
+    QString previous_dir = lineEdit->text();
     if (!QDir(previous_dir).exists()) {
         previous_dir = QDir::homePath();
     }
     QString dir = QFileDialog::getExistingDirectory(this, "Pick folder", previous_dir);
     if (!dir.isEmpty()) {
-        pathEdit->setText(dir);
+        lineEdit->setText(dir);
         hideError();
     }
 }
