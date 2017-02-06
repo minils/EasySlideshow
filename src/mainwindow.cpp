@@ -7,6 +7,7 @@ MainWindow::MainWindow(QWidget *parent) :
 {    
     ui->setupUi(this);
     qDebug() << "[MainWindow] Starting... " << QThread::currentThreadId();
+    qApp->installEventFilter(this);
 
     int id = QFontDatabase::addApplicationFont(":/font/roboto");
     QString family = QFontDatabase::applicationFontFamilies(id).at(0);
@@ -256,4 +257,28 @@ void MainWindow::controls(bool enable)
     ui->pauseButton->setEnabled(enable);
     ui->previousButton->setEnabled(enable);
     ui->nextButton->setEnabled(enable);
+}
+
+bool MainWindow::eventFilter(QObject *obj, QEvent *event)
+{
+    if (event->type() == QEvent::KeyPress)
+    {
+        if (obj == this) {
+        QKeyEvent *keyEvent = static_cast<QKeyEvent *>(event);
+        switch(keyEvent->key()) {
+        case Qt::Key_Right:
+            on_nextButton_clicked();
+            break;
+        case Qt::Key_Left:
+            on_previousButton_clicked();
+            break;
+        case Qt::Key_Space:
+            on_pauseButton_clicked();
+            break;
+        default:
+            break;
+        }
+        }
+    }
+    return QObject::eventFilter(obj, event);
 }

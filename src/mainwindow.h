@@ -65,15 +65,16 @@ public slots:
 private slots:
     void on_nextButton_clicked(void);
     void on_previousButton_clicked(void);
-
     void on_settingsButton_clicked();
-
     void on_helpButton_clicked();
 
 signals:
     void pausePressed(void);
     void nextImageClicked(void);
     void previousImageClicked(void);
+
+protected:
+    bool eventFilter(QObject *watched, QEvent *event);
 };
 
 #endif // MAINWINDOW_H

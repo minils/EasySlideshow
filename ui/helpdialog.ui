@@ -48,9 +48,9 @@
          <property name="geometry">
           <rect>
            <x>0</x>
-           <y>-79</y>
+           <y>0</y>
            <width>479</width>
-           <height>806</height>
+           <height>838</height>
           </rect>
          </property>
          <layout class="QGridLayout" name="gridLayout_3">
@@ -69,11 +69,18 @@ This is the first version of EasySlideshow.
 &lt;/p&gt;
 &lt;h2&gt;Help&lt;/h2&gt;
 &lt;p&gt;
-EasySlideshow takes a folder and shows the images inside of it in a randomized order. A &lt;b&gt;click&lt;/b&gt; on the image takes you to the subfolder where the image is located. Previous images can be accessed via the &lt;b&gt;[&amp;lt;]&lt;/b&gt; button.
+EasySlideshow takes one or multiple directories and shows the images inside of it in a randomized order. A &lt;b&gt;click&lt;/b&gt; on the image takes you to the subfolder where the image is located. Previous images can be accessed via the &lt;b&gt;[&amp;lt;]&lt;/b&gt; button.
 The next image is shown in the set speed or by pressing the &lt;b&gt;[&amp;gt;]&lt;/b&gt; button.
 Image location and display speed can be set in the settings dialog.
 To pause the slideshow just press the &lt;b&gt;[II]&lt;/b&gt; button.
 &lt;/p&gt;
+&lt;h3&gt;Shortcuts&lt;/h3&gt;
+The following shortcuts exist:
+&lt;ul&gt;
+&lt;li&gt;[Left Arrow] Go to the previous image&lt;/li&gt;
+&lt;li&gt;[Right Arrow] Go the the next image&lt;/li&gt;
+&lt;li&gt;[Space] Pause the slideshow&lt;/li&gt;
+&lt;/ul&gt;
 &lt;h2&gt;Source Code&lt;/h2&gt;
 &lt;p&gt;This software is open source which can be found &lt;a href=&quot;https://github.com/minils/EasySlideshow&quot; style=&quot;color: #cccccc;&quot;&gt;here&lt;/a&gt; on GitHub.&lt;/p&gt;
 &lt;p&gt;Built from git commit &lt;b&gt;%2&lt;/b&gt;.&lt;p&gt;
