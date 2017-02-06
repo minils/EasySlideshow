@@ -4,5 +4,5 @@ before_install:
 script:
  - mkdir build
  - cd build
- - qmake EasySlideshow.pro
+ - qmake ../EasySlideshow.pro
  - make
