@@ -80,6 +80,9 @@ MainWindow::MainWindow(QWidget *parent) :
 
     connect(ui->photoLabel, SIGNAL(imageClicked()), _slideshow, SLOT(imageClicked()));
 
+    connect(ui->rotateLeftButton, SIGNAL(clicked()), _slideshow, SLOT(rotateCurrentImageLeft()));
+    connect(ui->rotateRightButton, SIGNAL(clicked()), _slideshow, SLOT(rotateCurrentImageRight()));
+
     // generate settings dialog
     _settingsDialog = new SettingsDialog(this);
     _settingsShown = false;
@@ -134,8 +137,10 @@ void MainWindow::on_pauseButton_clicked()
 
 void MainWindow::resizeEvent(QResizeEvent*)
 {
-    int width = ui->centralWidget->width();
-    ui->statusLabel->setMaximumWidth(width-80); // 80 is the size of the 4 buttons
+    if (!_slideshow->scanningIsActive()) {
+        int width = ui->centralWidget->width();
+        ui->statusLabel->setMaximumWidth(width-80); // 80 is the size of the 4 buttons
+    }
 }
 
 void MainWindow::on_nextButton_clicked(void)
@@ -257,6 +262,8 @@ void MainWindow::controls(bool enable)
     ui->pauseButton->setEnabled(enable);
     ui->previousButton->setEnabled(enable);
     ui->nextButton->setEnabled(enable);
+    ui->rotateLeftButton->setEnabled(enable);
+    ui->rotateRightButton->setEnabled(enable);
 }
 
 bool MainWindow::eventFilter(QObject *obj, QEvent *event)
@@ -274,6 +281,12 @@ bool MainWindow::eventFilter(QObject *obj, QEvent *event)
             break;
         case Qt::Key_Space:
             on_pauseButton_clicked();
+            break;
+        case Qt::Key_L:
+            ui->rotateLeftButton->click();
+            break;
+        case Qt::Key_R:
+            ui->rotateRightButton->click();
             break;
         default:
             break;

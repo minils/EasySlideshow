@@ -4,6 +4,7 @@ PathScanner::PathScanner(QObject *parent)
     : QThread(parent)
 {
     _images = new QStringList();
+    stop_requested = false;
 }
 
 void PathScanner::setPaths(QList<QDir> *dirs)
@@ -12,7 +13,7 @@ void PathScanner::setPaths(QList<QDir> *dirs)
 }
 
 void PathScanner::run() {
-    qDebug() << "[PathScanner] scan started " << currentThreadId();
+  qDebug() << "[PathScanner] scan started " << currentThreadId();
   if (_dirs == NULL || _dirs->empty()) {
     return;
   }
@@ -25,11 +26,11 @@ void PathScanner::run() {
   const QStringList image_filter =
     QStringList() << "*.jpg" << "*.jpeg" << "*.bmp" << "*.png" << "*.tif" << "*.tiff" << "*.gif";
   QListIterator<QDir> dirs(*_dirs);
-  while (dirs.hasNext()) {
+  while (dirs.hasNext() && !stop_requested) {
     QString absPath = dirs.next().absolutePath();
     qDebug() << "[PathScanner] Scanning folder: " << absPath;
     QDirIterator iter(absPath, image_filter, QDir::Files, QDirIterator::Subdirectories);
-    while (iter.hasNext()) {
+    while (iter.hasNext() && !stop_requested) {
       _images->append(iter.next());
     }
   }
@@ -38,7 +39,13 @@ void PathScanner::run() {
     return;
   }
   qDebug() << "[PathScanner] Found" << _images->size() << "images.";
-  emit finished(_images);
+  if (stop_requested) {
+      qDebug() << "Finally stopped";
+      stop_requested = false;
+      emit stopped();
+  } else {
+    emit finished(_images);
+  }
 }
 
 bool PathScanner::checkDirs(void)
@@ -54,4 +61,10 @@ bool PathScanner::checkDirs(void)
     }
   }
   return true;
+}
+
+void PathScanner::request_stop()
+{
+    qDebug() << "stop requested";
+    stop_requested = true;
 }

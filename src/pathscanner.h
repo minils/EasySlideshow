@@ -19,14 +19,20 @@ class PathScanner : public QThread
   void setPaths(QList<QDir> *dirs);
   void run();
 
+public slots:
+  void request_stop();
+
  signals:
   void finished(QStringList *images);
+  void stopped(void);
+
     
  private:
   bool checkDirs(void);
 
   QStringList *_images;
   QList<QDir> *_dirs;
+  volatile bool stop_requested;
 };
    
 

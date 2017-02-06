@@ -29,6 +29,7 @@ public:
     void setDirs(QList<QDir> *dirs);
     void setSpeed(unsigned int speed);
     bool paused(void);
+    bool scanningIsActive();
 
 private:
     QList<QDir> *_dirs;
@@ -49,8 +50,9 @@ private:
 
     SettingsManager *_settingsManager;
 
-    void loadImage(QString path, int direction);
-    bool scanningActive;
+    void loadImage(unsigned int current);
+    volatile bool scanningActive;
+    void rotateCurrentImage(int direction);
 
 signals:
     void dirChecked(bool exists, bool readable);
@@ -61,6 +63,7 @@ signals:
     void communicatePause(void);
     void initStart(void);
     void initStop(void);
+    void stopScan(void);
 
 public slots:
     void nextImage(void);
@@ -69,8 +72,10 @@ public slots:
     void init(void);
     void nextImageClicked(void);
     void previousImageClicked(void);
-    void rotateCurrentImage(int direction);
+    void rotateCurrentImageLeft(void);
+    void rotateCurrentImageRight(void);
     void initDone(QStringList *images);
+    void scanStopped(void);
 };
 
 #endif // SLIDESHOW_H

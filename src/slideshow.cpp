@@ -21,6 +21,8 @@ SlideShow::SlideShow(QList<QDir> *dirs, unsigned int speed, QObject *parent) : Q
     qsrand(QDateTime::currentDateTime().toTime_t ());
     pathScanner = new PathScanner();
     connect(pathScanner, SIGNAL(finished(QStringList*)), this, SLOT(initDone(QStringList*)));
+    connect(this, SIGNAL(stopScan()), pathScanner, SLOT(request_stop()));
+    connect(pathScanner, SIGNAL(stopped()), this, SLOT(scanStopped()));
     scanningActive = false;
 }
 
@@ -57,6 +59,10 @@ void SlideShow::setSpeed(unsigned int speed)
 
 void SlideShow::init(void)
 {
+  if (scanningActive) {
+    emit stopScan();
+    return;
+  }
   emit initStart();
   scanningActive = true;
   qDebug() << "[SlideShow] Initializing";
@@ -69,6 +75,12 @@ void SlideShow::init(void)
 
   pathScanner->setPaths(_dirs);
   pathScanner->start();
+}
+
+void SlideShow::scanStopped(void)
+{
+    scanningActive = false;
+    init();
 }
 
 void SlideShow::initDone(QStringList *images)
@@ -100,7 +112,7 @@ void SlideShow::nextImage(void)
       _previous_images.append(random);
       ++_current;
     }
-    loadImage(_current_path, 0);
+    loadImage(_current);
 }
 
 void SlideShow::nextImageClicked(void)
@@ -124,8 +136,7 @@ void SlideShow::previousImageClicked(void)
 
     qDebug() << "_previous_images.size()=" << _previous_images.size();
     qDebug() << "_current=" << _current;
-    _current_path = _images->at(_previous_images.at(_current-1));
-    loadImage(_current_path, 0);
+    loadImage(_current);
 }
 
 void SlideShow::pause(void)
@@ -161,13 +172,14 @@ void SlideShow::imageClicked(void) {
     QDesktopServices::openUrl(QUrl::fromLocalFile(path));
 }
 
-void SlideShow::loadImage(QString path, int direction)
+void SlideShow::loadImage(unsigned int current)
 {
   // TODO: read EXIF data and rotate if necessary
-  QPixmap pix(path);
-  pix = pix.transformed(QTransform().rotate(direction));
+  _current_path = _images->at(_previous_images.at(current-1));
+  QPixmap pix(_current_path);
+  pix = pix.transformed(QTransform().rotate(_images_orientation[current]));
   emit showImage(&pix);
-  emit showPath(path);
+  emit showPath(_current_path);
 }
 
 bool SlideShow::paused(void)
@@ -175,21 +187,27 @@ bool SlideShow::paused(void)
     return _pause;
 }
 
-/**
- * @brief SlideShow::rotateCurrentImage Rotates the current image in the given direction.
- * Direction > 0 means right, direction < 0 means left.
- * @param direction > 0 means right, direction < 0 means left.
- */
 void SlideShow::rotateCurrentImage(int direction)
 {
-    unsigned int new_orientation = _images_orientation[_current];
-    if (new_orientation == 0) {
-        // image was not yet rotated
-        new_orientation = 90 * direction / abs(direction);
-    } else {
-        new_orientation = (new_orientation + (90 * direction / abs(direction)) ) % 360;
-    }
+    if (scanningActive)
+        return;
+    int new_orientation = _images_orientation.take(_current);
+    new_orientation = (new_orientation + (90 * direction / abs(direction))) % 360;
     _images_orientation.insert(_current, new_orientation);
-    loadImage(_images->at(_previous_images.at(_current)), new_orientation);
-    qDebug() << "new orientation: " << new_orientation;
+    loadImage(_current);
+}
+
+void SlideShow::rotateCurrentImageLeft()
+{
+    rotateCurrentImage(-1);
+}
+
+void SlideShow::rotateCurrentImageRight()
+{
+    rotateCurrentImage(1);
+}
+
+bool SlideShow::scanningIsActive()
+{
+    return scanningActive;
 }

@@ -48,9 +48,9 @@
          <property name="geometry">
           <rect>
            <x>0</x>
-           <y>0</y>
+           <y>-212</y>
            <width>479</width>
-           <height>838</height>
+           <height>860</height>
           </rect>
          </property>
          <layout class="QGridLayout" name="gridLayout_3">
@@ -80,6 +80,8 @@ The following shortcuts exist:
 &lt;li&gt;[Left Arrow] Go to the previous image&lt;/li&gt;
 &lt;li&gt;[Right Arrow] Go the the next image&lt;/li&gt;
 &lt;li&gt;[Space] Pause the slideshow&lt;/li&gt;
+&lt;li&gt;[L] Rotate image left&lt;/li&gt;
+&lt;li&gt;[R] Rotate image right&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h2&gt;Source Code&lt;/h2&gt;
 &lt;p&gt;This software is open source which can be found &lt;a href=&quot;https://github.com/minils/EasySlideshow&quot; style=&quot;color: #cccccc;&quot;&gt;here&lt;/a&gt; on GitHub.&lt;/p&gt;
