@@ -37,6 +37,7 @@ private slots:
     void on_SettingsDialog_rejected();
     void on_plus_button_clicked();
     void on_browse_button_clicked(QLineEdit *lineEdit);
+    void removeLine(QHBoxLayout *layout);
 
 private:
     void showError(QString msg);

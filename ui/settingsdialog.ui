@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>514</width>
+    <width>522</width>
     <height>259</height>
    </rect>
   </property>
@@ -174,7 +174,7 @@
               </property>
               <property name="maximumSize">
                <size>
-                <width>24</width>
+                <width>28</width>
                 <height>16777215</height>
                </size>
               </property>

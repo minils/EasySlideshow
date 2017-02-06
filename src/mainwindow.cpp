@@ -29,12 +29,10 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->rotateLeftButton->setText("");
     ui->rotateLeftButton->setIcon(QIcon(":/btn/rotate_left"));
     ui->rotateLeftButton->setIconSize(QSize(20, 20));
-    ui->rotateLeftButton->setVisible(false);
 
     ui->rotateRightButton->setText("");
     ui->rotateRightButton->setIcon(QIcon(":/btn/rotate_right"));
     ui->rotateRightButton->setIconSize(QSize(20, 20));
-    ui->rotateRightButton->setVisible(false);
 
     ui->previousButton->setText("");
     ui->previousButton->setIcon(QIcon(":/btn/previous"));

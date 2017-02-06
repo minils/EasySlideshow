@@ -47,11 +47,17 @@ void SettingsDialog::on_buttonBox_accepted()
 
     QStringList dirs;
     dirs.append(QDir(ui->imagePathEdit->text()).absolutePath());
-    QList<QLineEdit *> children = ui->centralWidget->findChildren<QLineEdit *>("path");
-    foreach (QLineEdit* child, children) {
-        QString p = child->text().trimmed();
-        if (!p.isEmpty())
-            dirs.append(p);
+
+    QLayoutItem *child;
+    while((child = ui->pathHolderLayout->takeAt(0)) != 0) {
+        QLayoutItem *grandchild;
+        grandchild = ((QLayout* )child)->takeAt(0);
+        if (grandchild != 0) {
+            QWidget *path = grandchild->widget();
+            QString p = ((QLineEdit *) path)->text();
+            if (!p.isEmpty())
+                dirs.append(p);
+        }
     }
     dirs.removeDuplicates();
     foreach (QString dir, dirs) {
@@ -202,10 +208,17 @@ void SettingsDialog::addPathEdit(QString dir)
 
     QPushButton *browseButton = new QPushButton(tr("Browse..."));
     browseButton->setMinimumHeight(28);
-    browseButton->setObjectName("browseButton");
     hLayout->addWidget(browseButton);
     connect(browseButton, &QPushButton::clicked,
             lineEdit, [this, lineEdit]() {this->on_browse_button_clicked(lineEdit);});
+
+    QPushButton *minusButton = new QPushButton("-");
+    minusButton->setMinimumHeight(28);
+    minusButton->setMaximumWidth(28);
+    minusButton->setObjectName("minusButton");
+    hLayout->addWidget(minusButton);
+    connect(minusButton, &QPushButton::clicked,
+            hLayout, [this, hLayout]() {this->removeLine(hLayout);});
 
     ui->pathHolderLayout->addLayout(hLayout);
     amountPaths++;
@@ -222,7 +235,7 @@ void SettingsDialog::on_browse_button_clicked(QLineEdit *lineEdit)
     if (!QDir(previous_dir).exists()) {
         previous_dir = QDir::homePath();
     }
-    QString dir = QFileDialog::getExistingDirectory(this, "Pick folder", previous_dir);
+    QString dir = QFileDialog::getExistingDirectory(this, tr("Pick a folder"), previous_dir);
     if (!dir.isEmpty()) {
         lineEdit->setText(dir);
         hideError();
@@ -231,11 +244,25 @@ void SettingsDialog::on_browse_button_clicked(QLineEdit *lineEdit)
 
 void SettingsDialog::removeOldPaths()
 {
-    QStringList list;
-    list.append("path"); list.append("browseButton");
-    foreach (QString s, list) {
-        QList<QObject *> children = ui->centralWidget->findChildren<QObject *>(s);
-        foreach (QObject* child, children) {
+    QLayoutItem *child;
+    while((child = ui->pathHolderLayout->takeAt(0)) != 0) {
+        QLayoutItem *grandchild;
+        while ((grandchild = ((QLayout* )child)->takeAt(0)) != 0) {
+            if (grandchild->widget()) {
+                grandchild->widget()->setParent(NULL);
+                delete grandchild;
+            }
+        }
+        delete child;
+    }
+}
+
+void SettingsDialog::removeLine(QHBoxLayout *layout)
+{
+    QLayoutItem *child;
+    while((child = layout->takeAt(0)) != 0) {
+        if (child->widget()) {
+            child->widget()->setParent(NULL);
             delete child;
         }
     }
