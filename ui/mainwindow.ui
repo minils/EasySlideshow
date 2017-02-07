@@ -18,9 +18,18 @@
     <normaloff>:/icon/app</normaloff>:/icon/app</iconset>
   </property>
   <widget class="QWidget" name="centralWidget">
-   <layout class="QVBoxLayout" name="verticalLayout">
+   <property name="sizePolicy">
+    <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+     <horstretch>0</horstretch>
+     <verstretch>0</verstretch>
+    </sizepolicy>
+   </property>
+   <layout class="QVBoxLayout" name="verticalLayout" stretch="1,0">
     <property name="spacing">
      <number>6</number>
+    </property>
+    <property name="sizeConstraint">
+     <enum>QLayout::SetMaximumSize</enum>
     </property>
     <property name="leftMargin">
      <number>0</number>
@@ -52,9 +61,12 @@
      </layout>
     </item>
     <item>
-     <layout class="QHBoxLayout" name="dirStatusLayout">
+     <layout class="QHBoxLayout" name="dirStatusLayout" stretch="0,0,0,0,0,0,0,0,0,0,0,0">
       <property name="spacing">
        <number>0</number>
+      </property>
+      <property name="sizeConstraint">
+       <enum>QLayout::SetMinimumSize</enum>
       </property>
       <property name="leftMargin">
        <number>0</number>
@@ -69,11 +81,36 @@
        <number>2</number>
       </property>
       <item>
-       <layout class="QGridLayout" name="gridLayout_2">
-        <property name="leftMargin">
-         <number>6</number>
+       <spacer name="horizontalSpacer_3">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
         </property>
-       </layout>
+        <property name="sizeType">
+         <enum>QSizePolicy::Fixed</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>15</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+      <item>
+       <widget class="QPushButton" name="helpButton">
+        <property name="maximumSize">
+         <size>
+          <width>24</width>
+          <height>24</height>
+         </size>
+        </property>
+        <property name="focusPolicy">
+         <enum>Qt::NoFocus</enum>
+        </property>
+        <property name="text">
+         <string>?</string>
+        </property>
+       </widget>
       </item>
       <item>
        <widget class="QPushButton" name="rotateLeftButton">
@@ -208,7 +245,7 @@
        </widget>
       </item>
       <item>
-       <widget class="QPushButton" name="helpButton">
+       <widget class="QPushButton" name="lockButton">
         <property name="maximumSize">
          <size>
           <width>24</width>
@@ -219,7 +256,23 @@
          <enum>Qt::NoFocus</enum>
         </property>
         <property name="text">
-         <string>?</string>
+         <string>l</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="fullscreenButton">
+        <property name="maximumSize">
+         <size>
+          <width>24</width>
+          <height>24</height>
+         </size>
+        </property>
+        <property name="focusPolicy">
+         <enum>Qt::NoFocus</enum>
+        </property>
+        <property name="text">
+         <string>f</string>
         </property>
        </widget>
       </item>
@@ -236,6 +289,22 @@
         </property>
         <property name="text">
          <string>s</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="quitButton">
+        <property name="maximumSize">
+         <size>
+          <width>24</width>
+          <height>24</height>
+         </size>
+        </property>
+        <property name="focusPolicy">
+         <enum>Qt::NoFocus</enum>
+        </property>
+        <property name="text">
+         <string>x</string>
         </property>
        </widget>
       </item>

@@ -8,6 +8,7 @@
 #include <QSettings>
 #include <QVariant>
 #include <QThread>
+#include <QSizeGrip>
 
 #include "globals.h"
 #include "settingsmanager.h"
@@ -44,6 +45,8 @@ private:
     QPixmap *current_image;
     QPixmap *current_image_scaled;
 
+    int _mouseClickCoordinate[2];
+
     void loadSettings(void);
     void saveSettings(void);
     void controls(bool enable);
@@ -61,6 +64,8 @@ public slots:
 
     void startedSlideshowInit(void);
     void stoppedSlideshowInit(void);
+    void fullscreenButtonClicked(void);
+    void lockButtonClicked(void);
 
 private slots:
     void on_nextButton_clicked(void);

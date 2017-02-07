@@ -13,6 +13,11 @@
         <file alias="settings_window">svg/ic_settings_applications_black_24px.svg</file>
         <file alias="rotate_left">svg/ic_rotate_left_white_24px.svg</file>
         <file alias="rotate_right">svg/ic_rotate_right_white_24px.svg</file>
+        <file alias="close">svg/ic_close_white_24px.svg</file>
+        <file alias="fullscreen_exit">svg/ic_fullscreen_exit_white_24px.svg</file>
+        <file alias="fullscreen">svg/ic_fullscreen_white_24px.svg</file>
+        <file alias="lock_open">svg/ic_lock_open_white_24px.svg</file>
+        <file alias="lock">svg/ic_lock_white_24px.svg</file>
     </qresource>
     <qresource prefix="/radiobtn">
         <file alias="checked">svg/radiobutton_tick.svg</file>

@@ -9,6 +9,9 @@ MainWindow::MainWindow(QWidget *parent) :
     qDebug() << "[MainWindow] Starting... " << QThread::currentThreadId();
     qApp->installEventFilter(this);
 
+    _mouseClickCoordinate[0] = 0;
+    _mouseClickCoordinate[1] = 0;
+
     int id = QFontDatabase::addApplicationFont(":/font/roboto");
     QString family = QFontDatabase::applicationFontFamilies(id).at(0);
     QFont roboto12(family, 12);
@@ -55,7 +58,23 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->settingsButton->setIcon(QIcon(":/btn/settings"));
     ui->settingsButton->setIconSize(QSize(18, 18));
 
+    ui->quitButton->setText("");
+    ui->quitButton->setIcon(QIcon(":/btn/close"));
+    ui->quitButton->setIconSize(QSize(18, 18));
 
+    ui->fullscreenButton->setText("");
+    ui->fullscreenButton->setIcon(QIcon(":/btn/fullscreen"));
+    ui->fullscreenButton->setIconSize(QSize(18, 18));
+
+    ui->lockButton->setText("");
+    ui->lockButton->setIcon(QIcon(":/btn/lock"));
+    ui->lockButton->setIconSize(QSize(18, 18));
+
+    ui->dirStatusLayout->setContentsMargins(QMargins());
+    ui->dirStatusLayout->setSpacing(0);
+    QSizeGrip* sizeGrip = new QSizeGrip(parent);
+    sizeGrip->setSizePolicy(QSizePolicy::Minimum, QSizePolicy::Minimum);
+    ui->dirStatusLayout->addWidget(sizeGrip, 0, Qt::AlignBottom | Qt::AlignRight);
 
     // setup slideshow
     qDebug() << "[MainWindow] Setting up slideshow";
@@ -67,6 +86,7 @@ MainWindow::MainWindow(QWidget *parent) :
 
     _slideshow = new SlideShow(dirs, _settingsManager->readSetting(SETTING_SPEED).toInt(), this);
 
+    /* Slideshow */
     connect(_slideshow, SIGNAL(dirChecked(bool, bool)), this, SLOT(folderStatusChanged(bool, bool)));
     connect(_slideshow, SIGNAL(showImage(const QPixmap*)), this, SLOT(loadImage(const QPixmap*)));
     connect(_slideshow, SIGNAL(communicatePause()), this, SLOT(on_pauseButton_clicked()));
@@ -78,10 +98,12 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(this, SIGNAL(previousImageClicked()), _slideshow, SLOT(previousImageClicked()));
     connect(this, SIGNAL(pausePressed()), _slideshow, SLOT(pause()));
 
+    /* Widgets */
     connect(ui->photoLabel, SIGNAL(imageClicked()), _slideshow, SLOT(imageClicked()));
-
     connect(ui->rotateLeftButton, SIGNAL(clicked()), _slideshow, SLOT(rotateCurrentImageLeft()));
     connect(ui->rotateRightButton, SIGNAL(clicked()), _slideshow, SLOT(rotateCurrentImageRight()));
+    connect(ui->quitButton, SIGNAL(clicked()), this, SLOT(close()));
+    connect(ui->fullscreenButton, SIGNAL(clicked()), this, SLOT(fullscreenButtonClicked()));
 
     // generate settings dialog
     _settingsDialog = new SettingsDialog(this);
@@ -268,30 +290,69 @@ void MainWindow::controls(bool enable)
 
 bool MainWindow::eventFilter(QObject *obj, QEvent *event)
 {
-    if (event->type() == QEvent::KeyPress)
-    {
+    if (event->type() == QEvent::KeyPress) {
         if (obj == this) {
-        QKeyEvent *keyEvent = static_cast<QKeyEvent *>(event);
-        switch(keyEvent->key()) {
-        case Qt::Key_Right:
-            on_nextButton_clicked();
-            break;
-        case Qt::Key_Left:
-            on_previousButton_clicked();
-            break;
-        case Qt::Key_Space:
-            on_pauseButton_clicked();
-            break;
-        case Qt::Key_L:
-            ui->rotateLeftButton->click();
-            break;
-        case Qt::Key_R:
-            ui->rotateRightButton->click();
-            break;
-        default:
-            break;
-        }
+            QKeyEvent *keyEvent = static_cast<QKeyEvent *>(event);
+            switch(keyEvent->key()) {
+            case Qt::Key_Right:
+                on_nextButton_clicked();
+                break;
+            case Qt::Key_Left:
+                on_previousButton_clicked();
+                break;
+            case Qt::Key_Space:
+                on_pauseButton_clicked();
+                break;
+            case Qt::Key_L:
+                ui->rotateLeftButton->click();
+                break;
+            case Qt::Key_R:
+                ui->rotateRightButton->click();
+                break;
+            default:
+                break;
+            }
         }
     }
+    if (event->type() == QEvent::MouseButtonPress && obj == ui->statusLabel) {
+        QMouseEvent* mouseEvent = (QMouseEvent* ) event;
+        _mouseClickCoordinate[0] = mouseEvent->x();
+        _mouseClickCoordinate[1] = mouseEvent->y();
+    }
+    if (event->type() == QEvent::MouseMove && obj == ui->statusLabel) {
+        QMouseEvent* mouseEvent = (QMouseEvent* ) event;
+        if (mouseEvent->buttons() == Qt::LeftButton) {
+            move(mouseEvent->globalX()-_mouseClickCoordinate[0]-ui->statusLabel->x(), mouseEvent->globalY()-_mouseClickCoordinate[1]-ui->statusLabel->y());
+        }
+    }
+
     return QObject::eventFilter(obj, event);
+}
+
+void MainWindow::fullscreenButtonClicked(void)
+{
+    if (this->windowState() == Qt::WindowMaximized) {
+        this->setWindowState(Qt::WindowNoState);
+        ui->fullscreenButton->setIcon(QIcon(":/btn/fullscreen"));
+    } else if (this->windowState() == Qt::WindowNoState) {
+        this->setWindowState(Qt::WindowMaximized);
+        ui->fullscreenButton->setIcon(QIcon(":/btn/fullscreen_exit"));
+    }
+}
+
+
+void MainWindow::lockButtonClicked(void)
+{
+    // TODO: not working
+//    qDebug() << "clicked";
+//    Qt::WindowFlags flags = this->windowFlags();
+//    this->setWindowFlags(flags | Qt::CustomizeWindowHint | Qt::WindowStaysOnTopHint | Qt::X11BypassWindowManagerHint);
+//    this->show();
+//    if (this->windowFlags() & Qt::WindowStaysOnTopHint) {
+//        this->setWindowFlags(Qt::WindowStaysOnBottomHint);
+//        ui->fullscreenButton->setIcon(QIcon(":/btn/lock"));
+//    } else if (this->windowFlags() & Qt::WindowStaysOnBottomHint) {
+//        this->setWindowFlags(Qt::WindowStaysOnTopHint);
+//        ui->fullscreenButton->setIcon(QIcon(":/btn/lock_open"));
+//    }
 }
