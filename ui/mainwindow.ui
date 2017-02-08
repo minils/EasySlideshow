@@ -17,6 +17,57 @@
    <iconset resource="../resources.qrc">
     <normaloff>:/icon/app</normaloff>:/icon/app</iconset>
   </property>
+  <property name="styleSheet">
+   <string notr="true">QWidget {
+    background-color: #404244;
+    color: #cccccc;
+}
+
+QLabel,QPushButton,QRadioButton,QSpinBox,QLineEdit,QComboBox,QComboBox:selected {
+    background-color: #404244;
+    color: #cccccc;
+}
+
+QComboBox
+{
+    background-color: #404244;
+    color: #cccccc;
+    padding: 1px 0px 1px 3px; /* Needed to enable the previously defined colors! */
+}
+
+QSpinBox, QLineEdit {
+    border-image: none;
+    border-style: solid;
+    border-color: #222 #555 #555 #222;
+    border-width: 2px 1px 1px 2px;
+}
+
+QSpinBox::up-button {
+    border-image: none;
+    color: #cccccc;
+}
+
+QSpinBox::down-button {
+    border-image: none;
+    color: #cccccc;
+}
+
+QPushButton:focus, QRadioButton:focus {
+    outline: none;
+}
+
+QRadioButton::indicator {
+    image: none;
+    border-style: solid;
+    border-color: #222 #555 #555 #222;
+    border-width: 2px 1px 1px 2px;
+}
+
+QRadioButton::indicator::checked {
+    image: url(:/radiobtn/checked);
+}
+</string>
+  </property>
   <widget class="QWidget" name="centralWidget">
    <property name="sizePolicy">
     <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
@@ -57,7 +108,11 @@
          </size>
         </property>
         <property name="text">
-         <string>E</string>
+         <string/>
+        </property>
+        <property name="icon">
+         <iconset resource="../resources.qrc">
+          <normaloff>:/icon/app</normaloff>:/icon/app</iconset>
         </property>
        </widget>
       </item>
@@ -108,7 +163,11 @@
          <enum>Qt::NoFocus</enum>
         </property>
         <property name="text">
-         <string>x</string>
+         <string/>
+        </property>
+        <property name="icon">
+         <iconset resource="../resources.qrc">
+          <normaloff>:/btn/close</normaloff>:/btn/close</iconset>
         </property>
        </widget>
       </item>
@@ -124,7 +183,11 @@
          <enum>Qt::NoFocus</enum>
         </property>
         <property name="text">
-         <string>f</string>
+         <string/>
+        </property>
+        <property name="icon">
+         <iconset resource="../resources.qrc">
+          <normaloff>:/btn/fullscreen</normaloff>:/btn/fullscreen</iconset>
         </property>
        </widget>
       </item>
@@ -153,7 +216,11 @@
          <enum>Qt::NoFocus</enum>
         </property>
         <property name="text">
-         <string>?</string>
+         <string/>
+        </property>
+        <property name="icon">
+         <iconset resource="../resources.qrc">
+          <normaloff>:/btn/info</normaloff>:/btn/info</iconset>
         </property>
        </widget>
       </item>
@@ -224,7 +291,11 @@
          <enum>Qt::NoFocus</enum>
         </property>
         <property name="text">
-         <string>rl</string>
+         <string/>
+        </property>
+        <property name="icon">
+         <iconset resource="../resources.qrc">
+          <normaloff>:/btn/rotate_left</normaloff>:/btn/rotate_left</iconset>
         </property>
        </widget>
       </item>
@@ -240,7 +311,11 @@
          <enum>Qt::NoFocus</enum>
         </property>
         <property name="text">
-         <string>rr</string>
+         <string/>
+        </property>
+        <property name="icon">
+         <iconset resource="../resources.qrc">
+          <normaloff>:/btn/rotate_right</normaloff>:/btn/rotate_right</iconset>
         </property>
        </widget>
       </item>
@@ -259,7 +334,11 @@
          <enum>Qt::NoFocus</enum>
         </property>
         <property name="text">
-         <string>&lt;&lt;</string>
+         <string/>
+        </property>
+        <property name="icon">
+         <iconset resource="../resources.qrc">
+          <normaloff>:/btn/previous</normaloff>:/btn/previous</iconset>
         </property>
        </widget>
       </item>
@@ -275,7 +354,11 @@
          <enum>Qt::NoFocus</enum>
         </property>
         <property name="text">
-         <string>II</string>
+         <string/>
+        </property>
+        <property name="icon">
+         <iconset resource="../resources.qrc">
+          <normaloff>:/btn/play</normaloff>:/btn/play</iconset>
         </property>
        </widget>
       </item>
@@ -291,7 +374,11 @@
          <enum>Qt::NoFocus</enum>
         </property>
         <property name="text">
-         <string>&gt;&gt;</string>
+         <string/>
+        </property>
+        <property name="icon">
+         <iconset resource="../resources.qrc">
+          <normaloff>:/btn/next</normaloff>:/btn/next</iconset>
         </property>
        </widget>
       </item>
@@ -307,7 +394,11 @@
          <enum>Qt::NoFocus</enum>
         </property>
         <property name="text">
-         <string>l</string>
+         <string/>
+        </property>
+        <property name="icon">
+         <iconset resource="../resources.qrc">
+          <normaloff>:/btn/lock</normaloff>:/btn/lock</iconset>
         </property>
        </widget>
       </item>
@@ -323,7 +414,11 @@
          <enum>Qt::NoFocus</enum>
         </property>
         <property name="text">
-         <string>s</string>
+         <string/>
+        </property>
+        <property name="icon">
+         <iconset resource="../resources.qrc">
+          <normaloff>:/btn/settings</normaloff>:/btn/settings</iconset>
         </property>
        </widget>
       </item>
