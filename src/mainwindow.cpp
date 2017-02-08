@@ -70,6 +70,9 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->lockButton->setIcon(QIcon(":/btn/lock"));
     ui->lockButton->setIconSize(QSize(18, 18));
 
+    ui->iconButton->setText("");
+    ui->iconButton->setIcon(QIcon(":/icon/app"));
+
     ui->dirStatusLayout->setContentsMargins(QMargins());
     ui->dirStatusLayout->setSpacing(0);
     QSizeGrip* sizeGrip = new QSizeGrip(parent);
@@ -309,21 +312,29 @@ bool MainWindow::eventFilter(QObject *obj, QEvent *event)
             case Qt::Key_R:
                 ui->rotateRightButton->click();
                 break;
+            case Qt::Key_Q:
+                this->close();
             default:
                 break;
             }
         }
     }
-    if (event->type() == QEvent::MouseButtonPress && obj == ui->statusLabel) {
+    if (event->type() == QEvent::MouseButtonPress
+            && (obj == ui->statusLabel)) {
         QMouseEvent* mouseEvent = (QMouseEvent* ) event;
         _mouseClickCoordinate[0] = mouseEvent->x();
         _mouseClickCoordinate[1] = mouseEvent->y();
     }
-    if (event->type() == QEvent::MouseMove && obj == ui->statusLabel) {
+    if (event->type() == QEvent::MouseMove
+            && (obj == ui->statusLabel)) {
         QMouseEvent* mouseEvent = (QMouseEvent* ) event;
         if (mouseEvent->buttons() == Qt::LeftButton) {
             move(mouseEvent->globalX()-_mouseClickCoordinate[0]-ui->statusLabel->x(), mouseEvent->globalY()-_mouseClickCoordinate[1]-ui->statusLabel->y());
         }
+    }
+    if (event->type() == QEvent::MouseButtonDblClick
+            && (obj == ui->centralWidget)) {
+        fullscreenButtonClicked();
     }
 
     return QObject::eventFilter(obj, event);

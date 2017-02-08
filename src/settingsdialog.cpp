@@ -16,6 +16,11 @@ SettingsDialog::SettingsDialog(QWidget *parent) :
     ui->buttonBox->button(QDialogButtonBox::Cancel)->setText(tr("Cancel"));
 
     connect(ui->addButton, SIGNAL(clicked()), this, SLOT(on_plus_button_clicked()));
+    connect(ui->plusDuration, &QPushButton::clicked,
+            this, [this]() {this->ui->durationSpinBox->setValue(this->ui->durationSpinBox->value()+1);});
+    connect(ui->minusDuration, &QPushButton::clicked,
+            this, [this]() {this->ui->durationSpinBox->setValue(this->ui->durationSpinBox->value()-1);});
+
 
     createLanguageMenu();
 }
@@ -208,9 +213,6 @@ QPushButton* SettingsDialog::addPathEdit(QString dir)
 void SettingsDialog::on_plus_button_clicked()
 {
     QPushButton* browseButton = addPathEdit("");
-    if (browseButton != NULL) {
-        browseButton->click();
-    }
 }
 
 void SettingsDialog::on_browse_button_clicked(QLineEdit *lineEdit)
