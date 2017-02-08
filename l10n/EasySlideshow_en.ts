@@ -9,20 +9,30 @@
         <translation>Help</translation>
     </message>
     <message>
-        <location filename="../ui/helpdialog.ui" line="66"/>
+        <location filename="../ui/helpdialog.ui" line="69"/>
         <source>&lt;h1&gt;&lt;img src=&quot;:/icon/app&quot; /&gt;     EasySlideshow v%1&lt;/h1&gt;
 &lt;p&gt;
 This is the first version of EasySlideshow.
 &lt;/p&gt;
 &lt;h2&gt;Help&lt;/h2&gt;
 &lt;p&gt;
-EasySlideshow takes a folder and shows the images inside of it in a randomized order. A &lt;b&gt;click&lt;/b&gt; on the image takes you to the subfolder where the image is located. Previous images can be accessed via the &lt;b&gt;[&amp;lt;]&lt;/b&gt; button.
+EasySlideshow takes one or multiple directories and shows the images inside of it in a randomized order. A &lt;b&gt;click&lt;/b&gt; on the image takes you to the subfolder where the image is located. Previous images can be accessed via the &lt;b&gt;[&amp;lt;]&lt;/b&gt; button.
 The next image is shown in the set speed or by pressing the &lt;b&gt;[&amp;gt;]&lt;/b&gt; button.
 Image location and display speed can be set in the settings dialog.
 To pause the slideshow just press the &lt;b&gt;[II]&lt;/b&gt; button.
 &lt;/p&gt;
+&lt;h3&gt;Shortcuts&lt;/h3&gt;
+The following shortcuts exist:
+&lt;ul&gt;
+&lt;li&gt;[Left Arrow] Go to the previous image&lt;/li&gt;
+&lt;li&gt;[Right Arrow] Go the the next image&lt;/li&gt;
+&lt;li&gt;[Space] Pause the slideshow&lt;/li&gt;
+&lt;li&gt;[L] Rotate image left&lt;/li&gt;
+&lt;li&gt;[R] Rotate image right&lt;/li&gt;
+&lt;/ul&gt;
 &lt;h2&gt;Source Code&lt;/h2&gt;
 &lt;p&gt;This software is open source which can be found &lt;a href=&quot;https://github.com/minils/EasySlideshow&quot; style=&quot;color: #cccccc;&quot;&gt;here&lt;/a&gt; on GitHub.&lt;/p&gt;
+&lt;p&gt;Built from git commit &lt;b&gt;%2&lt;/b&gt;.&lt;p&gt;
 &lt;h2&gt;License&lt;/h2&gt;
 &lt;p&gt;This software is released under the &lt;b&gt;GNU General Public License 3.0&lt;/b&gt; which can be found &lt;a href=&quot;http://www.gnu.org/licenses/gpl-3.0.txt&quot; style=&quot;color: #cccccc;&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
 &lt;h2&gt;Author&lt;/h2&gt;
@@ -34,8 +44,10 @@ Taken from &lt;b&gt;Material Icons&lt;/b&gt; which were released under the &lt;a
 &lt;h2&gt;Language Icons&lt;/h2&gt;
 &lt;p&gt;
 Taken from &lt;a href=&quot;http://www.famfamfam.com/lab/icons/flags/&quot; style=&quot;color: #cccccc;&quot;&gt;FAMFAMFAM&lt;/a&gt;. &lt;i&gt;These flag icons are available for free use for any purpose with no requirement for attribution.&lt;/i&gt;
+&lt;h2&gt;Roboto Font&lt;/h2&gt;
+Released under the &lt;a href=&quot;http://www.apache.org/licenses/LICENSE-2.0.txt&quot;  style=&quot;color: #cccccc;&quot;&gt;Apache License 2.0&lt;/a&gt;. Can be found &lt;a href=&quot;https://github.com/google/roboto/&quot; style=&quot;color: #cccccc;&quot;&gt;here&lt;/a&gt;.
 &lt;/p&gt;</source>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>&lt;h1&gt;EasySlideshow v%1&lt;/h1&gt;
@@ -90,39 +102,24 @@ Taken from &lt;b&gt;Material Icons&lt;/b&gt; which were released under the &lt;a
         <translation>EasySlideshow</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="106"/>
+        <location filename="../ui/mainwindow.ui" line="147"/>
+        <location filename="../src/mainwindow.cpp" line="276"/>
         <source>Loading...</source>
         <translation>Loading...</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="135"/>
-        <source>&lt;&lt;</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../ui/mainwindow.ui" line="148"/>
-        <source>II</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../ui/mainwindow.ui" line="161"/>
-        <source>&gt;&gt;</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../ui/mainwindow.ui" line="174"/>
-        <source>?</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../ui/mainwindow.ui" line="187"/>
         <source>s</source>
-        <translation>s</translation>
+        <translation type="vanished">s</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="212"/>
+        <location filename="../src/mainwindow.cpp" line="259"/>
         <source>Changed language to &lt;b&gt;%1&lt;/b&gt;</source>
         <translation></translation>
+    </message>
+    <message>
+        <location filename="../src/mainwindow.cpp" line="275"/>
+        <source>Scanning folders...</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -133,74 +130,102 @@ Taken from &lt;b&gt;Material Icons&lt;/b&gt; which were released under the &lt;a
         <translation>Settings</translation>
     </message>
     <message>
-        <location filename="../ui/settingsdialog.ui" line="85"/>
+        <location filename="../ui/settingsdialog.ui" line="148"/>
         <source>Image path:</source>
         <translation>Image path:</translation>
     </message>
     <message>
-        <location filename="../ui/settingsdialog.ui" line="104"/>
+        <location filename="../src/settingsdialog.cpp" line="194"/>
         <source>Browse...</source>
         <translation>Browse...</translation>
     </message>
     <message>
-        <location filename="../ui/settingsdialog.ui" line="116"/>
+        <location filename="../ui/settingsdialog.ui" line="184"/>
+        <location filename="../ui/settingsdialog.ui" line="260"/>
+        <source>+</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../ui/settingsdialog.ui" line="209"/>
         <source>Duration:</source>
         <translation>Duration:</translation>
     </message>
     <message>
-        <location filename="../ui/settingsdialog.ui" line="159"/>
+        <location filename="../ui/settingsdialog.ui" line="273"/>
+        <source>-</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../ui/settingsdialog.ui" line="297"/>
+        <source> s</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../ui/settingsdialog.ui" line="322"/>
         <source>Click on Image:</source>
         <translation>Click on Image:</translation>
     </message>
     <message>
-        <location filename="../ui/settingsdialog.ui" line="171"/>
+        <location filename="../ui/settingsdialog.ui" line="346"/>
         <source>open fo&amp;lder</source>
         <translation>open fo&amp;lder</translation>
     </message>
     <message>
-        <location filename="../ui/settingsdialog.ui" line="181"/>
+        <location filename="../ui/settingsdialog.ui" line="362"/>
+        <source>&amp;pause</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../ui/settingsdialog.ui" line="378"/>
+        <source>&amp;nothing</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <source>pause</source>
-        <translation>pause</translation>
+        <translation type="vanished">pause</translation>
     </message>
     <message>
-        <location filename="../ui/settingsdialog.ui" line="191"/>
         <source>nothing</source>
-        <translation>nothing</translation>
+        <translation type="vanished">nothing</translation>
     </message>
     <message>
-        <location filename="../ui/settingsdialog.ui" line="147"/>
         <source>s</source>
-        <translation>s</translation>
+        <translation type="vanished">s</translation>
     </message>
     <message>
-        <location filename="../ui/settingsdialog.ui" line="203"/>
+        <location filename="../ui/settingsdialog.ui" line="390"/>
         <source>Language</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../ui/settingsdialog.ui" line="240"/>
-        <source>Add</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../ui/settingsdialog.ui" line="247"/>
-        <source>Remove</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../ui/settingsdialog.ui" line="276"/>
+        <location filename="../ui/settingsdialog.ui" line="433"/>
         <source>ERROR</source>
         <translation>ERROR</translation>
     </message>
     <message>
-        <location filename="../src/settingsdialog.cpp" line="10"/>
+        <location filename="../src/settingsdialog.cpp" line="15"/>
         <source>OK</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../src/settingsdialog.cpp" line="11"/>
+        <location filename="../src/settingsdialog.cpp" line="16"/>
         <source>Cancel</source>
         <translation></translation>
+    </message>
+    <message>
+        <location filename="../src/settingsdialog.cpp" line="180"/>
+        <source>Cannot add more than %1 paths</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/settingsdialog.cpp" line="224"/>
+        <source>Pick a folder</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/settingsdialog.cpp" line="250"/>
+        <source>At least one path is needed</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 </TS>
