@@ -9,7 +9,7 @@ This is a very easy slideshow based on Qt.
 It uses the provided folder(s) to display random images.
 
 ### Version
-0.2
+0.3.1
 
 ### Installation
 
@@ -59,8 +59,7 @@ make
  - Fav button
  - Increase probability for images with older access time
  - Read EXIF data and rotate if necessary
- - Add error message if no images were found
- - show "Lading..." when the folder config was changed and the slideshow is reloading
+ - Save size of window after exit and restore it before start
 
 License
 ----
