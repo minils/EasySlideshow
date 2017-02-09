@@ -25,7 +25,7 @@ MainWindow::MainWindow(QWidget *parent) :
 
     // set style
     ui->statusLabel->setMinimumWidth(40);
-    ui->statusLabel->setAlignment(Qt::AlignRight);
+    //ui->statusLabel->setAlignment(Qt::AlignRight);
 
     ui->photoLabel->setMinimumHeight(36);
     updateImageCursor();
@@ -126,9 +126,14 @@ void MainWindow::loadImage(const QPixmap *image)
 
 void MainWindow::displayPath(QString path)
 {
-    ui->statusLabel->setText(path);
-    // TODO: Add this as an option
-    //setWindowTitle("EasySlideshow: " + path);
+  qDebug() << "Display path: " << path << ", width=" << ui->statusLabel->width();
+  _path = path;
+  ui->statusLabel->setText(path);
+  QFontMetrics metrics(ui->statusLabel->font());
+  QString elidedText = metrics.elidedText(path, Qt::ElideLeft, ui->statusLabel->width());
+  ui->statusLabel->setText(elidedText);
+  // TODO: Add this as an option
+  //setWindowTitle("EasySlideshow: " + path);
 }
 
 void MainWindow::on_pauseButton_clicked()
@@ -145,8 +150,7 @@ void MainWindow::on_pauseButton_clicked()
 void MainWindow::resizeEvent(QResizeEvent*)
 {
     if (!_slideshow->scanningIsActive()) {
-        int width = ui->centralWidget->width();
-        ui->statusLabel->setMaximumWidth(width-80); // 80 is the size of the 4 buttons
+	displayPath(_path);
     }
 }
 
@@ -299,19 +303,6 @@ bool MainWindow::eventFilter(QObject *obj, QEvent *event)
             default:
                 break;
             }
-        }
-    }
-    if (event->type() == QEvent::MouseButtonPress
-            && (obj == ui->statusLabel)) {
-        QMouseEvent* mouseEvent = (QMouseEvent* ) event;
-        _mouseClickCoordinate[0] = mouseEvent->x();
-        _mouseClickCoordinate[1] = mouseEvent->y();
-    }
-    if (event->type() == QEvent::MouseMove
-            && (obj == ui->statusLabel)) {
-        QMouseEvent* mouseEvent = (QMouseEvent* ) event;
-        if (mouseEvent->buttons() == Qt::LeftButton) {
-            move(mouseEvent->globalX()-_mouseClickCoordinate[0]-ui->statusLabel->x(), mouseEvent->globalY()-_mouseClickCoordinate[1]-ui->statusLabel->y());
         }
     }
 

@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>484</width>
-    <height>268</height>
+    <width>525</width>
+    <height>358</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -119,7 +119,7 @@ QRadioButton::indicator::checked {
      </layout>
     </item>
     <item>
-     <layout class="QHBoxLayout" name="dirStatusLayout" stretch="0,0,0,0,0,0,0,0,0,0,0,0">
+     <layout class="QHBoxLayout" name="dirStatusLayout" stretch="0,0,0,1,0,0,0,0,0,0,0,0">
       <property name="spacing">
        <number>0</number>
       </property>
@@ -183,9 +183,12 @@ QRadioButton::indicator::checked {
         <property name="orientation">
          <enum>Qt::Horizontal</enum>
         </property>
+        <property name="sizeType">
+         <enum>QSizePolicy::Expanding</enum>
+        </property>
         <property name="sizeHint" stdset="0">
          <size>
-          <width>0</width>
+          <width>10</width>
           <height>20</height>
          </size>
         </property>
@@ -195,6 +198,12 @@ QRadioButton::indicator::checked {
        <widget class="QLabel" name="statusLabel">
         <property name="enabled">
          <bool>true</bool>
+        </property>
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
         </property>
         <property name="maximumSize">
          <size>
@@ -218,9 +227,12 @@ QRadioButton::indicator::checked {
         <property name="orientation">
          <enum>Qt::Horizontal</enum>
         </property>
+        <property name="sizeType">
+         <enum>QSizePolicy::Expanding</enum>
+        </property>
         <property name="sizeHint" stdset="0">
          <size>
-          <width>0</width>
+          <width>10</width>
           <height>20</height>
          </size>
         </property>

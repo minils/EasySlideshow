@@ -37,6 +37,7 @@ private:
 
     QDialog *_helpDialog;
     bool _helpShown;
+    QString _path;
 
     SlideShow *_slideshow;
     SettingsManager *_settingsManager;
