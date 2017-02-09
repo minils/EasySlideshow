@@ -67,7 +67,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->fullscreenButton->setIconSize(QSize(18, 18));
 
     ui->lockButton->setText("");
-    ui->lockButton->setIcon(QIcon(":/btn/lock"));
+    ui->lockButton->setIcon(QIcon(":/btn/lock_open"));
     ui->lockButton->setIconSize(QSize(18, 18));
 
     ui->iconButton->setText("");
@@ -107,6 +107,7 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(ui->rotateRightButton, SIGNAL(clicked()), _slideshow, SLOT(rotateCurrentImageRight()));
     connect(ui->quitButton, SIGNAL(clicked()), this, SLOT(close()));
     connect(ui->fullscreenButton, SIGNAL(clicked()), this, SLOT(fullscreenButtonClicked()));
+    connect(ui->lockButton, SIGNAL(clicked()), this, SLOT(lockButtonClicked()));
 
     // generate settings dialog
     _settingsDialog = new SettingsDialog(this);
@@ -354,16 +355,14 @@ void MainWindow::fullscreenButtonClicked(void)
 
 void MainWindow::lockButtonClicked(void)
 {
-    // TODO: not working
-//    qDebug() << "clicked";
-//    Qt::WindowFlags flags = this->windowFlags();
-//    this->setWindowFlags(flags | Qt::CustomizeWindowHint | Qt::WindowStaysOnTopHint | Qt::X11BypassWindowManagerHint);
-//    this->show();
-//    if (this->windowFlags() & Qt::WindowStaysOnTopHint) {
-//        this->setWindowFlags(Qt::WindowStaysOnBottomHint);
-//        ui->fullscreenButton->setIcon(QIcon(":/btn/lock"));
-//    } else if (this->windowFlags() & Qt::WindowStaysOnBottomHint) {
-//        this->setWindowFlags(Qt::WindowStaysOnTopHint);
-//        ui->fullscreenButton->setIcon(QIcon(":/btn/lock_open"));
-//    }
+    Qt::WindowFlags flags = this->windowFlags();
+    if (this->windowFlags() & Qt::WindowStaysOnTopHint) {
+      this->setWindowFlags(flags ^ Qt::WindowStaysOnTopHint ^ Qt::X11BypassWindowManagerHint);
+      ui->lockButton->setIcon(QIcon(":/btn/lock_open"));
+    } else {
+      this->setWindowFlags(flags | Qt::WindowStaysOnTopHint | Qt::X11BypassWindowManagerHint);
+      ui->lockButton->setIcon(QIcon(":/btn/lock"));
+    }
+    qDebug() << this->windowFlags();
+    show();
 }
