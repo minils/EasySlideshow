@@ -55,9 +55,8 @@ private:
     void rotateCurrentImage(int direction);
 
 signals:
-    void dirChecked(bool exists, bool readable);
     void showPath(QString path);
-
+    void displayError(QString msg);
     void showImage(const QPixmap *image);
     void timeout(void);
     void communicatePause(void);

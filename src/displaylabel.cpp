@@ -31,3 +31,15 @@ void DisplayLabel::mouseReleaseEvent(QMouseEvent *event)
         emit imageClicked();
     }
 }
+
+void DisplayLabel::clearImage()
+{
+    _image = QPixmap(1,1);
+    _image.fill(_backgroundColor);
+    resizeEvent(NULL);
+}
+
+void DisplayLabel::setBackgroundColor(QColor backgroundColor)
+{
+    _backgroundColor = backgroundColor;
+}

@@ -36,7 +36,7 @@ void PathScanner::run() {
   }
   if (_images->size() == 0) {
     qDebug() << "[PathScanner] Did not find any images.";
-    return;
+    emit finished(_images);
   }
   qDebug() << "[PathScanner] Found" << _images->size() << "images.";
   if (stop_requested) {

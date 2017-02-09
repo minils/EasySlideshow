@@ -86,8 +86,8 @@ void SettingsDialog::on_buttonBox_accepted()
     emit languageChanged(lang.toString());
 
     this->setVisible(false);
-    delete this;
     emit settingsClosed(true);
+    delete this;
 }
 
 void SettingsDialog::showEvent(QShowEvent *event)

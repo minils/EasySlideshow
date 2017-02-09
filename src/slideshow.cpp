@@ -85,6 +85,10 @@ void SlideShow::scanStopped(void)
 
 void SlideShow::initDone(QStringList *images)
 {
+  if (images->empty()) {
+      emit initStop();
+      emit displayError(tr("Did not find any images"));
+  }
   _images = images;
   nextImage();
   emit initStop();

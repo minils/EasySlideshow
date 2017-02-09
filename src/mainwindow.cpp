@@ -20,9 +20,10 @@ MainWindow::MainWindow(QWidget *parent) :
 
     // set style
     ui->statusLabel->setMinimumWidth(40);
-    ui->statusLabel->setAlignment(Qt::AlignHCenter | Qt::AlignVCenter);
+    ui->statusLabel->setAlignment(Qt::AlignCenter);
 
     ui->photoLabel->setMinimumHeight(36);
+    ui->photoLabel->setBackgroundColor(QColor("#404244"));
     updateImageCursor();
 
     ui->rotateLeftButton->setText("");
@@ -68,12 +69,12 @@ MainWindow::MainWindow(QWidget *parent) :
     _slideshow = new SlideShow(dirs, _settingsManager->readSetting(SETTING_SPEED).toInt(), this);
 
     /* Slideshow */
-    connect(_slideshow, SIGNAL(dirChecked(bool, bool)), this, SLOT(folderStatusChanged(bool, bool)));
     connect(_slideshow, SIGNAL(showImage(const QPixmap*)), this, SLOT(loadImage(const QPixmap*)));
     connect(_slideshow, SIGNAL(communicatePause()), this, SLOT(on_pauseButton_clicked()));
     connect(_slideshow, SIGNAL(showPath(QString)), this, SLOT(displayPath(QString)));
     connect(_slideshow, SIGNAL(initStart()), this, SLOT(startedSlideshowInit()));
     connect(_slideshow, SIGNAL(initStop()), this, SLOT(stoppedSlideshowInit()));
+    connect(_slideshow, SIGNAL(displayError(QString)), this, SLOT(displayError(QString)));
 
     connect(this, SIGNAL(nextImageClicked()), _slideshow, SLOT(nextImageClicked()));
     connect(this, SIGNAL(previousImageClicked()), _slideshow, SLOT(previousImageClicked()));
@@ -98,17 +99,6 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
-// TODO: flag if no fotos were found
-void MainWindow::folderStatusChanged(bool exists, bool readable)
-{
-    if (!exists) {
-        ui->statusLabel->setText("Folder could not be found.");
-    } else if (!readable) {
-        ui->statusLabel->setText("Folder could not be read.");
-    }
-    ui->statusLabel->setAlignment(Qt::AlignHCenter | Qt:: AlignVCenter);
-}
-
 void MainWindow::loadImage(const QPixmap *image)
 {
     ui->photoLabel->setImage(image);
@@ -117,11 +107,15 @@ void MainWindow::loadImage(const QPixmap *image)
 void MainWindow::displayPath(QString path)
 {
   _path = path;
-  ui->statusLabel->setAlignment(Qt::AlignRight | Qt:: AlignVCenter);
   ui->statusLabel->setText(path);
   QFontMetrics metrics(ui->statusLabel->font());
   QString elidedText = metrics.elidedText(path, Qt::ElideLeft, ui->statusLabel->width());
   ui->statusLabel->setText(elidedText);
+  if (elidedText != path) {
+    ui->statusLabel->setAlignment(Qt::AlignVCenter | Qt::AlignRight);
+  } else {
+    ui->statusLabel->setAlignment(Qt::AlignCenter);
+  }
   // TODO: Add this as an option
   //setWindowTitle("EasySlideshow: " + path);
 }
@@ -177,7 +171,7 @@ void MainWindow::settingsClosed(bool accepted)
 
     int duration = _settingsManager->readSetting(SETTING_SPEED).toInt();
     _slideshow->setSpeed(duration);
-    _slideshow->setDirs(dirs);
+    _slideshow->setDirs(dirs);  // calls init if necessary
     updateImageCursor();
 }
 
@@ -243,8 +237,8 @@ void MainWindow::changeLanguage(QString lang)
 void MainWindow::startedSlideshowInit()
 {
     controls(false);
+    ui->statusLabel->setAlignment(Qt::AlignCenter);
     ui->statusLabel->setText(tr("Scanning folders..."));
-    ui->photoLabel->setText(tr("Loading..."));
 }
 
 void MainWindow::stoppedSlideshowInit()
@@ -308,4 +302,10 @@ void MainWindow::lockButtonClicked(void)
   this->setWindowFlags(flags);
   restoreState(backup);
   show();
+}
+
+void MainWindow::displayError(QString msg)
+{
+    ui->photoLabel->clearImage();
+    displayPath(msg);
 }

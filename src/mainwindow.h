@@ -52,7 +52,7 @@ private:
     void controls(bool enable);
 
 public slots:
-    void folderStatusChanged(bool exists, bool readable);
+    void displayError(QString msg);
     void loadImage(const QPixmap *image);
     void displayPath(QString path);
     void on_pauseButton_clicked(void);
