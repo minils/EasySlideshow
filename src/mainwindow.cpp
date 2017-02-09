@@ -126,7 +126,6 @@ void MainWindow::loadImage(const QPixmap *image)
 
 void MainWindow::displayPath(QString path)
 {
-  qDebug() << "Display path: " << path << ", width=" << ui->statusLabel->width();
   _path = path;
   ui->statusLabel->setText(path);
   QFontMetrics metrics(ui->statusLabel->font());
@@ -320,7 +319,6 @@ void MainWindow::lockButtonClicked(void)
     flags |= Qt::WindowStaysOnTopHint;
     ui->lockButton->setIcon(QIcon(":/btn/lock"));
   }
-  qDebug() << this->windowFlags();
   this->setWindowFlags(flags);
   restoreState(backup);
   show();

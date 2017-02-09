@@ -133,9 +133,6 @@ void SlideShow::previousImageClicked(void)
         emit communicatePause();
     }
     --_current;
-
-    qDebug() << "_previous_images.size()=" << _previous_images.size();
-    qDebug() << "_current=" << _current;
     loadImage(_current);
 }
 
