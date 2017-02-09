@@ -13,7 +13,7 @@ void PathScanner::setPaths(QList<QDir> *dirs)
 }
 
 void PathScanner::run() {
-  qDebug() << "[PathScanner] scan started " << currentThreadId();
+  qDebug() << "[PathScanner] Scan started";
   if (_dirs == NULL || _dirs->empty()) {
     return;
   }

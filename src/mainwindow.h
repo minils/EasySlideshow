@@ -33,7 +33,6 @@ private:
     Ui::MainWindow *ui;
 
     QDialog *_settingsDialog;
-    bool _settingsShown;
 
     QDialog *_helpDialog;
     bool _helpShown;

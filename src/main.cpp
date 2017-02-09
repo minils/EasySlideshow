@@ -13,6 +13,11 @@ int main(int argc, char *argv[])
           a.setStyleSheet(styleFile.readAll());
     }
 
+    int id = QFontDatabase::addApplicationFont(":/font/roboto");
+    QString family = QFontDatabase::applicationFontFamilies(id).at(0);
+    QFont roboto12(family, 12);
+    //a.setFont(roboto12);
+
     MainWindow w;
     w.show();
 

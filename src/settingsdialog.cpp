@@ -15,7 +15,7 @@ SettingsDialog::SettingsDialog(QWidget *parent) :
     ui->buttonBox->button(QDialogButtonBox::Ok)->setText(tr("OK"));
     ui->buttonBox->button(QDialogButtonBox::Cancel)->setText(tr("Cancel"));
 
-    connect(ui->addButton, SIGNAL(clicked()), this, SLOT(on_plus_button_clicked()));
+
     connect(ui->plusDuration, &QPushButton::clicked,
             this, [this]() {this->ui->durationSpinBox->setValue(this->ui->durationSpinBox->value()+1);});
     connect(ui->minusDuration, &QPushButton::clicked,
@@ -86,6 +86,7 @@ void SettingsDialog::on_buttonBox_accepted()
     emit languageChanged(lang.toString());
 
     this->setVisible(false);
+    delete this;
     emit settingsClosed(true);
 }
 
@@ -94,7 +95,6 @@ void SettingsDialog::showEvent(QShowEvent *event)
     QStringList dirs = _settingsmanager->readSetting(SETTING_PATHS).toStringList();
 
     // create lineEdits for every path
-    removeOldPaths();
     amountPaths = 0;
     for (int i = 0; i < dirs.size(); i++) {
         addPathEdit(dirs.at(i));
@@ -195,7 +195,7 @@ QPushButton* SettingsDialog::addPathEdit(QString dir)
     browseButton->setMinimumHeight(28);
     hLayout->addWidget(browseButton);
     connect(browseButton, &QPushButton::clicked,
-            lineEdit, [this, lineEdit]() {this->on_browse_button_clicked(lineEdit);});
+            lineEdit, [this, lineEdit]() {this->onBrowseButtonClicked(lineEdit);});
 
     QPushButton *minusButton = new QPushButton("-");
     minusButton->setMinimumHeight(28);
@@ -210,12 +210,7 @@ QPushButton* SettingsDialog::addPathEdit(QString dir)
     return browseButton;
 }
 
-void SettingsDialog::on_plus_button_clicked()
-{
-    addPathEdit("");
-}
-
-void SettingsDialog::on_browse_button_clicked(QLineEdit *lineEdit)
+void SettingsDialog::onBrowseButtonClicked(QLineEdit *lineEdit)
 {
     QString previous_dir = lineEdit->text();
     if (!QDir(previous_dir).exists()) {
@@ -226,21 +221,6 @@ void SettingsDialog::on_browse_button_clicked(QLineEdit *lineEdit)
         lineEdit->setText(dir);
         lineEdit->setToolTip(dir);
         hideError();
-    }
-}
-
-void SettingsDialog::removeOldPaths()
-{
-    QLayoutItem *child;
-    while((child = ui->pathHolderLayout->takeAt(0)) != 0) {
-        QLayoutItem *grandchild;
-        while ((grandchild = ((QLayout* )child)->takeAt(0)) != 0) {
-            if (grandchild->widget()) {
-                grandchild->widget()->setParent(NULL);
-                delete grandchild;
-            }
-        }
-        delete child;
     }
 }
 
@@ -258,4 +238,9 @@ void SettingsDialog::removeLine(QHBoxLayout *layout)
         }
     }
     amountPaths--;
+}
+
+void SettingsDialog::on_addButton_clicked()
+{
+    addPathEdit("");
 }

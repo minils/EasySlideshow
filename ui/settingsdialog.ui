@@ -410,7 +410,7 @@ QRadioButton::indicator::checked {
           <item row="0" column="1">
            <layout class="QVBoxLayout" name="pathHolderLayout">
             <property name="spacing">
-             <number>12</number>
+             <number>6</number>
             </property>
             <property name="sizeConstraint">
              <enum>QLayout::SetMinimumSize</enum>

@@ -188,7 +188,7 @@ QRadioButton::indicator::checked {
         </property>
         <property name="sizeHint" stdset="0">
          <size>
-          <width>10</width>
+          <width>5</width>
           <height>20</height>
          </size>
         </property>
@@ -200,16 +200,10 @@ QRadioButton::indicator::checked {
          <bool>true</bool>
         </property>
         <property name="sizePolicy">
-         <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
+         <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
           <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
+          <verstretch>1</verstretch>
          </sizepolicy>
-        </property>
-        <property name="maximumSize">
-         <size>
-          <width>16777215</width>
-          <height>20</height>
-         </size>
         </property>
         <property name="locale">
          <locale language="English" country="UnitedStates"/>
@@ -232,7 +226,7 @@ QRadioButton::indicator::checked {
         </property>
         <property name="sizeHint" stdset="0">
          <size>
-          <width>10</width>
+          <width>5</width>
           <height>20</height>
          </size>
         </property>

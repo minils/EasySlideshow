@@ -6,16 +6,11 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {    
     ui->setupUi(this);
-    qDebug() << "[MainWindow] Starting... " << QThread::currentThreadId();
+    qDebug() << "[MainWindow] Starting...";
     qApp->installEventFilter(this);
 
     _mouseClickCoordinate[0] = 0;
     _mouseClickCoordinate[1] = 0;
-
-    int id = QFontDatabase::addApplicationFont(":/font/roboto");
-    QString family = QFontDatabase::applicationFontFamilies(id).at(0);
-    QFont roboto12(family, 12);
-    ui->statusLabel->setFont(roboto12);
 
     _settingsManager = new SettingsManager();
 
@@ -25,7 +20,7 @@ MainWindow::MainWindow(QWidget *parent) :
 
     // set style
     ui->statusLabel->setMinimumWidth(40);
-    //ui->statusLabel->setAlignment(Qt::AlignRight);
+    ui->statusLabel->setAlignment(Qt::AlignHCenter | Qt::AlignVCenter);
 
     ui->photoLabel->setMinimumHeight(36);
     updateImageCursor();
@@ -90,12 +85,6 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(ui->rotateRightButton, SIGNAL(clicked()), _slideshow, SLOT(rotateCurrentImageRight()));
     connect(ui->lockButton, SIGNAL(clicked()), this, SLOT(lockButtonClicked()));
 
-    // generate settings dialog
-    _settingsDialog = new SettingsDialog(this);
-    _settingsShown = false;
-    connect(_settingsDialog, SIGNAL(settingsClosed(bool)), this, SLOT(settingsClosed(bool)));
-    connect(_settingsDialog, SIGNAL(languageChanged(QString)), this, SLOT(changeLanguage(QString)));
-
     // generate help dialog
     _helpDialog = new HelpDialog(this);
     _helpShown = false;
@@ -117,6 +106,7 @@ void MainWindow::folderStatusChanged(bool exists, bool readable)
     } else if (!readable) {
         ui->statusLabel->setText("Folder could not be read.");
     }
+    ui->statusLabel->setAlignment(Qt::AlignHCenter | Qt:: AlignVCenter);
 }
 
 void MainWindow::loadImage(const QPixmap *image)
@@ -127,6 +117,7 @@ void MainWindow::loadImage(const QPixmap *image)
 void MainWindow::displayPath(QString path)
 {
   _path = path;
+  ui->statusLabel->setAlignment(Qt::AlignRight | Qt:: AlignVCenter);
   ui->statusLabel->setText(path);
   QFontMetrics metrics(ui->statusLabel->font());
   QString elidedText = metrics.elidedText(path, Qt::ElideLeft, ui->statusLabel->width());
@@ -165,21 +156,16 @@ void MainWindow::on_previousButton_clicked(void)
 
 void MainWindow::on_settingsButton_clicked()
 {
-    if (!_settingsShown) {
-        _settingsDialog->show();
-        _settingsDialog->activateWindow();
-        _settingsDialog->raise();
-        _settingsShown = true;
-    } else {
-        _settingsDialog->activateWindow();
-        _settingsDialog->raise();
-    }
+    _settingsDialog = new SettingsDialog(this);
+    connect(_settingsDialog, SIGNAL(settingsClosed(bool)), this, SLOT(settingsClosed(bool)));
+    connect(_settingsDialog, SIGNAL(languageChanged(QString)), this, SLOT(changeLanguage(QString)));
+    _settingsDialog->show();
+    _settingsDialog->activateWindow();
+    _settingsDialog->raise();
 }
 
 void MainWindow::settingsClosed(bool accepted)
 {
-    _settingsShown = false;
-
     if (!accepted)
         return;
 

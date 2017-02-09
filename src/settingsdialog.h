@@ -34,16 +34,16 @@ private slots:
     void on_buttonBox_accepted();
     void on_SettingsDialog_accepted();
     void on_SettingsDialog_rejected();
-    void on_plus_button_clicked();
-    void on_browse_button_clicked(QLineEdit *lineEdit);
+    void onBrowseButtonClicked(QLineEdit *lineEdit);
     void removeLine(QHBoxLayout *layout);
+
+    void on_addButton_clicked();
 
 private:
     void showError(QString msg);
     void hideError(void);
     void createLanguageMenu(void);
     QPushButton* addPathEdit(QString);
-    void removeOldPaths(void);
 
     Ui::SettingsDialog *ui;
     SettingsManager *_settingsmanager;
