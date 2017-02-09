@@ -212,7 +212,7 @@ QPushButton* SettingsDialog::addPathEdit(QString dir)
 
 void SettingsDialog::on_plus_button_clicked()
 {
-    QPushButton* browseButton = addPathEdit("");
+    addPathEdit("");
 }
 
 void SettingsDialog::on_browse_button_clicked(QLineEdit *lineEdit)
