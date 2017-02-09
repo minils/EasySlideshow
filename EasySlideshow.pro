@@ -48,6 +48,7 @@ TRANSLATIONS += l10n/EasySlideshow_en.ts \
     l10n/EasySlideshow_de.ts
 
 ICON = svg/icon.svg
+win32:RC_ICONS += ico/windows_icon.ico
 
 # extras for versioning
 versionTarget.target = ./version.h

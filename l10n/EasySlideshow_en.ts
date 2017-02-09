@@ -9,7 +9,7 @@
         <translation>Help</translation>
     </message>
     <message>
-        <location filename="../ui/helpdialog.ui" line="69"/>
+        <location filename="../ui/helpdialog.ui" line="87"/>
         <source>&lt;h1&gt;&lt;img src=&quot;:/icon/app&quot; /&gt;     EasySlideshow v%1&lt;/h1&gt;
 &lt;p&gt;
 This is the first version of EasySlideshow.
@@ -47,7 +47,7 @@ Taken from &lt;a href=&quot;http://www.famfamfam.com/lab/icons/flags/&quot; styl
 &lt;h2&gt;Roboto Font&lt;/h2&gt;
 Released under the &lt;a href=&quot;http://www.apache.org/licenses/LICENSE-2.0.txt&quot;  style=&quot;color: #cccccc;&quot;&gt;Apache License 2.0&lt;/a&gt;. Can be found &lt;a href=&quot;https://github.com/google/roboto/&quot; style=&quot;color: #cccccc;&quot;&gt;here&lt;/a&gt;.
 &lt;/p&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <source>&lt;h1&gt;EasySlideshow v%1&lt;/h1&gt;
@@ -102,8 +102,7 @@ Taken from &lt;b&gt;Material Icons&lt;/b&gt; which were released under the &lt;a
         <translation>EasySlideshow</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="147"/>
-        <location filename="../src/mainwindow.cpp" line="276"/>
+        <location filename="../ui/mainwindow.ui" line="212"/>
         <source>Loading...</source>
         <translation>Loading...</translation>
     </message>
@@ -112,14 +111,14 @@ Taken from &lt;b&gt;Material Icons&lt;/b&gt; which were released under the &lt;a
         <translation type="vanished">s</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="259"/>
+        <location filename="../src/mainwindow.cpp" line="224"/>
         <source>Changed language to &lt;b&gt;%1&lt;/b&gt;</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="275"/>
+        <location filename="../src/mainwindow.cpp" line="241"/>
         <source>Scanning folders...</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
 </context>
 <context>
@@ -130,7 +129,7 @@ Taken from &lt;b&gt;Material Icons&lt;/b&gt; which were released under the &lt;a
         <translation>Settings</translation>
     </message>
     <message>
-        <location filename="../ui/settingsdialog.ui" line="148"/>
+        <location filename="../ui/settingsdialog.ui" line="151"/>
         <source>Image path:</source>
         <translation>Image path:</translation>
     </message>
@@ -140,45 +139,45 @@ Taken from &lt;b&gt;Material Icons&lt;/b&gt; which were released under the &lt;a
         <translation>Browse...</translation>
     </message>
     <message>
-        <location filename="../ui/settingsdialog.ui" line="184"/>
-        <location filename="../ui/settingsdialog.ui" line="260"/>
+        <location filename="../ui/settingsdialog.ui" line="187"/>
+        <location filename="../ui/settingsdialog.ui" line="263"/>
         <source>+</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
-        <location filename="../ui/settingsdialog.ui" line="209"/>
+        <location filename="../ui/settingsdialog.ui" line="212"/>
         <source>Duration:</source>
         <translation>Duration:</translation>
     </message>
     <message>
-        <location filename="../ui/settingsdialog.ui" line="273"/>
+        <location filename="../ui/settingsdialog.ui" line="276"/>
         <source>-</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
-        <location filename="../ui/settingsdialog.ui" line="297"/>
+        <location filename="../ui/settingsdialog.ui" line="300"/>
         <source> s</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
-        <location filename="../ui/settingsdialog.ui" line="322"/>
+        <location filename="../ui/settingsdialog.ui" line="325"/>
         <source>Click on Image:</source>
         <translation>Click on Image:</translation>
     </message>
     <message>
-        <location filename="../ui/settingsdialog.ui" line="346"/>
+        <location filename="../ui/settingsdialog.ui" line="355"/>
         <source>open fo&amp;lder</source>
         <translation>open fo&amp;lder</translation>
     </message>
     <message>
-        <location filename="../ui/settingsdialog.ui" line="362"/>
+        <location filename="../ui/settingsdialog.ui" line="371"/>
         <source>&amp;pause</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
-        <location filename="../ui/settingsdialog.ui" line="378"/>
+        <location filename="../ui/settingsdialog.ui" line="387"/>
         <source>&amp;nothing</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <source>pause</source>
@@ -193,12 +192,12 @@ Taken from &lt;b&gt;Material Icons&lt;/b&gt; which were released under the &lt;a
         <translation type="vanished">s</translation>
     </message>
     <message>
-        <location filename="../ui/settingsdialog.ui" line="390"/>
+        <location filename="../ui/settingsdialog.ui" line="399"/>
         <source>Language</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../ui/settingsdialog.ui" line="433"/>
+        <location filename="../ui/settingsdialog.ui" line="442"/>
         <source>ERROR</source>
         <translation>ERROR</translation>
     </message>
@@ -215,17 +214,25 @@ Taken from &lt;b&gt;Material Icons&lt;/b&gt; which were released under the &lt;a
     <message>
         <location filename="../src/settingsdialog.cpp" line="180"/>
         <source>Cannot add more than %1 paths</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
-        <location filename="../src/settingsdialog.cpp" line="224"/>
+        <location filename="../src/settingsdialog.cpp" line="219"/>
         <source>Pick a folder</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
-        <location filename="../src/settingsdialog.cpp" line="250"/>
+        <location filename="../src/settingsdialog.cpp" line="230"/>
         <source>At least one path is needed</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
+    </message>
+</context>
+<context>
+    <name>SlideShow</name>
+    <message>
+        <location filename="../src/slideshow.cpp" line="90"/>
+        <source>Did not find any images</source>
+        <translation></translation>
     </message>
 </context>
 </TS>
