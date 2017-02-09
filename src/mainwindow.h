@@ -64,7 +64,6 @@ public slots:
 
     void startedSlideshowInit(void);
     void stoppedSlideshowInit(void);
-    void fullscreenButtonClicked(void);
     void lockButtonClicked(void);
 
 private slots:

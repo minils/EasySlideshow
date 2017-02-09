@@ -58,26 +58,9 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->settingsButton->setIcon(QIcon(":/btn/settings"));
     ui->settingsButton->setIconSize(QSize(18, 18));
 
-    ui->quitButton->setText("");
-    ui->quitButton->setIcon(QIcon(":/btn/close"));
-    ui->quitButton->setIconSize(QSize(18, 18));
-
-    ui->fullscreenButton->setText("");
-    ui->fullscreenButton->setIcon(QIcon(":/btn/fullscreen"));
-    ui->fullscreenButton->setIconSize(QSize(18, 18));
-
     ui->lockButton->setText("");
     ui->lockButton->setIcon(QIcon(":/btn/lock_open"));
     ui->lockButton->setIconSize(QSize(18, 18));
-
-    ui->iconButton->setText("");
-    ui->iconButton->setIcon(QIcon(":/icon/app"));
-
-    ui->dirStatusLayout->setContentsMargins(QMargins());
-    ui->dirStatusLayout->setSpacing(0);
-    QSizeGrip* sizeGrip = new QSizeGrip(parent);
-    sizeGrip->setSizePolicy(QSizePolicy::Minimum, QSizePolicy::Minimum);
-    ui->dirStatusLayout->addWidget(sizeGrip, 0, Qt::AlignBottom | Qt::AlignRight);
 
     // setup slideshow
     qDebug() << "[MainWindow] Setting up slideshow";
@@ -105,8 +88,6 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(ui->photoLabel, SIGNAL(imageClicked()), _slideshow, SLOT(imageClicked()));
     connect(ui->rotateLeftButton, SIGNAL(clicked()), _slideshow, SLOT(rotateCurrentImageLeft()));
     connect(ui->rotateRightButton, SIGNAL(clicked()), _slideshow, SLOT(rotateCurrentImageRight()));
-    connect(ui->quitButton, SIGNAL(clicked()), this, SLOT(close()));
-    connect(ui->fullscreenButton, SIGNAL(clicked()), this, SLOT(fullscreenButtonClicked()));
     connect(ui->lockButton, SIGNAL(clicked()), this, SLOT(lockButtonClicked()));
 
     // generate settings dialog
@@ -333,36 +314,23 @@ bool MainWindow::eventFilter(QObject *obj, QEvent *event)
             move(mouseEvent->globalX()-_mouseClickCoordinate[0]-ui->statusLabel->x(), mouseEvent->globalY()-_mouseClickCoordinate[1]-ui->statusLabel->y());
         }
     }
-    if (event->type() == QEvent::MouseButtonDblClick
-            && (obj == ui->centralWidget)) {
-        fullscreenButtonClicked();
-    }
 
     return QObject::eventFilter(obj, event);
 }
 
-void MainWindow::fullscreenButtonClicked(void)
-{
-    if (this->windowState() == Qt::WindowMaximized) {
-        this->setWindowState(Qt::WindowNoState);
-        ui->fullscreenButton->setIcon(QIcon(":/btn/fullscreen"));
-    } else if (this->windowState() == Qt::WindowNoState) {
-        this->setWindowState(Qt::WindowMaximized);
-        ui->fullscreenButton->setIcon(QIcon(":/btn/fullscreen_exit"));
-    }
-}
-
-
 void MainWindow::lockButtonClicked(void)
 {
-    Qt::WindowFlags flags = this->windowFlags();
-    if (this->windowFlags() & Qt::WindowStaysOnTopHint) {
-      this->setWindowFlags(flags ^ Qt::WindowStaysOnTopHint ^ Qt::X11BypassWindowManagerHint);
-      ui->lockButton->setIcon(QIcon(":/btn/lock_open"));
-    } else {
-      this->setWindowFlags(flags | Qt::WindowStaysOnTopHint | Qt::X11BypassWindowManagerHint);
-      ui->lockButton->setIcon(QIcon(":/btn/lock"));
-    }
-    qDebug() << this->windowFlags();
-    show();
+  QByteArray backup = saveState();
+  Qt::WindowFlags flags = this->windowFlags();
+  if (this->windowFlags() & Qt::WindowStaysOnTopHint) {
+    flags &= ~Qt::WindowStaysOnTopHint;
+    ui->lockButton->setIcon(QIcon(":/btn/lock_open"));
+  } else {
+    flags |= Qt::WindowStaysOnTopHint;
+    ui->lockButton->setIcon(QIcon(":/btn/lock"));
+  }
+  qDebug() << this->windowFlags();
+  this->setWindowFlags(flags);
+  restoreState(backup);
+  show();
 }
