@@ -5,6 +5,7 @@
 #include <QPixmap>
 #include <QDebug>
 #include <QMouseEvent>
+#include <QMenu>
 
 #include "globals.h"
 
@@ -19,6 +20,8 @@ public:
     void resizeEvent(QResizeEvent *);
     void mouseReleaseEvent(QMouseEvent *event);
     void setBackgroundColor(QColor backgroundColor);
+ protected:
+    void contextMenuEvent(QContextMenuEvent *event) override;
 
 signals:
     void imageClicked(void);

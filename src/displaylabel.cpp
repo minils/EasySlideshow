@@ -43,3 +43,19 @@ void DisplayLabel::setBackgroundColor(QColor backgroundColor)
 {
     _backgroundColor = backgroundColor;
 }
+
+void DisplayLabel::contextMenuEvent(QContextMenuEvent *event)
+{
+  QMenu menu(this);
+  QAction *openFolderAction = new QAction(tr("Open &folder"), this);
+  connect(openFolderAction, &QAction::triggered, this, [this]() {qDebug() << "clicked open folder";});
+  menu.addAction(openFolderAction);
+  QAction *openImageAction = new QAction(tr("Open &image"), this);
+  openImageAction->setStatusTip(tr("Open image in the default viewer"));
+  connect(openImageAction, &QAction::triggered, this, [this]() {qDebug() << "clicked open image";});
+  menu.addAction(openImageAction);
+  QAction *openDetailsAction = new QAction(tr("&Details"), this);
+  connect(openDetailsAction, &QAction::triggered, this, [this]() {qDebug() << "clicked open details";});
+  menu.addAction(openDetailsAction);
+  menu.exec(event->globalPos());
+}
