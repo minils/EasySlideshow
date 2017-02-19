@@ -13,7 +13,9 @@ It uses the provided folder(s) to display random images.
 
 ### Installation
 
-...
+1. Compile from source
+
+2. Run `make install`. This will install the files to /usr/local/easyslideshow
 
 ### Compile from source
 
@@ -27,7 +29,7 @@ cd EasySlideshow
 mkdir build
 cd build
 export CONFIG=release
-qmake ../
+qmake ../EasySlideshow.pro
 make
 ```
 
@@ -45,7 +47,7 @@ git clone https://github.com/minils/EasySlideshow.git
 cd EasySlideshow
 mkdir build
 cd build
-i686-w64-mingw32.static-qmake-qt5 ../
+i686-w64-mingw32.static-qmake-qt5 ../EasySlideshow.pro
 make
 ```
 
