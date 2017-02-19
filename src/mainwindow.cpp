@@ -308,4 +308,5 @@ void MainWindow::displayError(QString msg)
 {
     ui->photoLabel->clearImage();
     displayPath(msg);
+    // TODO: controls should be disabled
 }

@@ -190,7 +190,7 @@ bool SlideShow::paused(void)
 
 void SlideShow::rotateCurrentImage(int direction)
 {
-    if (scanningActive)
+    if (scanningActive || _current == 0)
         return;
     int new_orientation = _images_orientation.take(_current);
     new_orientation = (new_orientation + (90 * direction / abs(direction))) % 360;
