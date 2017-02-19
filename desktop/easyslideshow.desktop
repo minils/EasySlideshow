@@ -1,0 +1,6 @@
+[Desktop Entry]
+Name=EasySlideshow
+Exec=/usr/bin/easyslideshow
+Icon=easyslideshow
+Type=Application
+Categories=Graphics;Utility;

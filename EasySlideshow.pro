@@ -13,7 +13,7 @@ win32 {
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
-TARGET = EasySlideshow
+TARGET = easyslideshow
 TEMPLATE = app
 
 VPATH += . ./src ./ui
@@ -47,7 +47,7 @@ DISTFILES +=
 TRANSLATIONS += l10n/EasySlideshow_en.ts \
     l10n/EasySlideshow_de.ts
 
-ICON = svg/icon.svg
+ICON = svg/easyslideshow.svg
 win32:RC_ICONS += ico/windows_icon.ico
 
 # extras for versioning
@@ -58,9 +58,14 @@ PRE_TARGETDEPS += ./version.h
 QMAKE_EXTRA_TARGETS += versionTarget
 
 # installation
-target.path = /usr/local/easyslideshow
-icon.path = /usr/local/easyslideshow
-icon.files = svg/icon.svg
+target.path = /usr/bin
+
+icon.path = /usr/share/icons/hicolor/scalable/apps
+icon.files = svg/easyslideshow.svg
+
 desktop.path = /usr/share/applications
-desktop.files = easyslideshow.desktop
-INSTALLS += target icon desktop
+desktop.files = desktop/easyslideshow.desktop
+
+INSTALLS += target \
+icon \
+desktop
