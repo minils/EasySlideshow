@@ -12,6 +12,6 @@
     #define SETTING_ON_CLICK_ACTION_NOTHING "nothing"
 #define SETTING_LANGUAGE "language"
 
-#define VERSION "0.3.1"
+#define VERSION "0.3.2"
 
 #endif // GLOBALS_H

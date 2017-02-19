@@ -9,7 +9,7 @@ This is a very easy slideshow based on Qt.
 It uses the provided folder(s) to display random images.
 
 ### Version
-0.3.1
+0.3.2
 
 ### Installation
 
