@@ -59,4 +59,8 @@ QMAKE_EXTRA_TARGETS += versionTarget
 
 # installation
 target.path = /usr/local/easyslideshow
-INSTALLS += target
+icon.path = /usr/local/easyslideshow
+icon.files = svg/icon.svg
+desktop.path = /usr/share/applications
+desktop.files = easyslideshow.desktop
+INSTALLS += target icon desktop
