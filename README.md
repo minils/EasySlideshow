@@ -1,4 +1,4 @@
-# ![logo](https://cdn.rawgit.com/minils/EasySlideshow/master/svg/icon.svg "Logo Title Text 1") EasySlideshow
+# ![logo](https://cdn.rawgit.com/minils/EasySlideshow/master/svg/easyslideshow.svg "Logo Title Text 1") EasySlideshow
 [![build status](https://travis-ci.org/minils/EasySlideshow.svg?branch=master "build status")](https://travis-ci.org/minils/EasySlideshow/builds)
 [![Github All Releases](https://img.shields.io/github/downloads/minils/EasySlideshow/total.svg?maxAge=3600)](https://github.com/minils/EasySlideshow/releases)
 [![Github All Releases](https://img.shields.io/github/release/minils/EasySlideshow.svg?maxAge=3600)](https://github.com/minils/EasySlideshow/releases)
@@ -13,14 +13,22 @@ It uses the provided folder(s) to display random images.
 
 ### Installation
 
-1. Compile from source
+#### Windows
+No installation required. Just use the statically build `.exe` file.
 
-2. Run `make install`. This will install the files to /usr/local/easyslideshow
+#### Linux
+Either:
+- Install the `.deb`-package
+
+Or:
+- Compile from source and run `make install`. This will install the binary to `/usr/easyslideshow` as well as a `.desktop` file and an icon.
 
 ### Compile from source
 
+#### Linux
 To compile from source you need to have the following dependencies installed:
 - Qt5
+- libqt-svg
 - qmake
 
 ```sh
@@ -33,7 +41,8 @@ qmake ../EasySlideshow.pro
 make
 ```
 
-To compile for windows:
+#### Crosscompile for Windows
+Required:
 - mxe
 - qt5
 - qtsvg
@@ -51,17 +60,18 @@ i686-w64-mingw32.static-qmake-qt5 ../EasySlideshow.pro
 make
 ```
 
-### Known Issues
-
-* none
-
 ### Todos
 
- - Fix bugs ...
- - Fav button
- - Increase probability for images with older access time
- - Read EXIF data and rotate if necessary
- - Save size of window after exit and restore it before start
+- [x] Fix bugs
+- [ ] Fav button?
+- [x] Button to rotate images
+- [ ] Increase probability for images with older access time
+- [x] Save size of window after exit and restore it before start
+- [x] Build deb-package
+- [ ] Build rpm-package
+- [x] Build for windows
+- [ ] Translate into more languages
+- [ ] Implement right-click menu
 
 License
 ----
