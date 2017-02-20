@@ -12,6 +12,9 @@
     #define SETTING_ON_CLICK_ACTION_NOTHING "nothing"
 #define SETTING_LANGUAGE "language"
 
+#define SETTING_WINDOW_SIZE "window_size"
+#define SETTING_WINDOW_POSITION "window_position"
+
 #define VERSION "0.3.2"
 
 #endif // GLOBALS_H

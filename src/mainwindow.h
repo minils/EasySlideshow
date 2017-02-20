@@ -78,7 +78,7 @@ signals:
     void previousImageClicked(void);
 
 protected:
-    bool eventFilter(QObject *watched, QEvent *event);
+    bool eventFilter(QObject *watched, QEvent *event);protected:
 };
 
 #endif // MAINWINDOW_H

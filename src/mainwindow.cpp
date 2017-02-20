@@ -13,6 +13,12 @@ MainWindow::MainWindow(QWidget *parent) :
     _mouseClickCoordinate[1] = 0;
 
     _settingsManager = new SettingsManager();
+    
+    QSize windowSize = _settingsManager->readSetting(SETTING_WINDOW_SIZE).toSize();
+    resize(windowSize);
+
+    QPoint windowPosition = _settingsManager->readSetting(SETTING_WINDOW_POSITION).toPoint();
+    move(windowPosition);
 
     // set language
     _currentTranslator = NULL;
@@ -283,6 +289,9 @@ bool MainWindow::eventFilter(QObject *obj, QEvent *event)
                 break;
             }
         }
+    } else if (event->type() == QEvent::Close) {
+      _settingsManager->writeSetting(SETTING_WINDOW_SIZE, QVariant(geometry().size()));
+      _settingsManager->writeSetting(SETTING_WINDOW_POSITION, QVariant(geometry().topLeft()));
     }
 
     return QObject::eventFilter(obj, event);

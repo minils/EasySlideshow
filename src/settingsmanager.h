@@ -7,6 +7,8 @@
 #include <QDebug>
 #include <QDir>
 #include <QStringList>
+#include <QSize>
+#include <QPoint>
 
 #include "globals.h"
 
