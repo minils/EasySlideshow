@@ -83,6 +83,10 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(this, SIGNAL(previousImageClicked()), _slideshow, SLOT(previousImageClicked()));
     connect(this, SIGNAL(pausePressed()), _slideshow, SLOT(pause()));
 
+    /* DisplayLabel */
+    connect(ui->photoLabel, SIGNAL(triggerPause()), this, SLOT(pauseSlideshow()));
+    connect(ui->photoLabel, &DisplayLabel::triggerPlay, this, &MainWindow::on_pauseButton_clicked);
+
     /* Widgets */
     connect(ui->rotateLeftButton, SIGNAL(clicked()), _slideshow, SLOT(rotateCurrentImageLeft()));
     connect(ui->rotateRightButton, SIGNAL(clicked()), _slideshow, SLOT(rotateCurrentImageRight()));
@@ -250,6 +254,14 @@ void MainWindow::controls(bool enable)
     ui->nextButton->setEnabled(enable);
     ui->rotateLeftButton->setEnabled(enable);
     ui->rotateRightButton->setEnabled(enable);
+}
+
+void MainWindow::pauseSlideshow()
+{
+    if (!_slideshow->paused()) {
+        ui->pauseButton->setIcon(QIcon(":/btn/play"));
+        emit pausePressed();
+    }
 }
 
 bool MainWindow::eventFilter(QObject *obj, QEvent *event)

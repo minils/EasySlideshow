@@ -147,7 +147,6 @@ void SlideShow::pause(void)
     if (_pause) {
         timer->stop();
     } else {
-        nextImage();
         timer->start();
     }
 }

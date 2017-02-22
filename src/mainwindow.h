@@ -62,6 +62,7 @@ public slots:
     void startedSlideshowInit(void);
     void stoppedSlideshowInit(void);
     void lockButtonClicked(void);
+    void pauseSlideshow();
 
 private slots:
     void on_nextButton_clicked(void);

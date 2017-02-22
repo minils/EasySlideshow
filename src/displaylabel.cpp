@@ -50,6 +50,7 @@ void DisplayLabel::setBackgroundColor(QColor backgroundColor)
 
 void DisplayLabel::contextMenuEvent(QContextMenuEvent *event)
 {
+  emit triggerPause();
   QMenu menu(this);
   QAction *openFolderAction = new QAction(tr("Open &folder"), this);
   connect(openFolderAction, &QAction::triggered, this, [this]() {this->openFolder(true);});
@@ -61,7 +62,11 @@ void DisplayLabel::contextMenuEvent(QContextMenuEvent *event)
   QAction *openDetailsAction = new QAction(tr("&Details"), this);
   connect(openDetailsAction, &QAction::triggered, this, [this]() {qDebug() << "clicked open details";});
   menu.addAction(openDetailsAction);
-  menu.exec(event->globalPos());
+  QAction *result = menu.exec(event->globalPos());
+  if (result != openDetailsAction) {
+    emit triggerPlay();
+  }
+  emit openDetails(_path);
 }
 
 void DisplayLabel::openFolder(bool ignoreSettings)

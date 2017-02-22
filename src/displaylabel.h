@@ -31,6 +31,10 @@ private:
 
     void openFolder(bool ignoreSettings);
     void openImage(void);
+signals:
+    void triggerPlay();
+    void triggerPause();
+    void openDetails(QString path);
 };
 
 #endif // DISPLAYLABEL_H
