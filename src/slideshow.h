@@ -20,12 +20,13 @@
 
 #include "settingsmanager.h"
 #include "pathscanner.h"
+#include "displaylabel.h"
 
 class SlideShow : public QObject
 {
     Q_OBJECT
 public:
-    explicit SlideShow(QList<QDir> *dirs, unsigned int time, QObject *parent = 0);
+    explicit SlideShow(DisplayLabel *displayLabel, QList<QDir> *dirs, unsigned int time, QObject *parent = 0);
     void setDirs(QList<QDir> *dirs);
     void setSpeed(unsigned int speed);
     bool paused(void);
@@ -41,14 +42,13 @@ private:
 
     bool _pause;
     QTimer *timer;
-    PathScanner *pathScanner;
+    PathScanner *_pathScanner;
+    DisplayLabel *_displayLabel;
 
     QString _current_path;                  // path of the currently displayed image
     unsigned int _current;                  // index of the current image in _previous_images
     QList<unsigned int> _previous_images;   // last shown images
     QHash<unsigned int, int> _images_orientation;
-
-    SettingsManager *_settingsManager;
 
     void loadImage(unsigned int current);
     volatile bool scanningActive;
@@ -57,7 +57,6 @@ private:
 signals:
     void showPath(QString path);
     void displayError(QString msg);
-    void showImage(const QPixmap *image);
     void timeout(void);
     void communicatePause(void);
     void initStart(void);
@@ -67,7 +66,6 @@ signals:
 public slots:
     void nextImage(void);
     void pause(void);
-    void imageClicked(void);
     void init(void);
     void nextImageClicked(void);
     void previousImageClicked(void);

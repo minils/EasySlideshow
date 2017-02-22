@@ -4,12 +4,7 @@ DisplayLabel::DisplayLabel(QWidget *parent) : QLabel(parent)
 {
     this->setMinimumSize(1, 1);
     this->setAlignment(Qt::AlignCenter);
-}
-
-void DisplayLabel::setImage(const QPixmap *image)
-{
-    _image = QPixmap(*image);
-    resizeEvent(NULL);
+    _path = "";
 }
 
 void DisplayLabel::resizeEvent(QResizeEvent*)
@@ -28,7 +23,7 @@ void DisplayLabel::resizeEvent(QResizeEvent*)
 void DisplayLabel::mouseReleaseEvent(QMouseEvent *event)
 {
     if (event->button() == Qt::LeftButton) {
-        emit imageClicked();
+        openFolder(false);
     }
 }
 
@@ -36,6 +31,15 @@ void DisplayLabel::clearImage()
 {
     _image = QPixmap(1,1);
     _image.fill(_backgroundColor);
+    resizeEvent(NULL);
+}
+
+void DisplayLabel::displayImage(QString path, int degree)
+{
+    _path = path;
+    _image = QPixmap(path);
+    if (degree != 0)
+        _image = _image.transformed(QTransform().rotate(degree));
     resizeEvent(NULL);
 }
 
@@ -48,14 +52,30 @@ void DisplayLabel::contextMenuEvent(QContextMenuEvent *event)
 {
   QMenu menu(this);
   QAction *openFolderAction = new QAction(tr("Open &folder"), this);
-  connect(openFolderAction, &QAction::triggered, this, [this]() {qDebug() << "clicked open folder";});
+  connect(openFolderAction, &QAction::triggered, this, [this]() {this->openFolder(true);});
   menu.addAction(openFolderAction);
   QAction *openImageAction = new QAction(tr("Open &image"), this);
   openImageAction->setStatusTip(tr("Open image in the default viewer"));
-  connect(openImageAction, &QAction::triggered, this, [this]() {qDebug() << "clicked open image";});
+  connect(openImageAction, &QAction::triggered, this, [this]() {this->openImage();});
   menu.addAction(openImageAction);
   QAction *openDetailsAction = new QAction(tr("&Details"), this);
   connect(openDetailsAction, &QAction::triggered, this, [this]() {qDebug() << "clicked open details";});
   menu.addAction(openDetailsAction);
   menu.exec(event->globalPos());
 }
+
+void DisplayLabel::openFolder(bool ignoreSettings)
+{
+    QString clickSetting = SettingsManager::readSetting(SETTING_ON_CLICK_ACTION).toString();
+    if (!ignoreSettings && (_path.isEmpty() || clickSetting != SETTING_ON_CLICK_ACTION_OPEN_FOLDER)) {
+        return;
+    }
+    QString path = QDir::toNativeSeparators(QFileInfo(_path).absolutePath());
+    QDesktopServices::openUrl(QUrl::fromLocalFile(path));
+}
+
+void DisplayLabel::openImage()
+{
+    QDesktopServices::openUrl(QUrl::fromLocalFile(_path));
+}
+

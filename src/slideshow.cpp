@@ -6,7 +6,7 @@
  * @param dir Directory with photos
  * @param speed How many seconds between photos
  */
-SlideShow::SlideShow(QList<QDir> *dirs, unsigned int speed, QObject *parent) : QObject(parent)
+SlideShow::SlideShow(DisplayLabel *displayLabel, QList<QDir> *dirs, unsigned int speed, QObject *parent) : QObject(parent)
 {
     _dirs = dirs;
     _speed = speed * 1000;
@@ -14,15 +14,16 @@ SlideShow::SlideShow(QList<QDir> *dirs, unsigned int speed, QObject *parent) : Q
     _current = 0;
     _pause = false;
     _dirs_valid = false;
+    _displayLabel = displayLabel;
     timer = new QTimer(this);
     connect(timer, SIGNAL(timeout()), this, SLOT(nextImage()));
     timer->setInterval(_speed);
     timer->setSingleShot(false); // timer fires continuously
     qsrand(QDateTime::currentDateTime().toTime_t ());
-    pathScanner = new PathScanner();
-    connect(pathScanner, SIGNAL(finished(QStringList*)), this, SLOT(initDone(QStringList*)));
-    connect(this, SIGNAL(stopScan()), pathScanner, SLOT(request_stop()));
-    connect(pathScanner, SIGNAL(stopped()), this, SLOT(scanStopped()));
+    _pathScanner = new PathScanner();
+    connect(_pathScanner, SIGNAL(finished(QStringList*)), this, SLOT(initDone(QStringList*)));
+    connect(this, SIGNAL(stopScan()), _pathScanner, SLOT(request_stop()));
+    connect(_pathScanner, SIGNAL(stopped()), this, SLOT(scanStopped()));
     scanningActive = false;
 }
 
@@ -73,8 +74,8 @@ void SlideShow::init(void)
   timer->stop();
   _previous_images.clear();
 
-  pathScanner->setPaths(_dirs);
-  pathScanner->start();
+  _pathScanner->setPaths(_dirs);
+  _pathScanner->start();
 }
 
 void SlideShow::scanStopped(void)
@@ -151,35 +152,10 @@ void SlideShow::pause(void)
     }
 }
 
-void SlideShow::imageClicked(void) {
-    if (scanningActive)
-        return;
-    QString clickSetting = _settingsManager->readSetting(SETTING_ON_CLICK_ACTION).toString();
-    if (clickSetting == SETTING_ON_CLICK_ACTION_NOTHING) {
-        return;
-    }
-    if (_images->size() == 0) {
-        return;
-    }
-    if (clickSetting == SETTING_ON_CLICK_ACTION_PAUSE) {
-        emit communicatePause();
-        return;
-    }
-    // else SETTING_ON_CLICK_OPEN_FOLDER
-    if (!_pause) {
-        emit communicatePause();
-    }
-    QString path = QDir::toNativeSeparators(QFileInfo(_current_path).absolutePath());
-    QDesktopServices::openUrl(QUrl::fromLocalFile(path));
-}
-
 void SlideShow::loadImage(unsigned int current)
 {
-  // TODO: read EXIF data and rotate if necessary
   _current_path = _images->at(_previous_images.at(current-1));
-  QPixmap pix(_current_path);
-  pix = pix.transformed(QTransform().rotate(_images_orientation[current]));
-  emit showImage(&pix);
+  _displayLabel->displayImage(_current_path, _images_orientation[current]);
   emit showPath(_current_path);
 }
 

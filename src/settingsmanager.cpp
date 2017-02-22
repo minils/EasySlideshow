@@ -1,10 +1,5 @@
 #include "settingsmanager.h"
 
-SettingsManager::SettingsManager(QObject *parent) : QObject(parent)
-{
-
-}
-
 bool SettingsManager::empty(void)
 {
     QSettings settings(ORGANIZATION, APPLICATION);

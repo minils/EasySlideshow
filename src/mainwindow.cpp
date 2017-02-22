@@ -12,17 +12,15 @@ MainWindow::MainWindow(QWidget *parent) :
     _mouseClickCoordinate[0] = 0;
     _mouseClickCoordinate[1] = 0;
 
-    _settingsManager = new SettingsManager();
-    
-    QSize windowSize = _settingsManager->readSetting(SETTING_WINDOW_SIZE).toSize();
+    QSize windowSize = SettingsManager::readSetting(SETTING_WINDOW_SIZE).toSize();
     resize(windowSize);
 
-    QPoint windowPosition = _settingsManager->readSetting(SETTING_WINDOW_POSITION).toPoint();
+    QPoint windowPosition = SettingsManager::readSetting(SETTING_WINDOW_POSITION).toPoint();
     move(windowPosition);
 
     // set language
     _currentTranslator = NULL;
-    changeLanguage(_settingsManager->readSetting(SETTING_LANGUAGE).toString());
+    changeLanguage(SettingsManager::readSetting(SETTING_LANGUAGE).toString());
 
     // set style
     ui->statusLabel->setMinimumWidth(40);
@@ -66,16 +64,15 @@ MainWindow::MainWindow(QWidget *parent) :
 
     // setup slideshow
     qDebug() << "[MainWindow] Setting up slideshow";
-    QStringList dir_list = _settingsManager->readSetting(SETTING_PATHS).toStringList();
+    QStringList dir_list = SettingsManager::readSetting(SETTING_PATHS).toStringList();
     QList<QDir> *dirs = new QList<QDir>();
     foreach (QString dir, dir_list) {
         dirs->append(QDir(dir));
     }
 
-    _slideshow = new SlideShow(dirs, _settingsManager->readSetting(SETTING_SPEED).toInt(), this);
+    _slideshow = new SlideShow(ui->photoLabel, dirs, SettingsManager::readSetting(SETTING_SPEED).toInt(), this);
 
     /* Slideshow */
-    connect(_slideshow, SIGNAL(showImage(const QPixmap*)), this, SLOT(loadImage(const QPixmap*)));
     connect(_slideshow, SIGNAL(communicatePause()), this, SLOT(on_pauseButton_clicked()));
     connect(_slideshow, SIGNAL(showPath(QString)), this, SLOT(displayPath(QString)));
     connect(_slideshow, SIGNAL(initStart()), this, SLOT(startedSlideshowInit()));
@@ -87,7 +84,6 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(this, SIGNAL(pausePressed()), _slideshow, SLOT(pause()));
 
     /* Widgets */
-    connect(ui->photoLabel, SIGNAL(imageClicked()), _slideshow, SLOT(imageClicked()));
     connect(ui->rotateLeftButton, SIGNAL(clicked()), _slideshow, SLOT(rotateCurrentImageLeft()));
     connect(ui->rotateRightButton, SIGNAL(clicked()), _slideshow, SLOT(rotateCurrentImageRight()));
     connect(ui->lockButton, SIGNAL(clicked()), this, SLOT(lockButtonClicked()));
@@ -103,11 +99,6 @@ MainWindow::MainWindow(QWidget *parent) :
 MainWindow::~MainWindow()
 {
     delete ui;
-}
-
-void MainWindow::loadImage(const QPixmap *image)
-{
-    ui->photoLabel->setImage(image);
 }
 
 void MainWindow::displayPath(QString path)
@@ -135,7 +126,6 @@ void MainWindow::on_pauseButton_clicked()
     }
     emit pausePressed();
 }
-
 
 void MainWindow::resizeEvent(QResizeEvent*)
 {
@@ -169,13 +159,13 @@ void MainWindow::settingsClosed(bool accepted)
     if (!accepted)
         return;
 
-    QStringList dir_list = _settingsManager->readSetting(SETTING_PATHS).toStringList();
+    QStringList dir_list = SettingsManager::readSetting(SETTING_PATHS).toStringList();
     QList<QDir> *dirs = new QList<QDir>();
     foreach (QString dir, dir_list) {
         dirs->append(QDir(dir));
     }
 
-    int duration = _settingsManager->readSetting(SETTING_SPEED).toInt();
+    int duration = SettingsManager::readSetting(SETTING_SPEED).toInt();
     _slideshow->setSpeed(duration);
     _slideshow->setDirs(dirs);  // calls init if necessary
     updateImageCursor();
@@ -201,7 +191,7 @@ void MainWindow::helpClosed()
 
 void MainWindow::updateImageCursor(void)
 {
-    if (_settingsManager->readSetting(SETTING_ON_CLICK_ACTION).toString()
+    if (SettingsManager::readSetting(SETTING_ON_CLICK_ACTION).toString()
             == SETTING_ON_CLICK_ACTION_NOTHING) {
         ui->photoLabel->setCursor(Qt::ArrowCursor);
     } else {
@@ -290,8 +280,15 @@ bool MainWindow::eventFilter(QObject *obj, QEvent *event)
             }
         }
     } else if (event->type() == QEvent::Close) {
-      _settingsManager->writeSetting(SETTING_WINDOW_SIZE, QVariant(geometry().size()));
-      _settingsManager->writeSetting(SETTING_WINDOW_POSITION, QVariant(geometry().topLeft()));
+      SettingsManager::writeSetting(SETTING_WINDOW_SIZE, QVariant(geometry().size()));
+      SettingsManager::writeSetting(SETTING_WINDOW_POSITION, QVariant(geometry().topLeft()));
+    } else if (event->type() == QEvent::MouseButtonRelease) {
+        QMouseEvent *mouseEvent = (QMouseEvent*) event;
+        if (mouseEvent->button() == Qt::LeftButton && obj == ui->photoLabel) {
+            if (SettingsManager::readSetting(SETTING_ON_CLICK_ACTION).toString()
+                    != SETTING_ON_CLICK_ACTION_NOTHING)
+                on_pauseButton_clicked();
+        }
     }
 
     return QObject::eventFilter(obj, event);

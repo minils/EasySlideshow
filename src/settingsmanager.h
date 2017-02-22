@@ -16,11 +16,9 @@ class SettingsManager : public QObject
 {
     Q_OBJECT
 public:
-    explicit SettingsManager(QObject *parent = 0);
-
-    void writeSetting(const QString &key, const QVariant &variant);
-    QVariant readSetting(const QString &key);
-    bool empty(void);
+    static void writeSetting(const QString &key, const QVariant &variant);
+    static QVariant readSetting(const QString &key);
+    static bool empty(void);
 
 private:
 

@@ -39,7 +39,6 @@ private:
     QString _path;
 
     SlideShow *_slideshow;
-    SettingsManager *_settingsManager;
     QTranslator *_currentTranslator;
     QString _currentLanguage;
     QPixmap *current_image;
@@ -53,9 +52,7 @@ private:
 
 public slots:
     void displayError(QString msg);
-    void loadImage(const QPixmap *image);
     void displayPath(QString path);
-    void on_pauseButton_clicked(void);
     void updateImageCursor(void);
 
     void settingsClosed(bool accepted);
@@ -71,6 +68,7 @@ private slots:
     void on_previousButton_clicked(void);
     void on_settingsButton_clicked();
     void on_helpButton_clicked();
+    void on_pauseButton_clicked(void);
 
 signals:
     void pausePressed(void);
