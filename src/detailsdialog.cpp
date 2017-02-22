@@ -1,6 +1,11 @@
 #include "detailsdialog.h"
 #include "ui_detailsdialog.h"
 
+#include <libexif/exif-data.h>
+#include <libexif/exif-utils.h>
+#include <libexif/exif-loader.h>
+
+
 DetailsDialog::DetailsDialog(QWidget *parent) :
     QDialog(parent),
     ui(new Ui::DetailsDialog)
@@ -34,4 +39,8 @@ void DetailsDialog::setFile(QString filename)
     ui->resolutionLineEdit->setText(QString::number(reader.size().width()) + "x" + QString::number(reader.size().height()));
     QDateTime creationDate = QFileInfo(filename).created();
     ui->creationLineEdit->setText(creationDate.toString( Qt::SystemLocaleLongDate));
+
+    ExifData *ed;
+    ExifLog *log = NULL;
+    log = exif_log_new();
 }

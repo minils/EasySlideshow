@@ -18,6 +18,8 @@ TEMPLATE = app
 
 VPATH += . ./src ./ui
 
+INCLUDEPATH += ./lib
+
 SOURCES += main.cpp \
         mainwindow.cpp \
     slideshow.cpp \
