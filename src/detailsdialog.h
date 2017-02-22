@@ -6,6 +6,7 @@
 #include <QDir>
 #include <QImageReader>
 #include <QDebug>
+#include <QDateTime>
 
 namespace Ui {
 class DetailsDialog;

@@ -37,7 +37,14 @@ void DisplayLabel::clearImage()
 void DisplayLabel::displayImage(QString path, int degree)
 {
     _path = path;
-    _image = QPixmap(path);
+    QImageReader reader(path);
+    reader.setAutoTransform(true);
+    const QImage newImage = reader.read();
+    if (newImage.isNull()) {
+      clearImage();
+      return;
+    }
+    _image = QPixmap(QPixmap::fromImage(newImage));
     if (degree != 0)
         _image = _image.transformed(QTransform().rotate(degree));
     resizeEvent(NULL);
@@ -50,6 +57,8 @@ void DisplayLabel::setBackgroundColor(QColor backgroundColor)
 
 void DisplayLabel::contextMenuEvent(QContextMenuEvent *event)
 {
+  if (_path.isEmpty())
+      return;
   emit triggerPause();
   QMenu menu(this);
   QAction *openFolderAction = new QAction(tr("Open &folder"), this);

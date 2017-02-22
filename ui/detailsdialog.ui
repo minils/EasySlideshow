@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>403</width>
-    <height>164</height>
+    <width>425</width>
+    <height>207</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -18,6 +18,64 @@
   </property>
   <property name="windowTitle">
    <string>Details</string>
+  </property>
+  <property name="windowIcon">
+   <iconset resource="../resources.qrc">
+    <normaloff>:/icon/app</normaloff>:/icon/app</iconset>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">QWidget {
+    background-color: #404244;
+    color: #cccccc;
+}
+
+QLabel,QPushButton,QRadioButton,QSpinBox,QLineEdit,QComboBox,QComboBox:selected {
+    background-color: #404244;
+    color: #cccccc;
+}
+
+QComboBox
+{
+    background-color: #404244;
+    color: #cccccc;
+    padding: 1px 0px 1px 3px; /* Needed to enable the previously defined colors! */
+}
+
+QSpinBox, QLineEdit {
+    border-image: none;
+    border-style: solid;
+    border-color: #222 #555 #555 #222;
+    border-width: 2px 1px 1px 2px;
+}
+
+QSpinBox::up-button {
+    border-image: none;
+    color: #cccccc;
+}
+
+QSpinBox::down-button {
+    border-image: none;
+    color: #cccccc;
+}
+
+QPushButton:focus, QRadioButton:focus {
+    outline: none;
+}
+
+QRadioButton::indicator {
+    image: none;
+    border-style: solid;
+    border-color: #222 #555 #555 #222;
+    border-width: 2px 1px 1px 2px;
+}
+
+QRadioButton::indicator::checked {
+    image: url(:/radiobtn/checked);
+}
+</string>
+  </property>
+  <property name="locale">
+   <locale language="English" country="UnitedStates"/>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout" stretch="1">
    <property name="sizeConstraint">
@@ -47,6 +105,9 @@
            <verstretch>0</verstretch>
           </sizepolicy>
          </property>
+         <property name="locale">
+          <locale language="English" country="UnitedStates"/>
+         </property>
          <property name="text">
           <string>Filename</string>
          </property>
@@ -59,6 +120,9 @@
            <horstretch>0</horstretch>
            <verstretch>0</verstretch>
           </sizepolicy>
+         </property>
+         <property name="locale">
+          <locale language="English" country="UnitedStates"/>
          </property>
          <property name="text">
           <string>Path</string>
@@ -73,6 +137,9 @@
            <verstretch>0</verstretch>
           </sizepolicy>
          </property>
+         <property name="locale">
+          <locale language="English" country="UnitedStates"/>
+         </property>
          <property name="text">
           <string>Size</string>
          </property>
@@ -86,8 +153,21 @@
            <verstretch>0</verstretch>
           </sizepolicy>
          </property>
+         <property name="locale">
+          <locale language="English" country="UnitedStates"/>
+         </property>
          <property name="text">
           <string>Resolution</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLabel" name="label_5">
+         <property name="locale">
+          <locale language="English" country="UnitedStates"/>
+         </property>
+         <property name="text">
+          <string>Creation Date</string>
          </property>
         </widget>
        </item>
@@ -128,7 +208,7 @@
          <property name="minimumSize">
           <size>
            <width>300</width>
-           <height>0</height>
+           <height>30</height>
           </size>
          </property>
          <property name="maximumSize">
@@ -150,6 +230,12 @@
            <verstretch>0</verstretch>
           </sizepolicy>
          </property>
+         <property name="minimumSize">
+          <size>
+           <width>0</width>
+           <height>30</height>
+          </size>
+         </property>
          <property name="maximumSize">
           <size>
            <width>16777215</width>
@@ -168,6 +254,12 @@
            <horstretch>0</horstretch>
            <verstretch>0</verstretch>
           </sizepolicy>
+         </property>
+         <property name="minimumSize">
+          <size>
+           <width>0</width>
+           <height>30</height>
+          </size>
          </property>
          <property name="maximumSize">
           <size>
@@ -188,11 +280,24 @@
            <verstretch>0</verstretch>
           </sizepolicy>
          </property>
+         <property name="minimumSize">
+          <size>
+           <width>0</width>
+           <height>30</height>
+          </size>
+         </property>
          <property name="maximumSize">
           <size>
            <width>16777215</width>
            <height>30</height>
           </size>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLineEdit" name="creationLineEdit">
+         <property name="readOnly">
+          <bool>true</bool>
          </property>
         </widget>
        </item>
@@ -202,6 +307,8 @@
    </item>
   </layout>
  </widget>
- <resources/>
+ <resources>
+  <include location="../resources.qrc"/>
+ </resources>
  <connections/>
 </ui>

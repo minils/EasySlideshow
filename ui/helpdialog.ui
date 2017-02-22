@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>361</width>
-    <height>112</height>
+    <width>451</width>
+    <height>209</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -16,6 +16,57 @@
   <property name="windowIcon">
    <iconset resource="../resources.qrc">
     <normaloff>:/icon/app</normaloff>:/icon/app</iconset>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">QWidget {
+    background-color: #404244;
+    color: #cccccc;
+}
+
+QLabel,QPushButton,QRadioButton,QSpinBox,QLineEdit,QComboBox,QComboBox:selected {
+    background-color: #404244;
+    color: #cccccc;
+}
+
+QComboBox
+{
+    background-color: #404244;
+    color: #cccccc;
+    padding: 1px 0px 1px 3px; /* Needed to enable the previously defined colors! */
+}
+
+QSpinBox, QLineEdit {
+    border-image: none;
+    border-style: solid;
+    border-color: #222 #555 #555 #222;
+    border-width: 2px 1px 1px 2px;
+}
+
+QSpinBox::up-button {
+    border-image: none;
+    color: #cccccc;
+}
+
+QSpinBox::down-button {
+    border-image: none;
+    color: #cccccc;
+}
+
+QPushButton:focus, QRadioButton:focus {
+    outline: none;
+}
+
+QRadioButton::indicator {
+    image: none;
+    border-style: solid;
+    border-color: #222 #555 #555 #222;
+    border-width: 2px 1px 1px 2px;
+}
+
+QRadioButton::indicator::checked {
+    image: url(:/radiobtn/checked);
+}
+</string>
   </property>
   <layout class="QGridLayout" name="gridLayout">
    <property name="leftMargin">
@@ -70,8 +121,8 @@
           <rect>
            <x>0</x>
            <y>0</y>
-           <width>337</width>
-           <height>1059</height>
+           <width>435</width>
+           <height>1140</height>
           </rect>
          </property>
          <layout class="QGridLayout" name="gridLayout_3">
@@ -84,7 +135,8 @@
              <locale language="English" country="UnitedStates"/>
             </property>
             <property name="text">
-             <string>&lt;h1&gt;&lt;img src=&quot;:/icon/app&quot; /&gt;     EasySlideshow v%1&lt;/h1&gt;
+             <string>&lt;img src=&quot;:/icon/app&quot; /&gt;
+&lt;h1&gt;EasySlideshow v%1&lt;/h1&gt;
 &lt;p&gt;
 This is the first version of EasySlideshow.
 &lt;/p&gt;

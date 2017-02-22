@@ -6,6 +6,7 @@ DetailsDialog::DetailsDialog(QWidget *parent) :
     ui(new Ui::DetailsDialog)
 {
     ui->setupUi(this);
+    qDebug() << ui->pathLineEdit->height();
 }
 
 DetailsDialog::~DetailsDialog()
@@ -31,4 +32,6 @@ void DetailsDialog::setFile(QString filename)
 
     QImageReader reader(filename);
     ui->resolutionLineEdit->setText(QString::number(reader.size().width()) + "x" + QString::number(reader.size().height()));
+    QDateTime creationDate = QFileInfo(filename).created();
+    ui->creationLineEdit->setText(creationDate.toString( Qt::SystemLocaleLongDate));
 }
