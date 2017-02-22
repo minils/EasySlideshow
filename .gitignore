@@ -35,3 +35,5 @@ Makefile*
 
 #version info feature
 version.h
+
+lib
