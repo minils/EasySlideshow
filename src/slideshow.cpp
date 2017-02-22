@@ -122,11 +122,9 @@ void SlideShow::nextImage(void)
 
 void SlideShow::nextImageClicked(void)
 {
-    // TODO: why pause? config?
-    if (!_pause) {
-        emit communicatePause();
-    }
+    timer->stop();
     nextImage();
+    timer->start();
 }
 
 void SlideShow::previousImageClicked(void)

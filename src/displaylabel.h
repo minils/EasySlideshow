@@ -10,6 +10,7 @@
 
 #include "globals.h"
 #include "settingsmanager.h"
+#include "detailsdialog.h"
 
 class DisplayLabel : public QLabel
 {

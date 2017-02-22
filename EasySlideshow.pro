@@ -25,7 +25,8 @@ SOURCES += main.cpp \
     settingsmanager.cpp \
     settingsdialog.cpp \
     helpdialog.cpp \
-    pathscanner.cpp
+    pathscanner.cpp \
+    detailsdialog.cpp
 
 HEADERS  += mainwindow.h \
     slideshow.h \
@@ -34,11 +35,13 @@ HEADERS  += mainwindow.h \
     settingsmanager.h \
     settingsdialog.h \
     helpdialog.h \
-    pathscanner.h
+    pathscanner.h \
+    detailsdialog.h
 
 FORMS    += mainwindow.ui \
     settingsdialog.ui \
-    helpdialog.ui
+    helpdialog.ui \
+    detailsdialog.ui
 
 RESOURCES += resources.qrc
 
