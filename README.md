@@ -71,7 +71,8 @@ make
 - [ ] Build rpm-package
 - [x] Build for windows
 - [ ] Translate into more languages
-- [ ] Implement right-click menu
+- [x] Implement right-click menu
+- [x] Add details view
 
 License
 ----
