@@ -2,6 +2,57 @@
 <!DOCTYPE TS>
 <TS version="2.1" language="en_US">
 <context>
+    <name>DetailsDialog</name>
+    <message>
+        <location filename="../ui/detailsdialog.ui" line="20"/>
+        <source>Details</source>
+        <translation>Details</translation>
+    </message>
+    <message>
+        <location filename="../ui/detailsdialog.ui" line="51"/>
+        <source>Filename</source>
+        <translation>Filename</translation>
+    </message>
+    <message>
+        <location filename="../ui/detailsdialog.ui" line="64"/>
+        <source>Path</source>
+        <translation>Path</translation>
+    </message>
+    <message>
+        <location filename="../ui/detailsdialog.ui" line="77"/>
+        <source>Size</source>
+        <translation>Size</translation>
+    </message>
+    <message>
+        <location filename="../ui/detailsdialog.ui" line="90"/>
+        <source>Resolution</source>
+        <translation>Resolution</translation>
+    </message>
+</context>
+<context>
+    <name>DisplayLabel</name>
+    <message>
+        <location filename="../src/displaylabel.cpp" line="55"/>
+        <source>Open &amp;folder</source>
+        <translation>Open &amp;folder</translation>
+    </message>
+    <message>
+        <location filename="../src/displaylabel.cpp" line="58"/>
+        <source>Open &amp;image</source>
+        <translation>Open &amp;image</translation>
+    </message>
+    <message>
+        <location filename="../src/displaylabel.cpp" line="59"/>
+        <source>Open image in the default viewer</source>
+        <translation>Open image in the default viewer</translation>
+    </message>
+    <message>
+        <location filename="../src/displaylabel.cpp" line="62"/>
+        <source>&amp;Details</source>
+        <translation>&amp;Details</translation>
+    </message>
+</context>
+<context>
     <name>HelpDialog</name>
     <message>
         <location filename="../ui/helpdialog.ui" line="14"/>
@@ -230,7 +281,7 @@ Taken from &lt;b&gt;Material Icons&lt;/b&gt; which were released under the &lt;a
 <context>
     <name>SlideShow</name>
     <message>
-        <location filename="../src/slideshow.cpp" line="90"/>
+        <location filename="../src/slideshow.cpp" line="91"/>
         <source>Did not find any images</source>
         <translation></translation>
     </message>
