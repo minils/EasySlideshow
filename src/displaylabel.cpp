@@ -72,14 +72,15 @@ void DisplayLabel::contextMenuEvent(QContextMenuEvent *event)
   connect(openDetailsAction, &QAction::triggered, this, [this]() {qDebug() << "clicked open details";});
   menu.addAction(openDetailsAction);
   QAction *result = menu.exec(event->globalPos());
-  if (result != openDetailsAction) {
+  if (!result) {
     emit triggerPlay();
     return;
+  } else if (result == openDetailsAction) {
+    emit openDetails(_path);
+    DetailsDialog *detailsDialog = new DetailsDialog();
+    detailsDialog->show();
+    detailsDialog->setFile(_path);
   }
-  emit openDetails(_path);
-  DetailsDialog *detailsDialog = new DetailsDialog();
-  detailsDialog->show();
-  detailsDialog->setFile(_path);
 }
 
 void DisplayLabel::openFolder(bool ignoreSettings)
