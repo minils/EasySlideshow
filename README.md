@@ -8,6 +8,9 @@ This is a very easy slideshow based on Qt.
 
 It uses the provided folder(s) to display random images.
 
+![Screenshot of main window](https://raw.githubusercontent.com/minils/EasySlideshow/master/screenshot1.png)
+![Screenshot of settings](https://raw.githubusercontent.com/minils/EasySlideshow/master/screenshot2.png)
+
 ### Installation
 
 #### Windows
