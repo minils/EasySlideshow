@@ -48,7 +48,9 @@ RESOURCES += resources.qrc
 DISTFILES +=
 
 TRANSLATIONS += l10n/EasySlideshow_en.ts \
-    l10n/EasySlideshow_de.ts
+    l10n/EasySlideshow_de.ts \
+    l10n/EasySlideshow_es.ts \
+    l10n/EasySlideshow_ru.ts
 
 ICON = svg/easyslideshow.svg
 win32:RC_ICONS += ico/windows_icon.ico

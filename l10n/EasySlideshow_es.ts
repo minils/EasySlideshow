@@ -1,37 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.1" language="en_US">
+<TS version="2.1" language="es_ES">
 <context>
     <name>DetailsDialog</name>
     <message>
         <location filename="../ui/detailsdialog.ui" line="20"/>
         <source>Details</source>
-        <translation>Details</translation>
+        <translation type="unfinished">Detalles</translation>
     </message>
     <message>
         <location filename="../ui/detailsdialog.ui" line="61"/>
         <source>Filename</source>
-        <translation>Filename</translation>
+        <translation type="unfinished">Nombre de fichero</translation>
     </message>
     <message>
         <location filename="../ui/detailsdialog.ui" line="77"/>
         <source>Path</source>
-        <translation>Path</translation>
+        <translation type="unfinished">Ruta</translation>
     </message>
     <message>
         <location filename="../ui/detailsdialog.ui" line="93"/>
         <source>Size</source>
-        <translation>Size</translation>
+        <translation type="unfinished">Tamaño</translation>
     </message>
     <message>
         <location filename="../ui/detailsdialog.ui" line="109"/>
         <source>Resolution</source>
-        <translation>Resolution</translation>
+        <translation type="unfinished">Definición</translation>
     </message>
     <message>
         <location filename="../ui/detailsdialog.ui" line="119"/>
         <source>Creation Date</source>
-        <translation></translation>
+        <translation type="unfinished">Fecha de creación</translation>
     </message>
 </context>
 <context>
@@ -39,22 +39,22 @@
     <message>
         <location filename="../src/displaylabel.cpp" line="64"/>
         <source>Open &amp;folder</source>
-        <translation>Open &amp;folder</translation>
+        <translation type="unfinished">&amp;Abre carpeta</translation>
     </message>
     <message>
         <location filename="../src/displaylabel.cpp" line="67"/>
         <source>Open &amp;image</source>
-        <translation>Open &amp;image</translation>
+        <translation type="unfinished">Abre &amp;imagen</translation>
     </message>
     <message>
         <location filename="../src/displaylabel.cpp" line="68"/>
         <source>Open image in the default viewer</source>
-        <translation>Open image in the default viewer</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../src/displaylabel.cpp" line="71"/>
         <source>&amp;Details</source>
-        <translation>&amp;Details</translation>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -62,7 +62,7 @@
     <message>
         <location filename="../ui/helpdialog.ui" line="14"/>
         <source>Help</source>
-        <translation>Help</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../ui/helpdialog.ui" line="87"/>
@@ -104,51 +104,7 @@ Taken from &lt;a href=&quot;http://www.famfamfam.com/lab/icons/flags/&quot; styl
 &lt;h2&gt;Roboto Font&lt;/h2&gt;
 Released under the &lt;a href=&quot;http://www.apache.org/licenses/LICENSE-2.0.txt&quot;  style=&quot;color: #000;&quot;&gt;Apache License 2.0&lt;/a&gt;. Can be found &lt;a href=&quot;https://github.com/google/roboto/&quot; style=&quot;color: #000;&quot;&gt;here&lt;/a&gt;.
 &lt;/p&gt;</source>
-        <translation></translation>
-    </message>
-    <message>
-        <source>&lt;h1&gt;EasySlideshow v%1&lt;/h1&gt;
-&lt;p&gt;
-This is the first version of EasySlideshow.
-&lt;/p&gt;
-&lt;h2&gt;Help&lt;/h2&gt;
-&lt;p&gt;
-EasySlideshow takes a folder and shows the images inside of it in a randomized order. A &lt;b&gt;click&lt;/b&gt; on the image takes you to the subfolder where the image is located. Previous images can be accessed via the &lt;b&gt;[&amp;lt;]&lt;/b&gt; button.
-The next image is shown in the set speed or by pressing the &lt;b&gt;[&amp;gt;]&lt;/b&gt; button.
-Image location and display speed can be set in the settings dialog.
-To pause the slideshow just press the &lt;b&gt;[II]&lt;/b&gt; button.
-&lt;/p&gt;
-&lt;h2&gt;Source Code&lt;/h2&gt;
-&lt;p&gt;This software is open source which can be found &lt;a href=&quot;https://github.com/minils/EasySlideshow&quot; style=&quot;color: #cccccc;&quot;&gt;here&lt;/a&gt; on GitHub.&lt;/p&gt;
-&lt;h2&gt;License&lt;/h2&gt;
-&lt;p&gt;This software is released under the &lt;b&gt;GNU General Public License 3.0&lt;/b&gt; which can be found &lt;a href=&quot;http://www.gnu.org/licenses/gpl-3.0.txt&quot; style=&quot;color: #cccccc;&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
-&lt;h2&gt;Author&lt;/h2&gt;
-&lt;p&gt;Nils Schwabe &lt;a href=&quot;https://minils.de&quot; style=&quot;color: #cccccc;&quot;&gt;www.minils.de&lt;/a&gt;&lt;/p&gt;
-&lt;h2&gt;Icons&lt;/h2&gt;
-&lt;p&gt;
-Taken from &lt;b&gt;Material Icons&lt;/b&gt; which were released under the &lt;a href=&quot;https://creativecommons.org/licenses/by/4.0/&quot; style=&quot;color: #cccccc;&quot;&gt;CC BY 4.0&lt;/a&gt; and can be found &lt;a href=&quot;https://design.google.com/icons/&quot; style=&quot;color: #cccccc;&quot;&gt;here&lt;/&gt;.
-&lt;/p&gt;</source>
-        <translation type="vanished">&lt;h1&gt;EasySlideshow v%1&lt;/h1&gt;
-&lt;p&gt;
-This is the first version of EasySlideshow.
-&lt;/p&gt;
-&lt;h2&gt;Help&lt;/h2&gt;
-&lt;p&gt;
-EasySlideshow takes a folder and shows the images inside of it in a randomized order. A &lt;b&gt;click&lt;/b&gt; on the image takes you to the subfolder where the image is located. Previous images can be accessed via the &lt;b&gt;[&amp;lt;]&lt;/b&gt; button.
-The next image is shown in the set speed or by pressing the &lt;b&gt;[&amp;gt;]&lt;/b&gt; button.
-Image location and display speed can be set in the settings dialog.
-To pause the slideshow just press the &lt;b&gt;[II]&lt;/b&gt; button.
-&lt;/p&gt;
-&lt;h2&gt;Source Code&lt;/h2&gt;
-&lt;p&gt;This software is open source which can be found &lt;a href=&quot;https://github.com/minils/EasySlideshow&quot; style=&quot;color: #cccccc;&quot;&gt;here&lt;/a&gt; on GitHub.&lt;/p&gt;
-&lt;h2&gt;License&lt;/h2&gt;
-&lt;p&gt;This software is released under the &lt;b&gt;GNU General Public License 3.0&lt;/b&gt; which can be found &lt;a href=&quot;http://www.gnu.org/licenses/gpl-3.0.txt&quot; style=&quot;color: #cccccc;&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
-&lt;h2&gt;Author&lt;/h2&gt;
-&lt;p&gt;Nils Schwabe &lt;a href=&quot;https://minils.de&quot; style=&quot;color: #cccccc;&quot;&gt;www.minils.de&lt;/a&gt;&lt;/p&gt;
-&lt;h2&gt;Icons&lt;/h2&gt;
-&lt;p&gt;
-Taken from &lt;b&gt;Material Icons&lt;/b&gt; which were released under the &lt;a href=&quot;https://creativecommons.org/licenses/by/4.0/&quot; style=&quot;color: #cccccc;&quot;&gt;CC BY 4.0&lt;/a&gt; and can be found &lt;a href=&quot;https://design.google.com/icons/&quot; style=&quot;color: #cccccc;&quot;&gt;here&lt;/&gt;.
-&lt;/p&gt;</translation>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -156,26 +112,22 @@ Taken from &lt;b&gt;Material Icons&lt;/b&gt; which were released under the &lt;a
     <message>
         <location filename="../ui/mainwindow.ui" line="14"/>
         <source>EasySlideshow</source>
-        <translation>EasySlideshow</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="174"/>
         <source>Loading...</source>
-        <translation>Loading...</translation>
-    </message>
-    <message>
-        <source>s</source>
-        <translation type="vanished">s</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../src/mainwindow.cpp" line="224"/>
         <source>Changed language to &lt;b&gt;%1&lt;/b&gt;</source>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../src/mainwindow.cpp" line="241"/>
         <source>Scanning folders...</source>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -183,99 +135,87 @@ Taken from &lt;b&gt;Material Icons&lt;/b&gt; which were released under the &lt;a
     <message>
         <location filename="../ui/settingsdialog.ui" line="26"/>
         <source>Settings</source>
-        <translation>Settings</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../ui/settingsdialog.ui" line="100"/>
         <source>Image path:</source>
-        <translation>Image path:</translation>
-    </message>
-    <message>
-        <location filename="../src/settingsdialog.cpp" line="187"/>
-        <source>Browse...</source>
-        <translation>Browse...</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../ui/settingsdialog.ui" line="136"/>
         <source>+</source>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../ui/settingsdialog.ui" line="161"/>
         <source>Duration:</source>
-        <translation>Duration:</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../ui/settingsdialog.ui" line="216"/>
         <source> s</source>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../ui/settingsdialog.ui" line="241"/>
         <source>Click on Image:</source>
-        <translation>Click on Image:</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../ui/settingsdialog.ui" line="271"/>
         <source>open fo&amp;lder</source>
-        <translation>open fo&amp;lder</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../ui/settingsdialog.ui" line="287"/>
         <source>&amp;pause</source>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../ui/settingsdialog.ui" line="303"/>
         <source>&amp;nothing</source>
-        <translation></translation>
-    </message>
-    <message>
-        <source>pause</source>
-        <translation type="vanished">pause</translation>
-    </message>
-    <message>
-        <source>nothing</source>
-        <translation type="vanished">nothing</translation>
-    </message>
-    <message>
-        <source>s</source>
-        <translation type="vanished">s</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../ui/settingsdialog.ui" line="315"/>
         <source>Language</source>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../ui/settingsdialog.ui" line="358"/>
         <source>ERROR</source>
-        <translation>ERROR</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../src/settingsdialog.cpp" line="15"/>
         <source>OK</source>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../src/settingsdialog.cpp" line="16"/>
         <source>Cancel</source>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../src/settingsdialog.cpp" line="173"/>
         <source>Cannot add more than %1 paths</source>
-        <translation></translation>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/settingsdialog.cpp" line="187"/>
+        <source>Browse...</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../src/settingsdialog.cpp" line="212"/>
         <source>Pick a folder</source>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../src/settingsdialog.cpp" line="223"/>
         <source>At least one path is needed</source>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -283,7 +223,7 @@ Taken from &lt;b&gt;Material Icons&lt;/b&gt; which were released under the &lt;a
     <message>
         <location filename="../src/slideshow.cpp" line="91"/>
         <source>Did not find any images</source>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 </TS>
