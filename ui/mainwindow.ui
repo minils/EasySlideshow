@@ -17,63 +17,15 @@
    <iconset resource="../resources.qrc">
     <normaloff>:/icon/app</normaloff>:/icon/app</iconset>
   </property>
-  <property name="styleSheet">
-   <string notr="true">QWidget {
-    background-color: #404244;
-    color: #cccccc;
-}
-
-QLabel,QPushButton,QRadioButton,QSpinBox,QLineEdit,QComboBox,QComboBox:selected {
-    background-color: #404244;
-    color: #cccccc;
-}
-
-QComboBox
-{
-    background-color: #404244;
-    color: #cccccc;
-    padding: 1px 0px 1px 3px; /* Needed to enable the previously defined colors! */
-}
-
-QSpinBox, QLineEdit {
-    border-image: none;
-    border-style: solid;
-    border-color: #222 #555 #555 #222;
-    border-width: 2px 1px 1px 2px;
-}
-
-QSpinBox::up-button {
-    border-image: none;
-    color: #cccccc;
-}
-
-QSpinBox::down-button {
-    border-image: none;
-    color: #cccccc;
-}
-
-QPushButton:focus, QRadioButton:focus {
-    outline: none;
-}
-
-QRadioButton::indicator {
-    image: none;
-    border-style: solid;
-    border-color: #222 #555 #555 #222;
-    border-width: 2px 1px 1px 2px;
-}
-
-QRadioButton::indicator::checked {
-    image: url(:/radiobtn/checked);
-}
-</string>
-  </property>
   <widget class="QWidget" name="centralWidget">
    <property name="sizePolicy">
     <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
      <horstretch>0</horstretch>
      <verstretch>0</verstretch>
     </sizepolicy>
+   </property>
+   <property name="styleSheet">
+    <string notr="true"/>
    </property>
    <layout class="QVBoxLayout" name="verticalLayout" stretch="0,1,0">
     <property name="spacing">
@@ -111,6 +63,16 @@ QRadioButton::indicator::checked {
         <property name="cursor">
          <cursorShape>PointingHandCursor</cursorShape>
         </property>
+        <property name="autoFillBackground">
+         <bool>false</bool>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">#photoLabel {
+    background-color: #404244;
+    color: #cccccc;
+}
+</string>
+        </property>
         <property name="text">
          <string/>
         </property>
@@ -119,7 +81,7 @@ QRadioButton::indicator::checked {
      </layout>
     </item>
     <item>
-     <layout class="QHBoxLayout" name="dirStatusLayout" stretch="0,0,0,1,0,0,0,0,0,0,0,0">
+     <layout class="QHBoxLayout" name="dirStatusLayout" stretch="0,0,0,1,0,0,0,0,0,0,0,0,0">
       <property name="spacing">
        <number>0</number>
       </property>
@@ -127,13 +89,13 @@ QRadioButton::indicator::checked {
        <enum>QLayout::SetMinimumSize</enum>
       </property>
       <property name="leftMargin">
-       <number>0</number>
+       <number>2</number>
       </property>
       <property name="topMargin">
-       <number>0</number>
+       <number>2</number>
       </property>
       <property name="rightMargin">
-       <number>0</number>
+       <number>2</number>
       </property>
       <property name="bottomMargin">
        <number>2</number>
@@ -142,8 +104,8 @@ QRadioButton::indicator::checked {
        <widget class="QPushButton" name="rotateLeftButton">
         <property name="maximumSize">
          <size>
-          <width>24</width>
-          <height>24</height>
+          <width>32</width>
+          <height>32</height>
          </size>
         </property>
         <property name="focusPolicy">
@@ -154,7 +116,7 @@ QRadioButton::indicator::checked {
         </property>
         <property name="icon">
          <iconset resource="../resources.qrc">
-          <normaloff>:/btn/rotate_left</normaloff>:/btn/rotate_left</iconset>
+          <normaloff>:/btn/rotate_left.svg</normaloff>:/btn/rotate_left.svg</iconset>
         </property>
        </widget>
       </item>
@@ -162,8 +124,8 @@ QRadioButton::indicator::checked {
        <widget class="QPushButton" name="rotateRightButton">
         <property name="maximumSize">
          <size>
-          <width>24</width>
-          <height>24</height>
+          <width>32</width>
+          <height>32</height>
          </size>
         </property>
         <property name="focusPolicy">
@@ -174,7 +136,7 @@ QRadioButton::indicator::checked {
         </property>
         <property name="icon">
          <iconset resource="../resources.qrc">
-          <normaloff>:/btn/rotate_right</normaloff>:/btn/rotate_right</iconset>
+          <normaloff>:/btn/rotate_right.svg</normaloff>:/btn/rotate_right.svg</iconset>
         </property>
        </widget>
       </item>
@@ -239,8 +201,8 @@ QRadioButton::indicator::checked {
        <widget class="QPushButton" name="previousButton">
         <property name="maximumSize">
          <size>
-          <width>24</width>
-          <height>24</height>
+          <width>32</width>
+          <height>32</height>
          </size>
         </property>
         <property name="focusPolicy">
@@ -251,7 +213,7 @@ QRadioButton::indicator::checked {
         </property>
         <property name="icon">
          <iconset resource="../resources.qrc">
-          <normaloff>:/btn/previous</normaloff>:/btn/previous</iconset>
+          <normaloff>:/btn/skip_previous.svg</normaloff>:/btn/skip_previous.svg</iconset>
         </property>
        </widget>
       </item>
@@ -259,8 +221,8 @@ QRadioButton::indicator::checked {
        <widget class="QPushButton" name="pauseButton">
         <property name="maximumSize">
          <size>
-          <width>24</width>
-          <height>24</height>
+          <width>32</width>
+          <height>32</height>
          </size>
         </property>
         <property name="focusPolicy">
@@ -271,7 +233,7 @@ QRadioButton::indicator::checked {
         </property>
         <property name="icon">
          <iconset resource="../resources.qrc">
-          <normaloff>:/btn/play</normaloff>:/btn/play</iconset>
+          <normaloff>:/btn/play.svg</normaloff>:/btn/play.svg</iconset>
         </property>
        </widget>
       </item>
@@ -279,8 +241,8 @@ QRadioButton::indicator::checked {
        <widget class="QPushButton" name="nextButton">
         <property name="maximumSize">
          <size>
-          <width>24</width>
-          <height>24</height>
+          <width>32</width>
+          <height>32</height>
          </size>
         </property>
         <property name="focusPolicy">
@@ -291,16 +253,32 @@ QRadioButton::indicator::checked {
         </property>
         <property name="icon">
          <iconset resource="../resources.qrc">
-          <normaloff>:/btn/next</normaloff>:/btn/next</iconset>
+          <normaloff>:/btn/skip_next.svg</normaloff>:/btn/skip_next.svg</iconset>
         </property>
        </widget>
+      </item>
+      <item>
+       <spacer name="horizontalSpacer_3">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="sizeType">
+         <enum>QSizePolicy::Fixed</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>15</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
       </item>
       <item>
        <widget class="QPushButton" name="lockButton">
         <property name="maximumSize">
          <size>
-          <width>24</width>
-          <height>24</height>
+          <width>32</width>
+          <height>32</height>
          </size>
         </property>
         <property name="focusPolicy">
@@ -311,7 +289,7 @@ QRadioButton::indicator::checked {
         </property>
         <property name="icon">
          <iconset resource="../resources.qrc">
-          <normaloff>:/btn/lock</normaloff>:/btn/lock</iconset>
+          <normaloff>:/btn/lock.svg</normaloff>:/btn/lock.svg</iconset>
         </property>
        </widget>
       </item>
@@ -319,8 +297,8 @@ QRadioButton::indicator::checked {
        <widget class="QPushButton" name="helpButton">
         <property name="maximumSize">
          <size>
-          <width>24</width>
-          <height>24</height>
+          <width>32</width>
+          <height>32</height>
          </size>
         </property>
         <property name="focusPolicy">
@@ -331,7 +309,7 @@ QRadioButton::indicator::checked {
         </property>
         <property name="icon">
          <iconset resource="../resources.qrc">
-          <normaloff>:/btn/info</normaloff>:/btn/info</iconset>
+          <normaloff>:/btn/info.svg</normaloff>:/btn/info.svg</iconset>
         </property>
        </widget>
       </item>
@@ -339,8 +317,8 @@ QRadioButton::indicator::checked {
        <widget class="QPushButton" name="settingsButton">
         <property name="maximumSize">
          <size>
-          <width>24</width>
-          <height>24</height>
+          <width>32</width>
+          <height>32</height>
          </size>
         </property>
         <property name="focusPolicy">
@@ -351,7 +329,7 @@ QRadioButton::indicator::checked {
         </property>
         <property name="icon">
          <iconset resource="../resources.qrc">
-          <normaloff>:/btn/settings</normaloff>:/btn/settings</iconset>
+          <normaloff>:/btn/settings.svg</normaloff>:/btn/settings.svg</iconset>
         </property>
        </widget>
       </item>

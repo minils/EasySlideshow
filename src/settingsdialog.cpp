@@ -15,13 +15,6 @@ SettingsDialog::SettingsDialog(QWidget *parent) :
     ui->buttonBox->button(QDialogButtonBox::Ok)->setText(tr("OK"));
     ui->buttonBox->button(QDialogButtonBox::Cancel)->setText(tr("Cancel"));
 
-
-    connect(ui->plusDuration, &QPushButton::clicked,
-            this, [this]() {this->ui->durationSpinBox->setValue(this->ui->durationSpinBox->value()+1);});
-    connect(ui->minusDuration, &QPushButton::clicked,
-            this, [this]() {this->ui->durationSpinBox->setValue(this->ui->durationSpinBox->value()-1);});
-
-
     createLanguageMenu();
 }
 

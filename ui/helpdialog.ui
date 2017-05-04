@@ -17,57 +17,6 @@
    <iconset resource="../resources.qrc">
     <normaloff>:/icon/app</normaloff>:/icon/app</iconset>
   </property>
-  <property name="styleSheet">
-   <string notr="true">QWidget {
-    background-color: #404244;
-    color: #cccccc;
-}
-
-QLabel,QPushButton,QRadioButton,QSpinBox,QLineEdit,QComboBox,QComboBox:selected {
-    background-color: #404244;
-    color: #cccccc;
-}
-
-QComboBox
-{
-    background-color: #404244;
-    color: #cccccc;
-    padding: 1px 0px 1px 3px; /* Needed to enable the previously defined colors! */
-}
-
-QSpinBox, QLineEdit {
-    border-image: none;
-    border-style: solid;
-    border-color: #222 #555 #555 #222;
-    border-width: 2px 1px 1px 2px;
-}
-
-QSpinBox::up-button {
-    border-image: none;
-    color: #cccccc;
-}
-
-QSpinBox::down-button {
-    border-image: none;
-    color: #cccccc;
-}
-
-QPushButton:focus, QRadioButton:focus {
-    outline: none;
-}
-
-QRadioButton::indicator {
-    image: none;
-    border-style: solid;
-    border-color: #222 #555 #555 #222;
-    border-width: 2px 1px 1px 2px;
-}
-
-QRadioButton::indicator::checked {
-    image: url(:/radiobtn/checked);
-}
-</string>
-  </property>
   <layout class="QGridLayout" name="gridLayout">
    <property name="leftMargin">
     <number>0</number>
@@ -121,8 +70,8 @@ QRadioButton::indicator::checked {
           <rect>
            <x>0</x>
            <y>0</y>
-           <width>435</width>
-           <height>1140</height>
+           <width>433</width>
+           <height>1185</height>
           </rect>
          </property>
          <layout class="QGridLayout" name="gridLayout_3">
@@ -157,21 +106,21 @@ The following shortcuts exist:
 &lt;li&gt;[R] Rotate image right&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h2&gt;Source Code&lt;/h2&gt;
-&lt;p&gt;This software is open source which can be found &lt;a href=&quot;https://github.com/minils/EasySlideshow&quot; style=&quot;color: #cccccc;&quot;&gt;here&lt;/a&gt; on GitHub.&lt;/p&gt;
+&lt;p&gt;This software is open source which can be found &lt;a href=&quot;https://github.com/minils/EasySlideshow&quot; style=&quot;color: #000;&quot;&gt;here&lt;/a&gt; on GitHub.&lt;/p&gt;
 &lt;p&gt;Built from git commit &lt;b&gt;%2&lt;/b&gt;.&lt;p&gt;
 &lt;h2&gt;License&lt;/h2&gt;
-&lt;p&gt;This software is released under the &lt;b&gt;GNU General Public License 3.0&lt;/b&gt; which can be found &lt;a href=&quot;http://www.gnu.org/licenses/gpl-3.0.txt&quot; style=&quot;color: #cccccc;&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;This software is released under the &lt;b&gt;GNU General Public License 3.0&lt;/b&gt; which can be found &lt;a href=&quot;http://www.gnu.org/licenses/gpl-3.0.txt&quot; style=&quot;color: #000;&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
 &lt;h2&gt;Author&lt;/h2&gt;
-&lt;p&gt;Nils Schwabe &lt;a href=&quot;https://minils.de&quot; style=&quot;color: #cccccc;&quot;&gt;www.minils.de&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Nils Schwabe &lt;a href=&quot;https://minils.de&quot; style=&quot;color: #000;&quot;&gt;www.minils.de&lt;/a&gt;&lt;/p&gt;
 &lt;h2&gt;Icons&lt;/h2&gt;
 &lt;p&gt;
-Taken from &lt;b&gt;Material Icons&lt;/b&gt; which were released under the &lt;a href=&quot;https://creativecommons.org/licenses/by/4.0/&quot; style=&quot;color: #cccccc;&quot;&gt;CC BY 4.0&lt;/a&gt; and can be found &lt;a href=&quot;https://design.google.com/icons/&quot; style=&quot;color: #cccccc;&quot;&gt;here&lt;/a&gt;.
+Taken from &lt;b&gt;Material Icons&lt;/b&gt; which were released under the &lt;a href=&quot;https://creativecommons.org/licenses/by/4.0/&quot; style=&quot;color: #000;&quot;&gt;CC BY 4.0&lt;/a&gt; and can be found &lt;a href=&quot;https://design.google.com/icons/&quot; style=&quot;color: #000;&quot;&gt;here&lt;/a&gt;.
 &lt;/p&gt;
 &lt;h2&gt;Language Icons&lt;/h2&gt;
 &lt;p&gt;
-Taken from &lt;a href=&quot;http://www.famfamfam.com/lab/icons/flags/&quot; style=&quot;color: #cccccc;&quot;&gt;FAMFAMFAM&lt;/a&gt;. &lt;i&gt;These flag icons are available for free use for any purpose with no requirement for attribution.&lt;/i&gt;
+Taken from &lt;a href=&quot;http://www.famfamfam.com/lab/icons/flags/&quot; style=&quot;color: #000;&quot;&gt;FAMFAMFAM&lt;/a&gt;. &lt;i&gt;These flag icons are available for free use for any purpose with no requirement for attribution.&lt;/i&gt;
 &lt;h2&gt;Roboto Font&lt;/h2&gt;
-Released under the &lt;a href=&quot;http://www.apache.org/licenses/LICENSE-2.0.txt&quot;  style=&quot;color: #cccccc;&quot;&gt;Apache License 2.0&lt;/a&gt;. Can be found &lt;a href=&quot;https://github.com/google/roboto/&quot; style=&quot;color: #cccccc;&quot;&gt;here&lt;/a&gt;.
+Released under the &lt;a href=&quot;http://www.apache.org/licenses/LICENSE-2.0.txt&quot;  style=&quot;color: #000;&quot;&gt;Apache License 2.0&lt;/a&gt;. Can be found &lt;a href=&quot;https://github.com/google/roboto/&quot; style=&quot;color: #000;&quot;&gt;here&lt;/a&gt;.
 &lt;/p&gt;</string>
             </property>
             <property name="alignment">

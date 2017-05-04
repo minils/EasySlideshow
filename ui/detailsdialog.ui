@@ -23,57 +23,6 @@
    <iconset resource="../resources.qrc">
     <normaloff>:/icon/app</normaloff>:/icon/app</iconset>
   </property>
-  <property name="styleSheet">
-   <string notr="true">QWidget {
-    background-color: #404244;
-    color: #cccccc;
-}
-
-QLabel,QPushButton,QRadioButton,QSpinBox,QLineEdit,QComboBox,QComboBox:selected {
-    background-color: #404244;
-    color: #cccccc;
-}
-
-QComboBox
-{
-    background-color: #404244;
-    color: #cccccc;
-    padding: 1px 0px 1px 3px; /* Needed to enable the previously defined colors! */
-}
-
-QSpinBox, QLineEdit {
-    border-image: none;
-    border-style: solid;
-    border-color: #222 #555 #555 #222;
-    border-width: 2px 1px 1px 2px;
-}
-
-QSpinBox::up-button {
-    border-image: none;
-    color: #cccccc;
-}
-
-QSpinBox::down-button {
-    border-image: none;
-    color: #cccccc;
-}
-
-QPushButton:focus, QRadioButton:focus {
-    outline: none;
-}
-
-QRadioButton::indicator {
-    image: none;
-    border-style: solid;
-    border-color: #222 #555 #555 #222;
-    border-width: 2px 1px 1px 2px;
-}
-
-QRadioButton::indicator::checked {
-    image: url(:/radiobtn/checked);
-}
-</string>
-  </property>
   <property name="locale">
    <locale language="English" country="UnitedStates"/>
   </property>

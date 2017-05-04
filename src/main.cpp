@@ -10,7 +10,7 @@ int main(int argc, char *argv[])
 
     QFile styleFile(":style/dark");
     if (styleFile.open(QFile::ReadOnly)) {
-          a.setStyleSheet(styleFile.readAll());
+          //a.setStyleSheet(styleFile.readAll());
     }
 
     int id = QFontDatabase::addApplicationFont(":/font/roboto");

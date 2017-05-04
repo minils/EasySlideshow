@@ -31,36 +31,36 @@ MainWindow::MainWindow(QWidget *parent) :
     updateImageCursor();
 
     ui->rotateLeftButton->setText("");
-    ui->rotateLeftButton->setIcon(QIcon(":/btn/rotate_left"));
-    ui->rotateLeftButton->setIconSize(QSize(20, 20));
+    ui->rotateLeftButton->setIcon(QIcon(":/btn/rotate_left.svg"));
+    ui->rotateLeftButton->setIconSize(QSize(24, 24));
 
     ui->rotateRightButton->setText("");
-    ui->rotateRightButton->setIcon(QIcon(":/btn/rotate_right"));
-    ui->rotateRightButton->setIconSize(QSize(20, 20));
+    ui->rotateRightButton->setIcon(QIcon(":/btn/rotate_right.svg"));
+    ui->rotateRightButton->setIconSize(QSize(24, 24));
 
     ui->previousButton->setText("");
-    ui->previousButton->setIcon(QIcon(":/btn/previous"));
-    ui->previousButton->setIconSize(QSize(20, 20));
+    ui->previousButton->setIcon(QIcon(":/btn/skip_previous.svg"));
+    ui->previousButton->setIconSize(QSize(24, 24));
 
     ui->pauseButton->setText("");
-    ui->pauseButton->setIcon(QIcon(":/btn/pause"));
-    ui->pauseButton->setIconSize(QSize(20, 20));
+    ui->pauseButton->setIcon(QIcon(":/btn/pause.svg"));
+    ui->pauseButton->setIconSize(QSize(24, 24));
 
     ui->nextButton->setText("");
-    ui->nextButton->setIcon(QIcon(":/btn/next"));
-    ui->nextButton->setIconSize(QSize(20, 20));
+    ui->nextButton->setIcon(QIcon(":/btn/skip_next.svg"));
+    ui->nextButton->setIconSize(QSize(24, 24));
 
     ui->helpButton->setText("");
-    ui->helpButton->setIcon(QIcon(":/btn/info"));
-    ui->helpButton->setIconSize(QSize(18, 18));
+    ui->helpButton->setIcon(QIcon(":/btn/info_outline.svg"));
+    ui->helpButton->setIconSize(QSize(20, 20));
 
     ui->settingsButton->setText("");
-    ui->settingsButton->setIcon(QIcon(":/btn/settings"));
-    ui->settingsButton->setIconSize(QSize(18, 18));
+    ui->settingsButton->setIcon(QIcon(":/btn/settings.svg"));
+    ui->settingsButton->setIconSize(QSize(20, 20));
 
     ui->lockButton->setText("");
-    ui->lockButton->setIcon(QIcon(":/btn/lock_open"));
-    ui->lockButton->setIconSize(QSize(18, 18));
+    ui->lockButton->setIcon(QIcon(":/btn/lock_open.svg"));
+    ui->lockButton->setIconSize(QSize(20, 20));
 
     // setup slideshow
     qDebug() << "[MainWindow] Setting up slideshow";
