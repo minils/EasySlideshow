@@ -73,6 +73,8 @@ make
 - [ ] Translate into more languages
 - [x] Implement right-click menu
 - [x] Add details view
+- [ ] Error when only one image is found
+- [ ] Settings dialog can be opened multiple times
 
 License
 ----
