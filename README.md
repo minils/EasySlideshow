@@ -8,9 +8,6 @@ This is a very easy slideshow based on Qt.
 
 It uses the provided folder(s) to display random images.
 
-### Version
-0.3.2
-
 ### Installation
 
 #### Windows
@@ -21,7 +18,7 @@ Either:
 - Install the `.deb`-package
 
 Or:
-- Compile from source and run `make install`. This will install the binary to `/usr/easyslideshow` as well as a `.desktop` file and an icon.
+- Compile from source and run `make install`. This will install the binary to `/usr/bin/easyslideshow` as well as a `.desktop` file and an icon.
 
 ### Compile from source
 
