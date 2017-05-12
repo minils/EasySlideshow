@@ -62,7 +62,9 @@ public slots:
     void startedSlideshowInit(void);
     void stoppedSlideshowInit(void);
     void lockButtonClicked(void);
-    void pauseSlideshow();
+    void updatePauseButton(void);
+
+    void processRightClick(bool status);
 
 private slots:
     void on_nextButton_clicked(void);
@@ -72,7 +74,7 @@ private slots:
     void on_pauseButton_clicked(void);
 
 signals:
-    void pausePressed(void);
+    void pauseClicked(void);
     void nextImageClicked(void);
     void previousImageClicked(void);
 

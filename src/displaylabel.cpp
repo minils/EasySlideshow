@@ -59,7 +59,7 @@ void DisplayLabel::contextMenuEvent(QContextMenuEvent *event)
 {
   if (_path.isEmpty())
       return;
-  emit triggerPause();
+  emit rightMouseSucces(true);
   QMenu menu(this);
   QAction *openFolderAction = new QAction(tr("Open &folder"), this);
   connect(openFolderAction, &QAction::triggered, this, [this]() {this->openFolder(true);});
@@ -73,7 +73,9 @@ void DisplayLabel::contextMenuEvent(QContextMenuEvent *event)
   menu.addAction(openDetailsAction);
   QAction *result = menu.exec(event->globalPos());
   if (!result) {
-    emit triggerPlay();
+    // this starts the slideshow if no item was selected
+    //emit rightMouseSucces(false);
+    // it is not influenced by the fact that the slideshow was paused before the right click
     return;
   } else if (result == openDetailsAction) {
     emit openDetails(_path);

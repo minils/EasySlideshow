@@ -53,19 +53,20 @@ private:
     void loadImage(unsigned int current);
     volatile bool scanningActive;
     void rotateCurrentImage(int direction);
+    void pauseSlideshow(bool newStatus);
 
 signals:
     void showPath(QString path);
     void displayError(QString msg);
     void timeout(void);
-    void communicatePause(void);
+    void communicatePauseStatus(void);
     void initStart(void);
     void initStop(void);
     void stopScan(void);
 
 public slots:
     void nextImage(void);
-    void pause(void);
+    void pauseClicked(void);
     void init(void);
     void nextImageClicked(void);
     void previousImageClicked(void);

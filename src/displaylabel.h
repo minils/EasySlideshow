@@ -33,8 +33,7 @@ private:
     void openFolder(bool ignoreSettings);
     void openImage(void);
 signals:
-    void triggerPlay();
-    void triggerPause();
+    void rightMouseSucces(bool result);
     void openDetails(QString path);
 };
 

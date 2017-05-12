@@ -133,20 +133,27 @@ void SlideShow::previousImageClicked(void)
         return;
 
     if (!_pause) {
-        emit communicatePause();
+        pauseSlideshow(true);
     }
     --_current;
     loadImage(_current);
 }
 
-void SlideShow::pause(void)
+void SlideShow::pauseClicked(void)
 {
-    _pause = !_pause;
-    if (_pause) {
-        timer->stop();
-    } else {
-        timer->start();
-    }
+  pauseSlideshow(!_pause);
+}
+
+void SlideShow::pauseSlideshow(bool newStatus)
+{
+  qDebug() << "PAUSE: old status: " << _pause << ", new status: " << newStatus;
+  _pause = newStatus;
+  if (_pause) {
+      timer->stop();
+  } else {
+      timer->start();
+  }
+  emit communicatePauseStatus();
 }
 
 void SlideShow::loadImage(unsigned int current)

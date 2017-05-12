@@ -73,7 +73,7 @@ MainWindow::MainWindow(QWidget *parent) :
     _slideshow = new SlideShow(ui->photoLabel, dirs, SettingsManager::readSetting(SETTING_SPEED).toInt(), this);
 
     /* Slideshow */
-    connect(_slideshow, SIGNAL(communicatePause()), this, SLOT(on_pauseButton_clicked()));
+    connect(_slideshow, SIGNAL(communicatePauseStatus()), this, SLOT(updatePauseButton()));
     connect(_slideshow, SIGNAL(showPath(QString)), this, SLOT(displayPath(QString)));
     connect(_slideshow, SIGNAL(initStart()), this, SLOT(startedSlideshowInit()));
     connect(_slideshow, SIGNAL(initStop()), this, SLOT(stoppedSlideshowInit()));
@@ -81,11 +81,10 @@ MainWindow::MainWindow(QWidget *parent) :
 
     connect(this, SIGNAL(nextImageClicked()), _slideshow, SLOT(nextImageClicked()));
     connect(this, SIGNAL(previousImageClicked()), _slideshow, SLOT(previousImageClicked()));
-    connect(this, SIGNAL(pausePressed()), _slideshow, SLOT(pause()));
+    connect(this, SIGNAL(pauseClicked()), _slideshow, SLOT(pauseClicked()));
 
     /* DisplayLabel */
-    connect(ui->photoLabel, SIGNAL(triggerPause()), this, SLOT(pauseSlideshow()));
-    connect(ui->photoLabel, &DisplayLabel::triggerPlay, this, &MainWindow::on_pauseButton_clicked);
+    connect(ui->photoLabel, SIGNAL(rightMouseSucces(bool)), this, SLOT(processRightClick(bool)));
 
     /* Widgets */
     connect(ui->rotateLeftButton, SIGNAL(clicked()), _slideshow, SLOT(rotateCurrentImageLeft()));
@@ -121,14 +120,27 @@ void MainWindow::displayPath(QString path)
   //setWindowTitle("EasySlideshow: " + path);
 }
 
+void MainWindow::updatePauseButton()
+{
+  if (_slideshow->paused())
+    ui->pauseButton->setIcon(QIcon(":/btn/play.svg"));
+  else
+    ui->pauseButton->setIcon(QIcon(":/btn/pause.svg"));
+}
+
+void MainWindow::processRightClick(bool status)
+{
+  if (!_slideshow->paused() && status) {
+      emit pauseClicked();
+    }
+  if (_slideshow->paused() && !status) {
+      emit pauseClicked();
+    }
+}
+
 void MainWindow::on_pauseButton_clicked()
 {
-    if (_slideshow->paused()) {
-        ui->pauseButton->setIcon(QIcon(":/btn/pause"));
-    } else {
-        ui->pauseButton->setIcon(QIcon(":/btn/play"));
-    }
-    emit pausePressed();
+    emit pauseClicked();
 }
 
 void MainWindow::resizeEvent(QResizeEvent*)
@@ -254,14 +266,6 @@ void MainWindow::controls(bool enable)
     ui->nextButton->setEnabled(enable);
     ui->rotateLeftButton->setEnabled(enable);
     ui->rotateRightButton->setEnabled(enable);
-}
-
-void MainWindow::pauseSlideshow()
-{
-    if (!_slideshow->paused()) {
-        ui->pauseButton->setIcon(QIcon(":/btn/play"));
-        emit pausePressed();
-    }
 }
 
 bool MainWindow::eventFilter(QObject *obj, QEvent *event)
