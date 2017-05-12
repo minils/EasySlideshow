@@ -69,7 +69,7 @@ void DisplayLabel::contextMenuEvent(QContextMenuEvent *event)
   connect(openImageAction, &QAction::triggered, this, [this]() {this->openImage();});
   menu.addAction(openImageAction);
   QAction *openDetailsAction = new QAction(tr("&Details"), this);
-  connect(openDetailsAction, &QAction::triggered, this, [this]() {qDebug() << "clicked open details";});
+  //connect(openDetailsAction, &QAction::triggered, this, [this]() {qDebug() << "clicked open details";});
   menu.addAction(openDetailsAction);
   QAction *result = menu.exec(event->globalPos());
   if (!result) {

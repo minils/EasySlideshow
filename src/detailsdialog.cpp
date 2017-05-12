@@ -6,7 +6,6 @@ DetailsDialog::DetailsDialog(QWidget *parent) :
     ui(new Ui::DetailsDialog)
 {
     ui->setupUi(this);
-    qDebug() << ui->pathLineEdit->height();
 }
 
 DetailsDialog::~DetailsDialog()

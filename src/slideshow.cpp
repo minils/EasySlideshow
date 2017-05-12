@@ -109,7 +109,7 @@ void SlideShow::nextImage(void)
     // we are at the end of the list and want to pick a random image
     } else {
       unsigned int random = _last;
-      while (_last == random) {
+      while (_last == random && _images->size() != 1) {
           random = qrand() % _images->size();
       }
       _last = random;
@@ -146,7 +146,6 @@ void SlideShow::pauseClicked(void)
 
 void SlideShow::pauseSlideshow(bool newStatus)
 {
-  qDebug() << "PAUSE: old status: " << _pause << ", new status: " << newStatus;
   _pause = newStatus;
   if (_pause) {
       timer->stop();
