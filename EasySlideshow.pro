@@ -59,7 +59,7 @@ win32:RC_ICONS += ico/windows_icon.ico
 versionTarget.target = ./version.h
 versionTarget.depends = FORCE
 versionTarget.commands = touch ./version.h; git log -n 1 --format=format:\'$${LITERAL_HASH}define GIT_COMMIT \"%h\"%n\' HEAD 2>/dev/null > ./version.h; true
-PRE_TARGETDEPS += ./version.h
+#PRE_TARGETDEPS += ./version.h
 #QMAKE_EXTRA_TARGETS += versionTarget
 
 # installation
