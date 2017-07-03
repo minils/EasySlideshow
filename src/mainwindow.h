@@ -9,6 +9,7 @@
 #include <QVariant>
 #include <QThread>
 #include <QSizeGrip>
+#include <QScreen>
 
 #include "globals.h"
 #include "settingsmanager.h"
