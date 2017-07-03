@@ -101,7 +101,9 @@ MainWindow::MainWindow(QWidget *parent) :
 
 MainWindow::~MainWindow()
 {
-    delete ui;
+  delete _helpDialog;
+  delete _slideshow;
+  delete ui;
 }
 
 void MainWindow::displayPath(QString path)
@@ -185,6 +187,7 @@ void MainWindow::settingsClosed(bool accepted)
     _slideshow->setSpeed(duration);
     _slideshow->setDirs(dirs);  // calls init if necessary
     updateImageCursor();
+    delete _settingsDialog;
 }
 
 void MainWindow::on_helpButton_clicked()
@@ -297,7 +300,8 @@ bool MainWindow::eventFilter(QObject *obj, QEvent *event)
         }
     } else if (event->type() == QEvent::Close) {
       SettingsManager::writeSetting(SETTING_WINDOW_SIZE, QVariant(geometry().size()));
-      SettingsManager::writeSetting(SETTING_WINDOW_POSITION, QVariant(geometry().topLeft()));
+      SettingsManager::writeSetting(SETTING_WINDOW_POSITION, QVariant(frameGeometry().topLeft()));
+      event->accept();
     } else if (event->type() == QEvent::MouseButtonRelease) {
         QMouseEvent *mouseEvent = (QMouseEvent*) event;
         if (mouseEvent->button() == Qt::LeftButton && obj == ui->photoLabel) {
