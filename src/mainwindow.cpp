@@ -30,11 +30,16 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->photoLabel->setBackgroundColor(QColor("#404244"));
     updateImageCursor();
 
-    qreal dpi = QGuiApplication::primaryScreen()->logicalDotsPerInch();
-    qDebug() << dpi;
-
-    int buttonW = 24;
-    int buttonH = 24;
+    // is it working on screens with lower dpi?
+    qreal dpi = QGuiApplication::primaryScreen()->physicalDotsPerInch();
+    int buttonW, buttonH;
+    if (dpi > 150) {
+        buttonW = 32;
+        buttonH = 32;
+    } else {
+        buttonW = 24;
+        buttonH = 24;
+    }
 
     ui->rotateLeftButton->setMaximumSize(buttonW, buttonH);
     ui->rotateLeftButton->setText("");
