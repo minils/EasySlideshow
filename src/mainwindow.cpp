@@ -59,7 +59,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->pauseButton->setMaximumSize(buttonW, buttonH);
     ui->pauseButton->setText("");
     ui->pauseButton->setIcon(QIcon(":/btn/pause.svg"));
-    ui->pauseButton->setIconSize(QSize(buttonW*0.75, buttonH*0.75));
+    ui->pauseButton->setIconSize(QSize(buttonW*0.7, buttonH*0.7));
 
     ui->nextButton->setMaximumSize(buttonW, buttonH);
     ui->nextButton->setText("");
