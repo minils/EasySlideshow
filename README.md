@@ -74,7 +74,8 @@ make
 - [x] Implement right-click menu
 - [x] Add details view
 - [ ] Error when only one image is found
-- [ ] Settings dialog can be opened multiple times
+- [x] Settings dialog can be opened multiple times
+- [ ] Sometimes the slideshow is not paused correctly
 
 License
 ----
