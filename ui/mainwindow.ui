@@ -315,6 +315,9 @@
       </item>
       <item>
        <widget class="QPushButton" name="settingsButton">
+        <property name="enabled">
+         <bool>true</bool>
+        </property>
         <property name="maximumSize">
          <size>
           <width>32</width>

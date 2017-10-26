@@ -183,6 +183,9 @@ void MainWindow::on_previousButton_clicked(void)
 
 void MainWindow::on_settingsButton_clicked()
 {
+    if (!ui->settingsButton->isEnabled())
+      return;
+    ui->settingsButton->setEnabled(false);
     _settingsDialog = new SettingsDialog(this);
     connect(_settingsDialog, SIGNAL(settingsClosed(bool)), this, SLOT(settingsClosed(bool)));
     connect(_settingsDialog, SIGNAL(languageChanged(QString)), this, SLOT(changeLanguage(QString)));
@@ -193,6 +196,7 @@ void MainWindow::on_settingsButton_clicked()
 
 void MainWindow::settingsClosed(bool accepted)
 {
+    ui->settingsButton->setEnabled(true);
     if (!accepted)
         return;
 

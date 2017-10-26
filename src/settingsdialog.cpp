@@ -25,8 +25,8 @@ SettingsDialog::~SettingsDialog()
 
 void SettingsDialog::on_buttonBox_rejected()
 {
-    this->hide();
     emit settingsClosed(false);
+    this->hide();
 }
 
 void SettingsDialog::on_buttonBox_accepted()
@@ -80,7 +80,6 @@ void SettingsDialog::on_buttonBox_accepted()
 
     this->setVisible(false);
     emit settingsClosed(true);
-    delete this;
 }
 
 void SettingsDialog::showEvent(QShowEvent *event)
@@ -201,6 +200,11 @@ QPushButton* SettingsDialog::addPathEdit(QString dir)
     ui->pathHolderLayout->addLayout(hLayout);
     amountPaths++;
     return browseButton;
+}
+
+void SettingsDialog::closeEvent(QCloseEvent *event) {
+  qDebug() << "closed";
+  on_buttonBox_rejected();
 }
 
 void SettingsDialog::onBrowseButtonClicked(QLineEdit *lineEdit)

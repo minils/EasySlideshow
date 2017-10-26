@@ -28,6 +28,7 @@ public:
 
     void showEvent(QShowEvent *event);
     void changeEvent(QEvent *event);
+    void closeEvent(QCloseEvent *event);
 
 private slots:
     void on_buttonBox_rejected();
