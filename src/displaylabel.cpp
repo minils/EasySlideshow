@@ -13,7 +13,7 @@ void DisplayLabel::resizeEvent(QResizeEvent*)
         return;
     int w = this->width();
     int h = this->height();
-    this->setPixmap(_image.scaled(w, h, Qt::KeepAspectRatio));
+    this->setPixmap(_image.scaled(w, h, Qt::KeepAspectRatio, Qt::SmoothTransformation));
 }
 
 /**
