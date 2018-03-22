@@ -1,8 +1,34 @@
-before_install:
- - echo test
+language: generic
+compiler: gcc
 
-script:
- - mkdir build
- - cd build
- - qmake ../EasySlideshow.pro
- - make
+before_install:
+  # g++6
+  - sudo add-apt-repository -y ppa:ubuntu-toolchain-r/test
+  
+  # Qt5
+  - sudo apt-add-repository --yes ppa:beineri/opt-qt551-trusty
+  - sudo apt-get -qq update
+
+install:
+  # g++6
+  - sudo apt-get remove g++
+  - sudo apt-get install -qq g++-6
+
+  # Qt5
+  - yes | sudo apt-get install --yes qt55base qt55imageformats qt55svg qtdeclarative5-dev
+
+
+env: CXX="g++-6" CXXFLAGS="-std=c++11 -Wall -Wno-error"
+
+before_script:
+    - QTDIR="/opt/qt55"
+    - PATH="$QTDIR/bin:$PATH"
+    - source /opt/qt55/bin/qt55-env.sh
+
+script: 
+  - $CXX --version
+  - g++-6 --version
+  - mkdir build
+  - cd build
+  - qmake ..
+  - make -j9 CXX='g++-6' CXXFLAGS='-std=c++11 -Wall -Wno-error -fPIC'
