@@ -13,6 +13,8 @@ It uses the provided folder(s) to display random images.
 
 ### Installation
 
+Grab the binaries [here](https://github.com/minils/EasySlideshow/releases)
+
 #### Windows
 No installation required. Just use the statically build `.exe` file.
 
