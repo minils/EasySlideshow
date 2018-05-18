@@ -38,7 +38,11 @@ void DisplayLabel::displayImage(QString path, int degree)
 {
     _path = path;
     QImageReader reader(path);
+    // Need to check qt version for 'setAutoTransform()'
+    #include <QtGlobal>
+    #if QT_VERSION >= QT_VERSION_CHECK(5, 5, 0)
     reader.setAutoTransform(true);
+    #endif
     const QImage newImage = reader.read();
     if (newImage.isNull()) {
       clearImage();
