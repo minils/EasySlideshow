@@ -116,6 +116,8 @@ MainWindow::MainWindow(QWidget *parent) :
     _helpShown = false;
     connect(_helpDialog, SIGNAL(rejected()), this, SLOT(helpClosed()));
 
+    _settingsShown = false;
+
     QTimer::singleShot(100, _slideshow, SLOT(init()));
 }
 
@@ -184,20 +186,25 @@ void MainWindow::on_previousButton_clicked(void)
 
 void MainWindow::on_settingsButton_clicked()
 {
-    if (!ui->settingsButton->isEnabled())
-      return;
-    ui->settingsButton->setEnabled(false);
-    _settingsDialog = new SettingsDialog(this);
-    connect(_settingsDialog, SIGNAL(settingsClosed(bool)), this, SLOT(settingsClosed(bool)));
-    connect(_settingsDialog, SIGNAL(languageChanged(QString)), this, SLOT(changeLanguage(QString)));
-    _settingsDialog->show();
-    _settingsDialog->activateWindow();
-    _settingsDialog->raise();
+    if (_settingsShown) {
+        _settingsDialog->activateWindow();
+        _settingsDialog->raise();
+    } else {
+        //ui->settingsButton->setEnabled(false);
+        _settingsDialog = new SettingsDialog(this);
+        connect(_settingsDialog, SIGNAL(settingsClosed(bool)), this, SLOT(settingsClosed(bool)));
+        connect(_settingsDialog, SIGNAL(languageChanged(QString)), this, SLOT(changeLanguage(QString)));
+        _settingsDialog->show();
+        _settingsDialog->activateWindow();
+        _settingsDialog->raise();
+        _settingsShown = true;
+    }
 }
 
 void MainWindow::settingsClosed(bool accepted)
 {
-    ui->settingsButton->setEnabled(true);
+    //ui->settingsButton->setEnabled(true);
+    _settingsShown = false;
     if (!accepted)
         return;
 
@@ -344,9 +351,11 @@ void MainWindow::lockButtonClicked(void)
   Qt::WindowFlags flags = this->windowFlags();
   if (this->windowFlags() & Qt::WindowStaysOnTopHint) {
     flags &= ~Qt::WindowStaysOnTopHint;
+    flags &= ~Qt::X11BypassWindowManagerHint;
     ui->lockButton->setIcon(QIcon(":/btn/lock_open"));
   } else {
     flags |= Qt::WindowStaysOnTopHint;
+    flags |= Qt::X11BypassWindowManagerHint;
     ui->lockButton->setIcon(QIcon(":/btn/lock"));
   }
   this->setWindowFlags(flags);

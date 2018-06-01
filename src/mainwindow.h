@@ -34,6 +34,7 @@ private:
     Ui::MainWindow *ui;
 
     QDialog *_settingsDialog;
+    bool _settingsShown;
 
     QDialog *_helpDialog;
     bool _helpShown;
@@ -66,6 +67,7 @@ public slots:
     void updatePauseButton(void);
 
     void processRightClick(bool status);
+    void imageDoubleClicked(void);
 
 private slots:
     void on_nextButton_clicked(void);

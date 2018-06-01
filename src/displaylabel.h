@@ -22,6 +22,7 @@ public:
 
     void resizeEvent(QResizeEvent *);
     void mouseReleaseEvent(QMouseEvent *event);
+    void mouseDoubleClickEvent(QMouseEvent *event);
     void setBackgroundColor(QColor backgroundColor);
 protected:
     void contextMenuEvent(QContextMenuEvent *event) override;
@@ -35,6 +36,7 @@ private:
 signals:
     void rightMouseSucces(bool result);
     void openDetails(QString path);
+    void doubleClicked(void);
 };
 
 #endif // DISPLAYLABEL_H
