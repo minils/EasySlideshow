@@ -56,11 +56,11 @@ ICON = svg/easyslideshow.svg
 win32:RC_ICONS += ico/windows_icon.ico
 
 # extras for versioning
-versionTarget.target = ./version.h
+versionTarget.target = version.h
 versionTarget.depends = FORCE
 versionTarget.commands = touch ./version.h; cd $$PWD; git log -n 1 --format=format:\'$${LITERAL_HASH}define GIT_COMMIT \"%h\"%n\' HEAD 2>/dev/null > $$OUT_PWD/version.h; true
-QMAKE_EXTRA_TARGETS += versionTarget
-PRE_TARGETDEPS += ./version.h
+#QMAKE_EXTRA_TARGETS += versionTarget
+#PRE_TARGETDEPS += version.h
 
 # installation
 target.path = /usr/bin
