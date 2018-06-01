@@ -27,6 +27,12 @@ void DisplayLabel::mouseReleaseEvent(QMouseEvent *event)
     }
 }
 
+void DisplayLabel::mouseDoubleClickEvent(QMouseEvent *event) {
+    if (event->button() == Qt::LeftButton) {
+        emit doubleClicked();
+    }
+}
+
 void DisplayLabel::clearImage()
 {
     _image = QPixmap(1,1);

@@ -23,6 +23,7 @@ int main(int argc, char *argv[])
 
     if (QCoreApplication::arguments().length() >= 2 && QCoreApplication::arguments().at(1) == "--kiosk") {
       qWarning() << "Starting in kiosk mode";
+      w.setWindowTitle("EasySlideshow - KIOSK");
       QScreen *screen = QGuiApplication::primaryScreen();
       w.setGeometry(screen->geometry());
     }

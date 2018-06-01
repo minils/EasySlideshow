@@ -104,6 +104,7 @@ MainWindow::MainWindow(QWidget *parent) :
 
     /* DisplayLabel */
     connect(ui->photoLabel, SIGNAL(rightMouseSucces(bool)), this, SLOT(processRightClick(bool)));
+    connect(ui->photoLabel, SIGNAL(doubleClicked()), this, SLOT(imageDoubleClicked()));
 
     /* Widgets */
     connect(ui->rotateLeftButton, SIGNAL(clicked()), _slideshow, SLOT(rotateCurrentImageLeft()));
@@ -358,4 +359,12 @@ void MainWindow::displayError(QString msg)
     ui->photoLabel->clearImage();
     displayPath(msg);
     // TODO: controls should be disabled
+}
+
+void MainWindow::imageDoubleClicked(void) {
+    if (isFullScreen()) {
+        showNormal();
+    } else {
+        showFullScreen();
+    }
 }
