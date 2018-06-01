@@ -15,6 +15,6 @@
 #define SETTING_WINDOW_SIZE "window_size"
 #define SETTING_WINDOW_POSITION "window_position"
 
-#define VERSION "0.4.3"
+#define VERSION "0.4.4"
 
 #endif // GLOBALS_H
