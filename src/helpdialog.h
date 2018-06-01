@@ -6,7 +6,6 @@
 #include <QFile>
 
 #include "globals.h"
-#include "version.h"
 
 namespace Ui {
 class HelpDialog;
