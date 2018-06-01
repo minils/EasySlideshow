@@ -124,7 +124,9 @@ void SlideShow::nextImageClicked(void)
 {
     timer->stop();
     nextImage();
-    timer->start();
+    if (!_pause) {
+        timer->start();
+    }
 }
 
 void SlideShow::previousImageClicked(void)
@@ -152,6 +154,7 @@ void SlideShow::pauseSlideshow(bool newStatus)
   } else {
       timer->start();
   }
+  qWarning() << "New pause status is: " << newStatus;
   emit communicatePauseStatus();
 }
 
