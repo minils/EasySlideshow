@@ -1,34 +1,26 @@
 language: generic
 compiler: gcc
-
 before_install:
-  # g++6
-  #- sudo add-apt-repository -y ppa:ubuntu-toolchain-r/test
-  
-  # Qt5
-  - sudo apt-add-repository --yes ppa:beineri/opt-qt551-trusty
-  - sudo apt-get -qq update
-
+- sudo apt-add-repository --yes ppa:beineri/opt-qt551-trusty
+- sudo apt-get -qq update
 install:
-  # g++6
-  #- sudo apt-get remove g++
-  #- sudo apt-get install -qq g++-6
-
-  # Qt5
-  - yes | sudo apt-get install --yes qt55base qt55imageformats qt55svg qtdeclarative5-dev
-
-
+- yes | sudo apt-get install --yes qt55base qt55imageformats qt55svg qtdeclarative5-dev
 env: CXXFLAGS="-std=c++11 -Wall -Wno-error"
-
 before_script:
-    - QTDIR="/opt/qt55"
-    - PATH="$QTDIR/bin:$PATH"
-    - source /opt/qt55/bin/qt55-env.sh
-
-script: 
-  #- $CXX --version
-  - g++ --version
-  - mkdir build
-  - cd build
-  - qmake ..
-  - make -j9 CXXFLAGS='-std=c++11 -Wall -Wno-error -fPIC'
+- QTDIR="/opt/qt55"
+- PATH="$QTDIR/bin:$PATH"
+- source /opt/qt55/bin/qt55-env.sh
+script:
+- g++ --version
+- mkdir build
+- cd build
+- qmake ..
+- make -j9 CXXFLAGS='-std=c++11 -Wall -Wno-error -fPIC'
+deploy:
+  provider: releases
+  api_key:
+    secure: h+rP6uF6HDlVDUs3p/mJO3uPq8YooUHSPjDjwHhnBGAYJnQBv6D94cxFWJuhLTyDfAgVCyWRv0e9750WX759XJ42a2PjexfiwUC20qaUZKbfcyG6KWMrZYyB1OIkZYEC26EYmlg5rN+UxTgbXjpAq+kWXGSJUHM8nrkyYbJBQlkNovCM1s8nL5kpMHS3n/1JDKRz8ZYDkhi12okTyZpwzv023Yxktt07dNB1GCVQ5Xpp4QvPg3sw8XtZ/+Wm3gCMIU7SupuUvztmOZVCCFYlmJ2bTzFwK1e36/AEo4XG4pdDpBB4eBWmCb+5heM2epCrt/L0yvg8OjZbtmVl3hlkJfrW/+HVr4vOalhZpwuXC8Oez8CRx0dXO8TVLwl7cpSYGJBKoPnwyktreSDg6bOQAoYmArqSvhxgK8cSM89//w5k9bJvmcT+vfaW/3qqAT8Ed59v8u48Xn+659ImoXHzgd2ce3FtDo2dRim9QjXS8Q6mGqM9gv3XN7GEVPQadefQ6F+ugb302vEXa1ZulC25G3rv48l7aky+oUMBk+H/rP7cq5jJU/0LrLFUKOXQ6kluvomPugfsKhN3MKEZqLofGP1QyyQYgnUuInOf5dnetDmOGxBEwG5aM2KY+6YCSADerm1h6ukt9EEZxHeAOxI37ba5pKqwt1OX/Q1bqcAqihc=
+  file: build/easyslideshow
+  on:
+    tags: true
+    repo: minils/EasySlideshow
