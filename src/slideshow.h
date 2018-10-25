@@ -31,6 +31,7 @@ public:
     void setSpeed(unsigned int speed);
     bool paused(void);
     bool scanningIsActive();
+    void pauseSlideshow(bool newStatus);
 
 private:
     QList<QDir> *_dirs;
@@ -53,7 +54,6 @@ private:
     void loadImage(unsigned int current);
     volatile bool scanningActive;
     void rotateCurrentImage(int direction);
-    void pauseSlideshow(bool newStatus);
 
 signals:
     void showPath(QString path);

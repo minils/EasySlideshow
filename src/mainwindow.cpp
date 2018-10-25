@@ -4,13 +4,16 @@
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
-{    
+{
     ui->setupUi(this);
     qDebug() << "[MainWindow] Starting...";
     qApp->installEventFilter(this);
 
     _mouseClickCoordinate[0] = 0;
     _mouseClickCoordinate[1] = 0;
+
+    dragStartPosition.setX(0);
+    dragStartPosition.setY(0);
 
     QSize windowSize = SettingsManager::readSetting(SETTING_WINDOW_SIZE).toSize();
     resize(windowSize);
@@ -182,6 +185,45 @@ void MainWindow::on_nextButton_clicked(void)
 void MainWindow::on_previousButton_clicked(void)
 {
     emit previousImageClicked();
+}
+
+void MainWindow::mousePressEvent(QMouseEvent *event) {
+    if (event->button() == Qt::LeftButton) {
+            dragStartPosition = event->pos();
+    }
+}
+
+void MainWindow::mouseMoveEvent(QMouseEvent *event) {
+    if ((event->pos() - dragStartPosition).manhattanLength()
+            < QApplication::startDragDistance()) {
+            return;
+    }
+    if (ui->photoLabel->geometry().contains(dragStartPosition)) {
+        // Save pause status for later
+        bool pauseStatus = _slideshow->paused();
+        _slideshow->pauseSlideshow(true);
+
+        // Handle the drag action
+        QDrag *drag = new QDrag(this);
+        QMimeData *mimeData = new QMimeData;
+
+        QList<QUrl> list;
+        list.append(QUrl::fromLocalFile(ui->statusLabel->text()));
+        mimeData->setUrls(list);
+        drag->setMimeData(mimeData);
+        
+        QPixmap pixmap = ui->photoLabel->pixmap()->scaled(QSize(200, 100), Qt::KeepAspectRatio);
+        drag->setPixmap(pixmap);
+        
+        QPoint hs = drag->hotSpot();
+        drag->setHotSpot(hs + QPoint(drag->pixmap().width()/2+10, drag->pixmap().height()/2+10));
+        
+        Qt::DropAction dropAction = drag->exec(Qt::CopyAction | Qt::MoveAction | Qt::LinkAction, Qt::CopyAction);
+        
+        if (dropAction == Qt::IgnoreAction) {
+            _slideshow->pauseSlideshow(pauseStatus);
+        }
+    }
 }
 
 void MainWindow::on_settingsButton_clicked()

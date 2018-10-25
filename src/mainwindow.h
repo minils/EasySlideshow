@@ -10,6 +10,9 @@
 #include <QThread>
 #include <QSizeGrip>
 #include <QScreen>
+#include <QDrag>
+#include <QMimeData>
+#include <QPaintEngine>
 
 #include "globals.h"
 #include "settingsmanager.h"
@@ -29,6 +32,8 @@ public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
     void resizeEvent(QResizeEvent *);
+    void mousePressEvent(QMouseEvent *event);
+    void mouseMoveEvent(QMouseEvent *event);
 
 private:
     Ui::MainWindow *ui;
@@ -51,6 +56,8 @@ private:
     void loadSettings(void);
     void saveSettings(void);
     void controls(bool enable);
+
+    QPoint dragStartPosition;
 
 public slots:
     void displayError(QString msg);

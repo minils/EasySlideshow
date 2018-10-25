@@ -1,5 +1,6 @@
 [Desktop Entry]
 Name=EasySlideshow
+Comment= Slideshow that displays the images of multiple folders in a randomized order.
 Exec=/usr/bin/easyslideshow
 Icon=easyslideshow
 Type=Application
