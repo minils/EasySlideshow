@@ -21,6 +21,7 @@ deploy:
   api_key:
     secure: h+rP6uF6HDlVDUs3p/mJO3uPq8YooUHSPjDjwHhnBGAYJnQBv6D94cxFWJuhLTyDfAgVCyWRv0e9750WX759XJ42a2PjexfiwUC20qaUZKbfcyG6KWMrZYyB1OIkZYEC26EYmlg5rN+UxTgbXjpAq+kWXGSJUHM8nrkyYbJBQlkNovCM1s8nL5kpMHS3n/1JDKRz8ZYDkhi12okTyZpwzv023Yxktt07dNB1GCVQ5Xpp4QvPg3sw8XtZ/+Wm3gCMIU7SupuUvztmOZVCCFYlmJ2bTzFwK1e36/AEo4XG4pdDpBB4eBWmCb+5heM2epCrt/L0yvg8OjZbtmVl3hlkJfrW/+HVr4vOalhZpwuXC8Oez8CRx0dXO8TVLwl7cpSYGJBKoPnwyktreSDg6bOQAoYmArqSvhxgK8cSM89//w5k9bJvmcT+vfaW/3qqAT8Ed59v8u48Xn+659ImoXHzgd2ce3FtDo2dRim9QjXS8Q6mGqM9gv3XN7GEVPQadefQ6F+ugb302vEXa1ZulC25G3rv48l7aky+oUMBk+H/rP7cq5jJU/0LrLFUKOXQ6kluvomPugfsKhN3MKEZqLofGP1QyyQYgnUuInOf5dnetDmOGxBEwG5aM2KY+6YCSADerm1h6ukt9EEZxHeAOxI37ba5pKqwt1OX/Q1bqcAqihc=
   file: build/easyslideshow
+  skip_cleanup: true
   on:
     tags: true
     repo: minils/EasySlideshow
