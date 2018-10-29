@@ -208,18 +208,19 @@ void MainWindow::mouseMoveEvent(QMouseEvent *event) {
         QMimeData *mimeData = new QMimeData;
 
         QList<QUrl> list;
-        list.append(QUrl::fromLocalFile(ui->statusLabel->text()));
+        list.append(QUrl::fromLocalFile(_path));
         mimeData->setUrls(list);
         drag->setMimeData(mimeData);
-        
+
         QPixmap pixmap = ui->photoLabel->pixmap()->scaled(QSize(200, 100), Qt::KeepAspectRatio);
         drag->setPixmap(pixmap);
-        
+
         QPoint hs = drag->hotSpot();
+        // +10 is a good guess for the width of the mouse pointer
         drag->setHotSpot(hs + QPoint(drag->pixmap().width()/2+10, drag->pixmap().height()/2+10));
-        
+
         Qt::DropAction dropAction = drag->exec(Qt::CopyAction | Qt::MoveAction | Qt::LinkAction, Qt::CopyAction);
-        
+
         if (dropAction == Qt::IgnoreAction) {
             _slideshow->pauseSlideshow(pauseStatus);
         }
