@@ -43,7 +43,7 @@ private:
 
     QDialog *_helpDialog;
     bool _helpShown;
-    QString _path;
+    const SlideshowImage* _slideshowimage;
 
     SlideShow *_slideshow;
     QTranslator *_currentTranslator;
@@ -53,15 +53,18 @@ private:
 
     int _mouseClickCoordinate[2];
 
+    bool _details_enabled;
+
     void loadSettings(void);
     void saveSettings(void);
     void controls(bool enable);
+    void displayDetails(bool enable);
 
     QPoint dragStartPosition;
 
 public slots:
     void displayError(QString msg);
-    void displayPath(QString path);
+    void updateImage(const SlideshowImage* image);
     void updateImageCursor(void);
 
     void settingsClosed(bool accepted);
@@ -76,12 +79,17 @@ public slots:
     void processRightClick(bool status);
     void imageDoubleClicked(void);
 
+    void toggleDetails(const SlideshowImage* image);
+    void updateDetails(const SlideshowImage* image) const;
+
 private slots:
     void on_nextButton_clicked(void);
     void on_previousButton_clicked(void);
     void on_settingsButton_clicked();
     void on_helpButton_clicked();
     void on_pauseButton_clicked(void);
+
+    void on_closeButton_clicked();
 
 signals:
     void pauseClicked(void);

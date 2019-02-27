@@ -26,7 +26,8 @@ SOURCES += main.cpp \
     settingsdialog.cpp \
     helpdialog.cpp \
     pathscanner.cpp \
-    detailsdialog.cpp
+    detailsdialog.cpp \
+    src/slideshowimage.cpp
 
 HEADERS  += mainwindow.h \
     slideshow.h \
@@ -36,7 +37,8 @@ HEADERS  += mainwindow.h \
     settingsdialog.h \
     helpdialog.h \
     pathscanner.h \
-    detailsdialog.h
+    detailsdialog.h \
+    src/slideshowimage.h
 
 FORMS    += mainwindow.ui \
     settingsdialog.ui \
@@ -46,6 +48,8 @@ FORMS    += mainwindow.ui \
 RESOURCES += resources.qrc
 
 DISTFILES +=
+
+LIBS += -lexif
 
 TRANSLATIONS += l10n/EasySlideshow_en.ts \
     l10n/EasySlideshow_de.ts \

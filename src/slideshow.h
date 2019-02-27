@@ -21,14 +21,15 @@
 #include "settingsmanager.h"
 #include "pathscanner.h"
 #include "displaylabel.h"
+#include "slideshowimage.h"
 
 class SlideShow : public QObject
 {
     Q_OBJECT
 public:
-    explicit SlideShow(DisplayLabel *displayLabel, QList<QDir> *dirs, unsigned int time, QObject *parent = 0);
+    explicit SlideShow(DisplayLabel *displayLabel, QList<QDir> *dirs, int time, QObject *parent = nullptr);
     void setDirs(QList<QDir> *dirs);
-    void setSpeed(unsigned int speed);
+    void setSpeed(int speed);
     bool paused(void);
     bool scanningIsActive();
     void pauseSlideshow(bool newStatus);
@@ -36,27 +37,26 @@ public:
 private:
     QList<QDir> *_dirs;
     bool _dirs_valid;
-    unsigned int _speed;
+    int _speed;
 
-    unsigned int _last;                     // index of the last image in _images
+    int _last;                     // index of the last image in _images
     QStringList *_images;
+    QList<SlideshowImage> _slideshowimages;
+    int _current;                  // index of the current image in _slideshowimages
 
     bool _pause;
     QTimer *timer;
     PathScanner *_pathScanner;
     DisplayLabel *_displayLabel;
 
-    QString _current_path;                  // path of the currently displayed image
-    unsigned int _current;                  // index of the current image in _previous_images
-    QList<unsigned int> _previous_images;   // last shown images
-    QHash<unsigned int, int> _images_orientation;
+    //QString _current_path;                  // path of the currently displayed image
 
-    void loadImage(unsigned int current);
+    void loadImage(const SlideshowImage* image);
     volatile bool scanningActive;
     void rotateCurrentImage(int direction);
 
 signals:
-    void showPath(QString path);
+    void showImage(const SlideshowImage*);
     void displayError(QString msg);
     void timeout(void);
     void communicatePauseStatus(void);

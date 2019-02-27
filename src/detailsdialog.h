@@ -8,6 +8,8 @@
 #include <QDebug>
 #include <QDateTime>
 
+#include "slideshowimage.h"
+
 namespace Ui {
 class DetailsDialog;
 }
@@ -21,9 +23,12 @@ public:
     ~DetailsDialog();
 
     void setFile(QString filename);
+    void setImage(const SlideshowImage* image);
 
 private:
     Ui::DetailsDialog *ui;
+
+    void forEachExif(ExifContent* ec, void* user_data);
 };
 
 #endif // DETAILSDIALOG_H

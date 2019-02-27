@@ -6,7 +6,7 @@
  * @param dir Directory with photos
  * @param speed How many seconds between photos
  */
-SlideShow::SlideShow(DisplayLabel *displayLabel, QList<QDir> *dirs, unsigned int speed, QObject *parent) : QObject(parent)
+SlideShow::SlideShow(DisplayLabel *displayLabel, QList<QDir> *dirs, int speed, QObject *parent) : QObject(parent)
 {
     _dirs = dirs;
     _speed = speed * 1000;
@@ -52,7 +52,7 @@ void SlideShow::setDirs(QList<QDir> *dirs)
     }
 }
 
-void SlideShow::setSpeed(unsigned int speed)
+void SlideShow::setSpeed(int speed)
 {
     _speed = speed * 1000;
     timer->setInterval(_speed);
@@ -69,10 +69,10 @@ void SlideShow::init(void)
   qDebug() << "[SlideShow] Initializing";
 
   _last = 0;
-  _current = 0;
+  _current = -1;
   _pause = false;
   timer->stop();
-  _previous_images.clear();
+  _slideshowimages.clear();
 
   _pathScanner->setPaths(_dirs);
   _pathScanner->start();
@@ -97,27 +97,26 @@ void SlideShow::initDone(QStringList *images)
   timer->start();
 }
 
-void SlideShow::nextImage(void)
-{
+void SlideShow::nextImage(void) {
     if (_images->size() == 0) {
         return;
     }
-    // we are going back in the list and want to show the next image in the list
-    if (_previous_images.size() != 0 && _current < (unsigned int) _previous_images.size()) {
+    const SlideshowImage* next = nullptr;
+    if (_slideshowimages.size() != 0 && _current < _slideshowimages.size()-1) {
         ++_current;
-        _current_path = _images->at(_previous_images.at(_current - 1));
-    // we are at the end of the list and want to pick a random image
+        next = &(_slideshowimages.at(_current));
     } else {
-      unsigned int random = _last;
-      while (_last == random && _images->size() != 1) {
-          random = qrand() % _images->size();
-      }
-      _last = random;
-      _current_path = _images->at(random);
-      _previous_images.append(random);
-      ++_current;
+        // we are at the end of the list and want to pick a random image
+        int random = _last;
+        while (_last == random && _images->size()) {
+            random = qrand() % _images->size();
+        }
+        _last = random;
+        next = new SlideshowImage(_images->at(random));
+        _slideshowimages.append(*next);
+        ++_current;
     }
-    loadImage(_current);
+    loadImage(next);
 }
 
 void SlideShow::nextImageClicked(void)
@@ -131,14 +130,14 @@ void SlideShow::nextImageClicked(void)
 
 void SlideShow::previousImageClicked(void)
 {
-    if (_previous_images.size() < 2 || _current < 2)
+    if (_slideshowimages.size() < 2 || _current < 1)
         return;
 
     if (!_pause) {
         pauseSlideshow(true);
     }
     --_current;
-    loadImage(_current);
+    loadImage(&_slideshowimages[_current]);
 }
 
 void SlideShow::pauseClicked(void)
@@ -158,11 +157,15 @@ void SlideShow::pauseSlideshow(bool newStatus)
   emit communicatePauseStatus();
 }
 
-void SlideShow::loadImage(unsigned int current)
-{
-  _current_path = _images->at(_previous_images.at(current-1));
-  _displayLabel->displayImage(_current_path, _images_orientation[current]);
-  emit showPath(_current_path);
+void SlideShow::loadImage(const SlideshowImage* image) {
+    qWarning() << "_current = " << _current;
+    if (image == nullptr) {
+        qWarning() << "loadImage() image is nullptr";
+        return;
+    }
+    _displayLabel->setImage(image);
+    _displayLabel->displayImage();
+    emit showImage(image);
 }
 
 bool SlideShow::paused(void)
@@ -170,14 +173,9 @@ bool SlideShow::paused(void)
     return _pause;
 }
 
-void SlideShow::rotateCurrentImage(int direction)
-{
-    if (scanningActive || _current == 0)
-        return;
-    int new_orientation = _images_orientation.take(_current);
-    new_orientation = (new_orientation + (90 * direction / abs(direction))) % 360;
-    _images_orientation.insert(_current, new_orientation);
-    loadImage(_current);
+void SlideShow::rotateCurrentImage(int direction) {
+    _slideshowimages[_current].rotate((90 * direction / abs(direction) + 360) % 360);
+    loadImage(&_slideshowimages[_current]);
 }
 
 void SlideShow::rotateCurrentImageLeft()

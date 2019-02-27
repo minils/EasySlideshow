@@ -11,6 +11,7 @@
 #include "globals.h"
 #include "settingsmanager.h"
 #include "detailsdialog.h"
+#include "slideshowimage.h"
 
 class DisplayLabel : public QLabel
 {
@@ -18,7 +19,8 @@ class DisplayLabel : public QLabel
 public:
     explicit DisplayLabel(QWidget *parent = 0);
     void clearImage(void);
-    void displayImage(QString path, int degree);
+    void displayImage();
+    void setImage(const SlideshowImage* slideshowimage);
 
     void resizeEvent(QResizeEvent *);
     void mouseReleaseEvent(QMouseEvent *event);
@@ -29,13 +31,13 @@ protected:
 private:
     QPixmap _image;
     QColor _backgroundColor;
-    QString _path;
+    const SlideshowImage* _slideshowimage;
 
     void openFolder(bool ignoreSettings);
     void openImage(void);
 signals:
     void rightMouseSucces(bool result);
-    void openDetails(QString path);
+    void openDetails(const SlideshowImage* image);
     void doubleClicked(void);
 };
 

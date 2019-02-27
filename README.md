@@ -77,7 +77,16 @@ make
 - [x] Add details view
 - [ ] Error when only one image is found
 - [x] Settings dialog can be opened multiple times
-- [ ] Sometimes the slideshow is not paused correctly
+- [x] Sometimes the slideshow is not paused correctly
+
+### v0.5
+- [ ] Rescan after x seconds when no images were found
+- [ ] Save rotation of images
+- [x] Integrate details into main window
+- [x] Update settings view
+- [ ] Translate
+- [ ] Build flatpak
+- [ ] Error when only one image is found
 
 License
 ----

@@ -21,8 +21,11 @@ MainWindow::MainWindow(QWidget *parent) :
     QPoint windowPosition = SettingsManager::readSetting(SETTING_WINDOW_POSITION).toPoint();
     move(windowPosition);
 
+    // init slideshowimage
+    _slideshowimage = nullptr;
+
     // set language
-    _currentTranslator = NULL;
+    _currentTranslator = nullptr;
     changeLanguage(SettingsManager::readSetting(SETTING_LANGUAGE).toString());
 
     // set style
@@ -84,6 +87,14 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->lockButton->setIcon(QIcon(":/btn/lock_open.svg"));
     ui->lockButton->setIconSize(QSize(buttonW*0.625, buttonH*0.625));
 
+    ui->closeButton->setMaximumSize(buttonW, buttonH);
+    ui->closeButton->setText("");
+    ui->closeButton->setIcon(QIcon(":/btn/close.svg"));
+    ui->closeButton->setIconSize(QSize(buttonW*0.625, buttonH*0.625));
+
+    _details_enabled = false;
+    displayDetails(_details_enabled);
+
     // setup slideshow
     qDebug() << "[MainWindow] Setting up slideshow";
     QStringList dir_list = SettingsManager::readSetting(SETTING_PATHS).toStringList();
@@ -96,7 +107,7 @@ MainWindow::MainWindow(QWidget *parent) :
 
     /* Slideshow */
     connect(_slideshow, SIGNAL(communicatePauseStatus()), this, SLOT(updatePauseButton()));
-    connect(_slideshow, SIGNAL(showPath(QString)), this, SLOT(displayPath(QString)));
+    connect(_slideshow, SIGNAL(showImage(const SlideshowImage*)), this, SLOT(updateImage(const SlideshowImage*)));
     connect(_slideshow, SIGNAL(initStart()), this, SLOT(startedSlideshowInit()));
     connect(_slideshow, SIGNAL(initStop()), this, SLOT(stoppedSlideshowInit()));
     connect(_slideshow, SIGNAL(displayError(QString)), this, SLOT(displayError(QString)));
@@ -108,6 +119,7 @@ MainWindow::MainWindow(QWidget *parent) :
     /* DisplayLabel */
     connect(ui->photoLabel, SIGNAL(rightMouseSucces(bool)), this, SLOT(processRightClick(bool)));
     connect(ui->photoLabel, SIGNAL(doubleClicked()), this, SLOT(imageDoubleClicked()));
+    connect(ui->photoLabel, SIGNAL(openDetails(const SlideshowImage*)), this, SLOT(toggleDetails(const SlideshowImage*)));
 
     /* Widgets */
     connect(ui->rotateLeftButton, SIGNAL(clicked()), _slideshow, SLOT(rotateCurrentImageLeft()));
@@ -131,20 +143,25 @@ MainWindow::~MainWindow()
   delete ui;
 }
 
-void MainWindow::displayPath(QString path)
+void MainWindow::updateImage(const SlideshowImage* image)
 {
-  _path = path;
-  ui->statusLabel->setText(path);
+  _slideshowimage = image;
+  if (image == nullptr)
+      return;
+  ui->statusLabel->setText(image->path());
   QFontMetrics metrics(ui->statusLabel->font());
-  QString elidedText = metrics.elidedText(path, Qt::ElideLeft, ui->statusLabel->width());
+  QString elidedText = metrics.elidedText(image->path(), Qt::ElideLeft, ui->statusLabel->width());
   ui->statusLabel->setText(elidedText);
-  if (elidedText != path) {
+  if (elidedText != image->path()) {
     ui->statusLabel->setAlignment(Qt::AlignVCenter | Qt::AlignRight);
   } else {
     ui->statusLabel->setAlignment(Qt::AlignCenter);
   }
   // TODO: Add this as an option
   //setWindowTitle("EasySlideshow: " + path);
+  if (_details_enabled) {
+      updateDetails(image);
+  }
 }
 
 void MainWindow::updatePauseButton()
@@ -173,7 +190,7 @@ void MainWindow::on_pauseButton_clicked()
 void MainWindow::resizeEvent(QResizeEvent*)
 {
     if (!_slideshow->scanningIsActive()) {
-	displayPath(_path);
+        updateImage(_slideshowimage);
     }
 }
 
@@ -208,7 +225,7 @@ void MainWindow::mouseMoveEvent(QMouseEvent *event) {
         QMimeData *mimeData = new QMimeData;
 
         QList<QUrl> list;
-        list.append(QUrl::fromLocalFile(_path));
+        list.append(QUrl::fromLocalFile(_slideshowimage->path()));
         mimeData->setUrls(list);
         drag->setMimeData(mimeData);
 
@@ -409,7 +426,8 @@ void MainWindow::lockButtonClicked(void)
 void MainWindow::displayError(QString msg)
 {
     ui->photoLabel->clearImage();
-    displayPath(msg);
+    ui->statusLabel->setText(msg);
+    controls(false);
     // TODO: controls should be disabled
 }
 
@@ -419,4 +437,52 @@ void MainWindow::imageDoubleClicked(void) {
     } else {
         showFullScreen();
     }
+}
+
+void MainWindow::displayDetails(bool enable) {
+    ui->closeButton->setVisible(enable);
+    ui->DetailsLabel->setVisible(enable);
+    ui->filenameGroup->setVisible(enable);
+    ui->filenameLineEdit->setVisible(enable);
+    ui->pathGroup->setVisible(enable);
+    ui->pathLineEdit->setVisible(enable);
+    ui->sizeGroup->setVisible(enable);
+    ui->sizeLineEdit->setVisible(enable);
+    ui->resolutionGroup->setVisible(enable);
+    ui->resolutionLineEdit->setVisible(enable);
+    ui->creationDateGroup->setVisible(enable);
+    ui->creationDateLineEdit->setVisible(enable);
+    ui->descriptionGroup->setVisible(enable);
+    ui->descriptionTextBrowser->setVisible(enable);
+    _details_enabled = enable;
+}
+
+void MainWindow::toggleDetails(const SlideshowImage* image) {
+    displayDetails(!_details_enabled);
+    updateDetails(_slideshowimage);
+}
+
+void MainWindow::updateDetails(const SlideshowImage* image) const {
+    ui->filenameLineEdit->setText(image->filename());
+    ui->pathLineEdit->setText(image->directory());
+    double num = image->filesize();
+    QStringList list;
+    list << "KB" << "MB" << "GB" << "TB";
+    QStringListIterator i(list);
+    QString unit("B");
+
+    while (num >= 1024.0 && i.hasNext()) {
+        unit = i.next();
+        num /= 1024.0;
+    }
+    ui->sizeLineEdit->setText(QString().setNum(num, 'f', 2)+" "+unit);
+
+    ui->resolutionLineEdit->setText(QString::number(image->resolution().width()) + "x" + QString::number(image->resolution().height()));
+
+    ui->creationDateLineEdit->setText(image->creationTime().toString( Qt::SystemLocaleLongDate));
+}
+
+void MainWindow::on_closeButton_clicked()
+{
+    displayDetails(false);
 }

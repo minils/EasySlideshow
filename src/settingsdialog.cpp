@@ -74,6 +74,9 @@ void SettingsDialog::on_buttonBox_accepted()
     }
     _settingsmanager->writeSetting(SETTING_ON_CLICK_ACTION, settingClick);
 
+    QVariant saveOrientation = ui->radiosave->isChecked();
+    _settingsmanager->writeSetting(SETTING_SAVE_ORIENTATION, saveOrientation);
+
     QVariant lang = ui->languageSelector->itemData(ui->languageSelector->currentIndex());
     _settingsmanager->writeSetting(SETTING_LANGUAGE, lang);
     emit languageChanged(lang.toString());
@@ -97,17 +100,20 @@ void SettingsDialog::showEvent(QShowEvent *event)
         ui->radioNothing->setChecked(settingClick == SETTING_ON_CLICK_ACTION_NOTHING);
         ui->radioOpenFolder->setChecked(settingClick == SETTING_ON_CLICK_ACTION_OPEN_FOLDER);
         ui->radioPause->setChecked(settingClick == SETTING_ON_CLICK_ACTION_PAUSE);
+    ui->radiosave->setChecked(_settingsmanager->readSetting(SETTING_SAVE_ORIENTATION).toBool());
+    ui->radiodontsave->setChecked(!_settingsmanager->readSetting(SETTING_SAVE_ORIENTATION).toBool());
     createLanguageMenu();
 
     hideError();
     ui->buttonBox->setFocus();
+    ui->saveGroupBox->setVisible(false);
 
     QDialog::showEvent(event);
 }
 
 void SettingsDialog::changeEvent(QEvent *event)
 {
-    if (event != 0) {
+    if (event != nullptr) {
         if (event->type() == QEvent::LanguageChange) {
             ui->retranslateUi(this);
         }

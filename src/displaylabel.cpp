@@ -4,7 +4,6 @@ DisplayLabel::DisplayLabel(QWidget *parent) : QLabel(parent)
 {
     this->setMinimumSize(1, 1);
     this->setAlignment(Qt::AlignCenter);
-    _path = "";
 }
 
 void DisplayLabel::resizeEvent(QResizeEvent*)
@@ -40,10 +39,9 @@ void DisplayLabel::clearImage()
     resizeEvent(NULL);
 }
 
-void DisplayLabel::displayImage(QString path, int degree)
+void DisplayLabel::displayImage()
 {
-    _path = path;
-    QImageReader reader(path);
+    QImageReader reader(_slideshowimage->path());
     // Need to check qt version for 'setAutoTransform()'
     #include <QtGlobal>
     #if QT_VERSION >= QT_VERSION_CHECK(5, 5, 0)
@@ -55,9 +53,13 @@ void DisplayLabel::displayImage(QString path, int degree)
       return;
     }
     _image = QPixmap(QPixmap::fromImage(newImage));
-    if (degree != 0)
-        _image = _image.transformed(QTransform().rotate(degree));
-    resizeEvent(NULL);
+    if (_slideshowimage->orientation() != 0)
+        _image = _image.transformed(QTransform().rotate(_slideshowimage->orientation()));
+    resizeEvent(nullptr);
+}
+
+void DisplayLabel::setImage(const SlideshowImage *slideshowimage) {
+    _slideshowimage = slideshowimage;
 }
 
 void DisplayLabel::setBackgroundColor(QColor backgroundColor)
@@ -67,8 +69,9 @@ void DisplayLabel::setBackgroundColor(QColor backgroundColor)
 
 void DisplayLabel::contextMenuEvent(QContextMenuEvent *event)
 {
-  if (_path.isEmpty())
+  if (_slideshowimage == nullptr || _slideshowimage->path().isEmpty()) {
       return;
+  }
   emit rightMouseSucces(true);
   QMenu menu(this);
   QAction *openFolderAction = new QAction(tr("Open &folder"), this);
@@ -88,25 +91,25 @@ void DisplayLabel::contextMenuEvent(QContextMenuEvent *event)
     // it is not influenced by the fact that the slideshow was paused before the right click
     return;
   } else if (result == openDetailsAction) {
-    emit openDetails(_path);
-    DetailsDialog *detailsDialog = new DetailsDialog();
-    detailsDialog->show();
-    detailsDialog->setFile(_path);
+    emit openDetails(_slideshowimage);
+    //DetailsDialog *detailsDialog = new DetailsDialog();
+    //detailsDialog->show();
+    //detailsDialog->setImage(_slideshowimage);
   }
 }
 
 void DisplayLabel::openFolder(bool ignoreSettings)
 {
     QString clickSetting = SettingsManager::readSetting(SETTING_ON_CLICK_ACTION).toString();
-    if (!ignoreSettings && (_path.isEmpty() || clickSetting != SETTING_ON_CLICK_ACTION_OPEN_FOLDER)) {
+    if (!ignoreSettings && (_slideshowimage == nullptr || _slideshowimage->path().isEmpty() || clickSetting != SETTING_ON_CLICK_ACTION_OPEN_FOLDER)) {
         return;
     }
-    QString path = QDir::toNativeSeparators(QFileInfo(_path).absolutePath());
+    QString path = QDir::toNativeSeparators(QFileInfo(_slideshowimage->path()).absolutePath());
     QDesktopServices::openUrl(QUrl::fromLocalFile(path));
 }
 
 void DisplayLabel::openImage()
 {
-    QDesktopServices::openUrl(QUrl::fromLocalFile(_path));
+    QDesktopServices::openUrl(QUrl::fromLocalFile(_slideshowimage->path()));
 }
 

@@ -6,53 +6,72 @@
     <message>
         <location filename="../ui/detailsdialog.ui" line="20"/>
         <source>Details</source>
-        <translation type="unfinished">Detalles</translation>
+        <translation>Detalles</translation>
     </message>
     <message>
-        <location filename="../ui/detailsdialog.ui" line="61"/>
+        <location filename="../ui/detailsdialog.ui" line="52"/>
         <source>Filename</source>
-        <translation type="unfinished">Nombre de fichero</translation>
+        <translation>Nombre de fichero</translation>
     </message>
     <message>
-        <location filename="../ui/detailsdialog.ui" line="77"/>
+        <location filename="../ui/detailsdialog.ui" line="58"/>
+        <source>Filename.jpeg</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../ui/detailsdialog.ui" line="71"/>
         <source>Path</source>
-        <translation type="unfinished">Ruta</translation>
+        <translation>Ruta</translation>
     </message>
     <message>
-        <location filename="../ui/detailsdialog.ui" line="93"/>
+        <location filename="../ui/detailsdialog.ui" line="87"/>
         <source>Size</source>
-        <translation type="unfinished">Tamaño</translation>
+        <translation>Tamaño</translation>
     </message>
     <message>
-        <location filename="../ui/detailsdialog.ui" line="109"/>
+        <location filename="../ui/detailsdialog.ui" line="103"/>
         <source>Resolution</source>
-        <translation type="unfinished">Definición</translation>
+        <translation>Definición</translation>
     </message>
     <message>
         <location filename="../ui/detailsdialog.ui" line="119"/>
         <source>Creation Date</source>
-        <translation type="unfinished">Fecha de creación</translation>
+        <translation>Fecha de creación</translation>
+    </message>
+    <message>
+        <location filename="../ui/detailsdialog.ui" line="141"/>
+        <source>Description</source>
+        <translation>Descripción</translation>
+    </message>
+    <message>
+        <location filename="../ui/detailsdialog.ui" line="147"/>
+        <source>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;Cantarell&apos;; font-size:11pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Loading...&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
     <name>DisplayLabel</name>
     <message>
-        <location filename="../src/displaylabel.cpp" line="64"/>
+        <location filename="../src/displaylabel.cpp" line="77"/>
         <source>Open &amp;folder</source>
         <translation type="unfinished">&amp;Abre carpeta</translation>
     </message>
     <message>
-        <location filename="../src/displaylabel.cpp" line="67"/>
+        <location filename="../src/displaylabel.cpp" line="80"/>
         <source>Open &amp;image</source>
         <translation type="unfinished">Abre &amp;imagen</translation>
     </message>
     <message>
-        <location filename="../src/displaylabel.cpp" line="68"/>
+        <location filename="../src/displaylabel.cpp" line="81"/>
         <source>Open image in the default viewer</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/displaylabel.cpp" line="71"/>
+        <location filename="../src/displaylabel.cpp" line="84"/>
         <source>&amp;Details</source>
         <translation type="unfinished"></translation>
     </message>
@@ -115,17 +134,56 @@ Released under the &lt;a href=&quot;http://www.apache.org/licenses/LICENSE-2.0.t
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="174"/>
+        <location filename="../ui/mainwindow.ui" line="127"/>
+        <source>Filename</source>
+        <translation type="unfinished">Nombre de fichero</translation>
+    </message>
+    <message>
+        <location filename="../ui/mainwindow.ui" line="158"/>
+        <source>Path</source>
+        <translation type="unfinished">Ruta</translation>
+    </message>
+    <message>
+        <location filename="../ui/mainwindow.ui" line="186"/>
+        <source>Size</source>
+        <translation type="unfinished">Tamaño</translation>
+    </message>
+    <message>
+        <location filename="../ui/mainwindow.ui" line="214"/>
+        <source>Resolution</source>
+        <translation type="unfinished">Definición</translation>
+    </message>
+    <message>
+        <location filename="../ui/mainwindow.ui" line="242"/>
+        <source>Creation Date</source>
+        <translation type="unfinished">Fecha de creación</translation>
+    </message>
+    <message>
+        <location filename="../ui/mainwindow.ui" line="270"/>
+        <source>Description</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../ui/mainwindow.ui" line="294"/>
+        <source>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;Cantarell&apos;; font-size:11pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../ui/mainwindow.ui" line="426"/>
         <source>Loading...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="224"/>
+        <location filename="../src/mainwindow.cpp" line="330"/>
         <source>Changed language to &lt;b&gt;%1&lt;/b&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="241"/>
+        <location filename="../src/mainwindow.cpp" line="347"/>
         <source>Scanning folders...</source>
         <translation type="unfinished"></translation>
     </message>
@@ -138,52 +196,67 @@ Released under the &lt;a href=&quot;http://www.apache.org/licenses/LICENSE-2.0.t
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/settingsdialog.ui" line="100"/>
-        <source>Image path:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../ui/settingsdialog.ui" line="136"/>
+        <location filename="../ui/settingsdialog.ui" line="131"/>
         <source>+</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/settingsdialog.ui" line="161"/>
-        <source>Duration:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../ui/settingsdialog.ui" line="216"/>
+        <location filename="../ui/settingsdialog.ui" line="202"/>
         <source> s</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/settingsdialog.ui" line="241"/>
-        <source>Click on Image:</source>
-        <translation type="unfinished"></translation>
+        <location filename="../ui/settingsdialog.ui" line="83"/>
+        <source>Image path(s)</source>
+        <translation>Ruta(s) por imagenes</translation>
     </message>
     <message>
-        <location filename="../ui/settingsdialog.ui" line="271"/>
+        <location filename="../ui/settingsdialog.ui" line="156"/>
+        <source>Duration</source>
+        <translation>Duración</translation>
+    </message>
+    <message>
+        <location filename="../ui/settingsdialog.ui" line="225"/>
+        <source>Click on image</source>
+        <translation>Clic sobre imagen</translation>
+    </message>
+    <message>
+        <location filename="../ui/settingsdialog.ui" line="246"/>
         <source>open fo&amp;lder</source>
-        <translation type="unfinished"></translation>
+        <translation>Abrir carpet&amp;a</translation>
     </message>
     <message>
-        <location filename="../ui/settingsdialog.ui" line="287"/>
+        <location filename="../ui/settingsdialog.ui" line="262"/>
         <source>&amp;pause</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;pausar</translation>
     </message>
     <message>
-        <location filename="../ui/settingsdialog.ui" line="303"/>
+        <location filename="../ui/settingsdialog.ui" line="278"/>
         <source>&amp;nothing</source>
+        <translation type="unfinished">&amp;nada</translation>
+    </message>
+    <message>
+        <location filename="../ui/settingsdialog.ui" line="288"/>
+        <source>Image rotation</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/settingsdialog.ui" line="315"/>
+        <location filename="../ui/settingsdialog.ui" line="294"/>
+        <source>Automatically save to file</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../ui/settingsdialog.ui" line="301"/>
+        <source>Do not save</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../ui/settingsdialog.ui" line="311"/>
         <source>Language</source>
-        <translation type="unfinished"></translation>
+        <translation>Idioma</translation>
     </message>
     <message>
-        <location filename="../ui/settingsdialog.ui" line="358"/>
+        <location filename="../ui/settingsdialog.ui" line="341"/>
         <source>ERROR</source>
         <translation type="unfinished"></translation>
     </message>
@@ -198,22 +271,22 @@ Released under the &lt;a href=&quot;http://www.apache.org/licenses/LICENSE-2.0.t
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/settingsdialog.cpp" line="173"/>
+        <location filename="../src/settingsdialog.cpp" line="178"/>
         <source>Cannot add more than %1 paths</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/settingsdialog.cpp" line="187"/>
+        <location filename="../src/settingsdialog.cpp" line="192"/>
         <source>Browse...</source>
-        <translation type="unfinished"></translation>
+        <translation>Elegir...</translation>
     </message>
     <message>
-        <location filename="../src/settingsdialog.cpp" line="212"/>
+        <location filename="../src/settingsdialog.cpp" line="222"/>
         <source>Pick a folder</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/settingsdialog.cpp" line="223"/>
+        <location filename="../src/settingsdialog.cpp" line="233"/>
         <source>At least one path is needed</source>
         <translation type="unfinished"></translation>
     </message>

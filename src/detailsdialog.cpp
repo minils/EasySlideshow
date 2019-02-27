@@ -13,11 +13,12 @@ DetailsDialog::~DetailsDialog()
     delete ui;
 }
 
-void DetailsDialog::setFile(QString filename)
-{
-    ui->filenameLineEdit->setText(QFileInfo(filename).fileName());
-    ui->pathLineEdit->setText(QDir::toNativeSeparators(QFileInfo(filename).absolutePath()));
-    float num = QFileInfo(filename).size();
+void DetailsDialog::setImage(const SlideshowImage *image) {
+    ui->filenameLineEdit->setText(image->filename());
+    ui->pathLineEdit->setText(image->directory());
+
+    // Convert filsize to human readable number
+    double num = image->filesize();
     QStringList list;
     list << "KB" << "MB" << "GB" << "TB";
     QStringListIterator i(list);
@@ -29,8 +30,7 @@ void DetailsDialog::setFile(QString filename)
     }
     ui->sizeLineEdit->setText(QString().setNum(num, 'f', 2)+" "+unit);
 
-    QImageReader reader(filename);
-    ui->resolutionLineEdit->setText(QString::number(reader.size().width()) + "x" + QString::number(reader.size().height()));
-    QDateTime creationDate = QFileInfo(filename).created();
-    ui->creationLineEdit->setText(creationDate.toString( Qt::SystemLocaleLongDate));
+    ui->resolutionLineEdit->setText(QString::number(image->resolution().width()) + "x" + QString::number(image->resolution().height()));
+
+    ui->creationLineEdit->setText(image->creationTime().toString( Qt::SystemLocaleLongDate));
 }

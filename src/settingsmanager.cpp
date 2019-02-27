@@ -32,10 +32,12 @@ QVariant SettingsManager::readSetting(const QString &key)
             defaultLocale.truncate(defaultLocale.lastIndexOf("_")); // e.g. de
             value = QVariant(defaultLocale);
         } else if (key == SETTING_WINDOW_SIZE) {
-	  value = QVariant(QSize(500, 300));
-	} else if (key == SETTING_WINDOW_POSITION) {
-	  value = QVariant(QPoint(0,0));
-	}
+            value = QVariant(QSize(500, 300));
+        } else if (key == SETTING_WINDOW_POSITION) {
+            value = QVariant(QPoint(0,0));
+        } else if (key == SETTING_SAVE_ORIENTATION) {
+            value = false;
+        }
     }
 
     writeSetting(key, value);

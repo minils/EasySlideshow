@@ -11,6 +11,7 @@
     #define SETTING_ON_CLICK_ACTION_PAUSE "pause"
     #define SETTING_ON_CLICK_ACTION_NOTHING "nothing"
 #define SETTING_LANGUAGE "language"
+#define SETTING_SAVE_ORIENTATION "save_orientation"
 
 #define SETTING_WINDOW_SIZE "window_size"
 #define SETTING_WINDOW_POSITION "window_position"

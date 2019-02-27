@@ -9,50 +9,73 @@
         <translation>Details</translation>
     </message>
     <message>
-        <location filename="../ui/detailsdialog.ui" line="61"/>
+        <location filename="../ui/detailsdialog.ui" line="52"/>
         <source>Filename</source>
         <translation>Dateiname</translation>
     </message>
     <message>
-        <location filename="../ui/detailsdialog.ui" line="77"/>
+        <location filename="../ui/detailsdialog.ui" line="58"/>
+        <source>Filename.jpeg</source>
+        <translation type="unfinished">Dateiname.jpeg</translation>
+    </message>
+    <message>
+        <location filename="../ui/detailsdialog.ui" line="71"/>
         <source>Path</source>
         <translation>Pfad</translation>
     </message>
     <message>
-        <location filename="../ui/detailsdialog.ui" line="93"/>
+        <location filename="../ui/detailsdialog.ui" line="87"/>
         <source>Size</source>
         <translation>Dateigröße</translation>
     </message>
     <message>
-        <location filename="../ui/detailsdialog.ui" line="109"/>
+        <location filename="../ui/detailsdialog.ui" line="103"/>
         <source>Resolution</source>
         <translation>Auflösung</translation>
     </message>
     <message>
         <location filename="../ui/detailsdialog.ui" line="119"/>
         <source>Creation Date</source>
-        <translation type="unfinished">Erstellt</translation>
+        <translation>Erstellt</translation>
+    </message>
+    <message>
+        <location filename="../ui/detailsdialog.ui" line="141"/>
+        <source>Description</source>
+        <translation>Beschreibung</translation>
+    </message>
+    <message>
+        <location filename="../ui/detailsdialog.ui" line="147"/>
+        <source>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;Cantarell&apos;; font-size:11pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Loading...&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;Cantarell&apos;; font-size:11pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Laden...&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
 </context>
 <context>
     <name>DisplayLabel</name>
     <message>
-        <location filename="../src/displaylabel.cpp" line="64"/>
+        <location filename="../src/displaylabel.cpp" line="77"/>
         <source>Open &amp;folder</source>
         <translation>Ordner ö&amp;ffnen</translation>
     </message>
     <message>
-        <location filename="../src/displaylabel.cpp" line="67"/>
+        <location filename="../src/displaylabel.cpp" line="80"/>
         <source>Open &amp;image</source>
         <translation>B&amp;ild öffnen</translation>
     </message>
     <message>
-        <location filename="../src/displaylabel.cpp" line="68"/>
+        <location filename="../src/displaylabel.cpp" line="81"/>
         <source>Open image in the default viewer</source>
         <translation>Öffne Bild im Standard-Bildbetrachter</translation>
     </message>
     <message>
-        <location filename="../src/displaylabel.cpp" line="71"/>
+        <location filename="../src/displaylabel.cpp" line="84"/>
         <source>&amp;Details</source>
         <translation>&amp;Details</translation>
     </message>
@@ -235,17 +258,56 @@ Taken from &lt;b&gt;Material Icons&lt;/b&gt; which were released under the &lt;a
         <translation>EasySlideshow</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="174"/>
+        <location filename="../ui/mainwindow.ui" line="127"/>
+        <source>Filename</source>
+        <translation type="unfinished">Dateiname</translation>
+    </message>
+    <message>
+        <location filename="../ui/mainwindow.ui" line="158"/>
+        <source>Path</source>
+        <translation type="unfinished">Pfad</translation>
+    </message>
+    <message>
+        <location filename="../ui/mainwindow.ui" line="186"/>
+        <source>Size</source>
+        <translation type="unfinished">Dateigröße</translation>
+    </message>
+    <message>
+        <location filename="../ui/mainwindow.ui" line="214"/>
+        <source>Resolution</source>
+        <translation type="unfinished">Auflösung</translation>
+    </message>
+    <message>
+        <location filename="../ui/mainwindow.ui" line="242"/>
+        <source>Creation Date</source>
+        <translation type="unfinished">Erstellt</translation>
+    </message>
+    <message>
+        <location filename="../ui/mainwindow.ui" line="270"/>
+        <source>Description</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../ui/mainwindow.ui" line="294"/>
+        <source>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;Cantarell&apos;; font-size:11pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../ui/mainwindow.ui" line="426"/>
         <source>Loading...</source>
         <translation>Lädt...</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="224"/>
+        <location filename="../src/mainwindow.cpp" line="330"/>
         <source>Changed language to &lt;b&gt;%1&lt;/b&gt;</source>
         <translation>Sprache auf &lt;b&gt;%1&lt;/b&gt; geändert</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="241"/>
+        <location filename="../src/mainwindow.cpp" line="347"/>
         <source>Scanning folders...</source>
         <translation>Ordner werden durchsucht...</translation>
     </message>
@@ -258,53 +320,80 @@ Taken from &lt;b&gt;Material Icons&lt;/b&gt; which were released under the &lt;a
         <translation>Einstellungen</translation>
     </message>
     <message>
-        <location filename="../ui/settingsdialog.ui" line="100"/>
         <source>Image path:</source>
-        <translation>Pfad für Bilder:</translation>
+        <translation type="vanished">Pfad für Bilder:</translation>
     </message>
     <message>
-        <location filename="../src/settingsdialog.cpp" line="187"/>
+        <location filename="../src/settingsdialog.cpp" line="192"/>
         <source>Browse...</source>
         <translation>Auswählen...</translation>
     </message>
     <message>
-        <location filename="../ui/settingsdialog.ui" line="136"/>
+        <location filename="../ui/settingsdialog.ui" line="131"/>
         <source>+</source>
         <translation>+</translation>
     </message>
     <message>
-        <location filename="../ui/settingsdialog.ui" line="161"/>
         <source>Duration:</source>
-        <translation>Dauer:</translation>
+        <translation type="vanished">Dauer:</translation>
     </message>
     <message>
         <source>-</source>
         <translation type="vanished">-</translation>
     </message>
     <message>
-        <location filename="../ui/settingsdialog.ui" line="216"/>
+        <location filename="../ui/settingsdialog.ui" line="202"/>
         <source> s</source>
         <translation> s</translation>
     </message>
     <message>
-        <location filename="../ui/settingsdialog.ui" line="241"/>
         <source>Click on Image:</source>
-        <translation>Klick auf Bild:</translation>
+        <translation type="vanished">Klick auf Bild:</translation>
     </message>
     <message>
-        <location filename="../ui/settingsdialog.ui" line="271"/>
+        <location filename="../ui/settingsdialog.ui" line="83"/>
+        <source>Image path(s)</source>
+        <translation>Pfad(e) für Bilder</translation>
+    </message>
+    <message>
+        <location filename="../ui/settingsdialog.ui" line="156"/>
+        <source>Duration</source>
+        <translation>Dauer</translation>
+    </message>
+    <message>
+        <location filename="../ui/settingsdialog.ui" line="225"/>
+        <source>Click on image</source>
+        <translation>Bei Klick auf Bild</translation>
+    </message>
+    <message>
+        <location filename="../ui/settingsdialog.ui" line="246"/>
         <source>open fo&amp;lder</source>
         <translation>Ordner ö&amp;ffnen</translation>
     </message>
     <message>
-        <location filename="../ui/settingsdialog.ui" line="287"/>
+        <location filename="../ui/settingsdialog.ui" line="262"/>
         <source>&amp;pause</source>
-        <translation>&amp;Pause</translation>
+        <translation>&amp;Pausieren</translation>
     </message>
     <message>
-        <location filename="../ui/settingsdialog.ui" line="303"/>
+        <location filename="../ui/settingsdialog.ui" line="278"/>
         <source>&amp;nothing</source>
         <translation>&amp;nichts</translation>
+    </message>
+    <message>
+        <location filename="../ui/settingsdialog.ui" line="288"/>
+        <source>Image rotation</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../ui/settingsdialog.ui" line="294"/>
+        <source>Automatically save to file</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../ui/settingsdialog.ui" line="301"/>
+        <source>Do not save</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>pause</source>
@@ -319,7 +408,7 @@ Taken from &lt;b&gt;Material Icons&lt;/b&gt; which were released under the &lt;a
         <translation type="vanished">s</translation>
     </message>
     <message>
-        <location filename="../ui/settingsdialog.ui" line="315"/>
+        <location filename="../ui/settingsdialog.ui" line="311"/>
         <source>Language</source>
         <translation>Sprache</translation>
     </message>
@@ -332,7 +421,7 @@ Taken from &lt;b&gt;Material Icons&lt;/b&gt; which were released under the &lt;a
         <translation type="vanished">Entfernen</translation>
     </message>
     <message>
-        <location filename="../ui/settingsdialog.ui" line="358"/>
+        <location filename="../ui/settingsdialog.ui" line="341"/>
         <source>ERROR</source>
         <translation>FEHLER</translation>
     </message>
@@ -347,17 +436,17 @@ Taken from &lt;b&gt;Material Icons&lt;/b&gt; which were released under the &lt;a
         <translation>Abbrechen</translation>
     </message>
     <message>
-        <location filename="../src/settingsdialog.cpp" line="173"/>
+        <location filename="../src/settingsdialog.cpp" line="178"/>
         <source>Cannot add more than %1 paths</source>
         <translation>Es können nicht mehr als %1 Ordner hinzugefügt werden</translation>
     </message>
     <message>
-        <location filename="../src/settingsdialog.cpp" line="212"/>
+        <location filename="../src/settingsdialog.cpp" line="222"/>
         <source>Pick a folder</source>
         <translation>Wähle einen Ordner</translation>
     </message>
     <message>
-        <location filename="../src/settingsdialog.cpp" line="223"/>
+        <location filename="../src/settingsdialog.cpp" line="233"/>
         <source>At least one path is needed</source>
         <translation>Es wird mindestens ein Ordner benötigt</translation>
     </message>
