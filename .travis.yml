@@ -1,11 +1,9 @@
 language: generic
 compiler: gcc
 before_install:
-- sudo apt-add-repository --yes ppa:beineri/opt-qt551-trusty
 - sudo apt-get -qq update
 install:
 - yes | sudo apt-get install --yes qt55base qt55imageformats qt55svg qtdeclarative5-dev
-env: CXXFLAGS="-std=c++11 -Wall -Wno-error"
 before_script:
 - QTDIR="/opt/qt55"
 - PATH="$QTDIR/bin:$PATH"
@@ -15,7 +13,7 @@ script:
 - mkdir build
 - cd build
 - qmake ..
-- make -j9 CXXFLAGS='-std=c++11 -Wall -Wno-error -fPIC'
+- make
 deploy:
   provider: releases
   api_key:
