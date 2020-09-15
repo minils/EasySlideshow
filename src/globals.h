@@ -16,6 +16,8 @@
 #define SETTING_WINDOW_SIZE "window_size"
 #define SETTING_WINDOW_POSITION "window_position"
 
+#define SETTING_DARK_MODE "dark_mode"
+
 #define VERSION "0.4.5"
 
 #endif // GLOBALS_H

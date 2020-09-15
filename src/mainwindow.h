@@ -59,6 +59,7 @@ private:
     void saveSettings(void);
     void controls(bool enable);
     void displayDetails(bool enable);
+    void setUIIcon(QPushButton *widget, const char *icon_name);
 
     QPoint dragStartPosition;
 

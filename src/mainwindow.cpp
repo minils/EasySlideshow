@@ -46,50 +46,52 @@ MainWindow::MainWindow(QWidget *parent) :
         buttonW = 24;
         buttonH = 24;
     }
+    qWarning() << "Detected DPI = " << dpi;
+    buttonH = buttonW = 32;
 
     ui->rotateLeftButton->setMaximumSize(buttonW, buttonH);
     ui->rotateLeftButton->setText("");
-    ui->rotateLeftButton->setIcon(QIcon(":/btn/rotate_left.svg"));
+    setUIIcon(ui->rotateLeftButton, ":/btn/rotate_left.svg");
     ui->rotateLeftButton->setIconSize(QSize(buttonW*0.75, buttonH*0.75));
 
     ui->rotateRightButton->setMaximumSize(buttonW, buttonH);
     ui->rotateRightButton->setText("");
-    ui->rotateRightButton->setIcon(QIcon(":/btn/rotate_right.svg"));
+    setUIIcon(ui->rotateRightButton, ":/btn/rotate_right.svg");
     ui->rotateRightButton->setIconSize(QSize(buttonW*0.75, buttonH*0.75));
 
     ui->previousButton->setMaximumSize(buttonW, buttonH);
     ui->previousButton->setText("");
-    ui->previousButton->setIcon(QIcon(":/btn/skip_previous.svg"));
+    setUIIcon(ui->previousButton, ":/btn/skip_previous.svg");
     ui->previousButton->setIconSize(QSize(buttonW*0.75, buttonH*0.75));
 
     ui->pauseButton->setMaximumSize(buttonW, buttonH);
     ui->pauseButton->setText("");
-    ui->pauseButton->setIcon(QIcon(":/btn/pause.svg"));
+    setUIIcon(ui->pauseButton, ":/btn/pause.svg");
     ui->pauseButton->setIconSize(QSize(buttonW*0.7, buttonH*0.7));
 
     ui->nextButton->setMaximumSize(buttonW, buttonH);
     ui->nextButton->setText("");
-    ui->nextButton->setIcon(QIcon(":/btn/skip_next.svg"));
+    setUIIcon(ui->nextButton, ":/btn/skip_next.svg");
     ui->nextButton->setIconSize(QSize(buttonW*0.75, buttonH*0.75));
 
     ui->helpButton->setMaximumSize(buttonW, buttonH);
     ui->helpButton->setText("");
-    ui->helpButton->setIcon(QIcon(":/btn/info_outline.svg"));
+    setUIIcon(ui->helpButton, ":/btn/info_outline.svg");
     ui->helpButton->setIconSize(QSize(buttonW*0.625, buttonH*0.625));
 
     ui->settingsButton->setMaximumSize(buttonW, buttonH);
     ui->settingsButton->setText("");
-    ui->settingsButton->setIcon(QIcon(":/btn/settings.svg"));
+    setUIIcon(ui->settingsButton, ":/btn/settings.svg");
     ui->settingsButton->setIconSize(QSize(buttonW*0.625, buttonH*0.625));
 
     ui->lockButton->setMaximumSize(buttonW, buttonH);
     ui->lockButton->setText("");
-    ui->lockButton->setIcon(QIcon(":/btn/lock_open.svg"));
+    setUIIcon(ui->lockButton, ":/btn/lock_open.svg");
     ui->lockButton->setIconSize(QSize(buttonW*0.625, buttonH*0.625));
 
     ui->closeButton->setMaximumSize(buttonW, buttonH);
     ui->closeButton->setText("");
-    ui->closeButton->setIcon(QIcon(":/btn/close.svg"));
+    setUIIcon(ui->closeButton, ":/btn/close.svg");
     ui->closeButton->setIconSize(QSize(buttonW*0.625, buttonH*0.625));
 
     _details_enabled = false;
@@ -167,9 +169,9 @@ void MainWindow::updateImage(const SlideshowImage* image)
 void MainWindow::updatePauseButton()
 {
   if (_slideshow->paused())
-    ui->pauseButton->setIcon(QIcon(":/btn/play.svg"));
+    setUIIcon(ui->pauseButton, ":/btn/play.svg");
   else
-    ui->pauseButton->setIcon(QIcon(":/btn/pause.svg"));
+    setUIIcon(ui->pauseButton, ":/btn/pause.svg");
 }
 
 void MainWindow::processRightClick(bool status)
@@ -349,7 +351,7 @@ void MainWindow::startedSlideshowInit()
 
 void MainWindow::stoppedSlideshowInit()
 {
-    ui->pauseButton->setIcon(QIcon(":/btn/pause"));
+    setUIIcon(ui->pauseButton, ":/btn/pause.svg");
     controls(true);
 }
 
@@ -412,11 +414,11 @@ void MainWindow::lockButtonClicked(void)
   if (this->windowFlags() & Qt::WindowStaysOnTopHint) {
     flags &= ~Qt::WindowStaysOnTopHint;
     flags &= ~Qt::X11BypassWindowManagerHint;
-    ui->lockButton->setIcon(QIcon(":/btn/lock_open"));
+    setUIIcon(ui->lockButton, ":/btn/lock_open");
   } else {
     flags |= Qt::WindowStaysOnTopHint;
     flags |= Qt::X11BypassWindowManagerHint;
-    ui->lockButton->setIcon(QIcon(":/btn/lock"));
+    setUIIcon(ui->lockButton, ":/btn/lock");
   }
   this->setWindowFlags(flags);
   restoreState(backup);
@@ -485,4 +487,14 @@ void MainWindow::updateDetails(const SlideshowImage* image) const {
 void MainWindow::on_closeButton_clicked()
 {
     displayDetails(false);
+}
+
+void MainWindow::setUIIcon(QPushButton *button, const char *icon_name)
+{
+    QString icon_str(icon_name);
+    if (SettingsManager::readSetting(SETTING_DARK_MODE).toBool()) {
+        icon_str = icon_str.replace(".svg", "_white.svg");
+    }
+    QIcon icon(icon_str);
+    button->setIcon(icon);
 }

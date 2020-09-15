@@ -81,6 +81,10 @@ void SettingsDialog::on_buttonBox_accepted()
     _settingsmanager->writeSetting(SETTING_LANGUAGE, lang);
     emit languageChanged(lang.toString());
 
+    QVariant dark_mode = ui->darkModeCheckbox->checkState();
+    _settingsmanager->writeSetting(SETTING_DARK_MODE, dark_mode);
+
+
     this->setVisible(false);
     emit settingsClosed(true);
 }
@@ -103,6 +107,7 @@ void SettingsDialog::showEvent(QShowEvent *event)
     ui->radiosave->setChecked(_settingsmanager->readSetting(SETTING_SAVE_ORIENTATION).toBool());
     ui->radiodontsave->setChecked(!_settingsmanager->readSetting(SETTING_SAVE_ORIENTATION).toBool());
     createLanguageMenu();
+    ui->darkModeCheckbox->setChecked(_settingsmanager->readSetting(SETTING_DARK_MODE).toBool());
 
     hideError();
     ui->buttonBox->setFocus();

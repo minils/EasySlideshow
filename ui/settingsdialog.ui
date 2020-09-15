@@ -73,7 +73,7 @@
        <number>6</number>
       </property>
       <item row="0" column="0">
-       <layout class="QVBoxLayout" name="verticalLayout" stretch="0,0,0,0,0,0">
+       <layout class="QVBoxLayout" name="verticalLayout" stretch="0,0,0,0,0,0,0">
         <property name="sizeConstraint">
          <enum>QLayout::SetMinimumSize</enum>
         </property>
@@ -324,6 +324,22 @@
              </property>
              <property name="locale">
               <locale language="English" country="UnitedStates"/>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+        </item>
+        <item>
+         <widget class="QGroupBox" name="darkModeBox">
+          <property name="title">
+           <string>Dark Mode</string>
+          </property>
+          <layout class="QHBoxLayout" name="horizontalLayout_2">
+           <item>
+            <widget class="QCheckBox" name="darkModeCheckbox">
+             <property name="text">
+              <string>Enable dark mode</string>
              </property>
             </widget>
            </item>
