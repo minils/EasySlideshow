@@ -19,8 +19,16 @@ Grab the binaries [here](https://github.com/minils/EasySlideshow/releases)
 No installation required. Just use the statically build `.exe` file.
 
 #### Linux
-Either:
-- Install the `.deb`-package
+
+##### Debian/Ubuntu
+- Install the `dpkg`
+
+##### Fedora
+- Enable the `copr` from [here](https://copr.fedorainfracloud.org/coprs/minils/easy-slideshow/)
+```
+dnf copr enable minils/easy-slideshow
+dnf install easy-slideshow
+```
 
 Or:
 - Compile from source and run `make install`. This will install the binary to `/usr/bin/easyslideshow` as well as a `.desktop` file and an icon.
@@ -70,7 +78,7 @@ make
 - [ ] Increase probability for images with older access time
 - [x] Save size of window after exit and restore it before start
 - [x] Build deb-package
-- [ ] Build rpm-package
+- [x] Build rpm-package
 - [x] Build for windows
 - [ ] Translate into more languages
 - [x] Implement right-click menu
